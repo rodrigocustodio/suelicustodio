@@ -362,7 +362,7 @@ const Index = () => {
               const IconComponent = s.icon;
               return (
                 <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-smooth">
-                  <img className="w-full aspect-[16/10] object-cover object-center" src={s.img} alt={s.alt} loading="lazy" />
+                  <img className="w-full aspect-[16/10] object-cover object-top" src={s.img} alt={s.alt} loading="lazy" />
                   <div className="p-6 sm:p-8 lg:p-10">
                     <div className="flex items-start gap-3 mb-3">
                       <IconComponent className="w-6 h-6 text-brand-400 opacity-60 mt-1" />
