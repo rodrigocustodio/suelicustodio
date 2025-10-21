@@ -11,6 +11,7 @@ import { track, scrollToId } from '@/lib/analytics';
 import { Mail, Phone, Instagram, Youtube, MapPin, Heart, Sparkles, Mic, Users, User, Play, BookOpen, Sunrise, Quote, Clock, Calendar } from 'lucide-react';
 
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
+import sueliSpeaking from '@/assets/sueli-speaking.jpg';
 import heroHills from '@/assets/hero-hills.jpg';
 import session1 from '@/assets/session-1.jpg';
 import groupMentoring from '@/assets/group-mentoring.jpg';
@@ -78,15 +79,15 @@ const Index = () => {
   ];
 
   const testimonials = [
-    { name: "Juliana", quote: "A mentoria me ajudou a recuperar minha identidade e confiança. Aprendi a valorizar quem eu sou." },
-    { name: "Aline", quote: "Finalmente consegui lidar com a ansiedade que me paralisava. As sessões foram transformadoras." },
-    { name: "Jô", quote: "Sueli me ensinou a ressignificar experiências difíceis. Hoje me sinto mais forte e preparada." },
-    { name: "Janair", quote: "O trabalho em grupo trouxe acolhimento e aprendizado. Não estou sozinha nessa jornada." },
-    { name: "Fátima", quote: "Consegui melhorar minha relação com minha equipe e comigo mesma. Gratidão!" },
-    { name: "Doralice", quote: "As palestras inspiram mudanças reais. Saí motivada e com ferramentas práticas." },
-    { name: "Letícia", quote: "Aprendi a cuidar da minha saúde emocional com a mesma dedicação que cuido dos pacientes." },
-    { name: "Mariana", quote: "As técnicas de ressignificação mudaram minha forma de lidar com conflitos. Hoje me sinto mais equilibrada." },
-    { name: "Camila", quote: "O acolhimento e a escuta da Sueli me deram coragem para reconstruir minha autoestima. Sou grata por cada sessão." }
+    { benefit: "Transformação", name: "Juliana", quote: "A mentoria me ajudou a recuperar minha identidade e confiança. Aprendi a valorizar quem eu sou." },
+    { benefit: "Leveza", name: "Aline", quote: "Finalmente consegui lidar com a ansiedade que me paralisava. As sessões foram transformadoras." },
+    { benefit: "Resiliência", name: "Jô", quote: "Sueli me ensinou a ressignificar experiências difíceis. Hoje me sinto mais forte e preparada." },
+    { benefit: "Acolhimento", name: "Janair", quote: "O trabalho em grupo trouxe acolhimento e aprendizado. Não estou sozinha nessa jornada." },
+    { benefit: "Equilíbrio", name: "Fátima", quote: "Consegui melhorar minha relação com minha equipe e comigo mesma. Gratidão!" },
+    { benefit: "Motivação", name: "Doralice", quote: "As palestras inspiram mudanças reais. Saí motivada e com ferramentas práticas." },
+    { benefit: "Autocuidado", name: "Letícia", quote: "Aprendi a cuidar da minha saúde emocional com a mesma dedicação que cuido dos pacientes." },
+    { benefit: "Clareza", name: "Mariana", quote: "As técnicas de ressignificação mudaram minha forma de lidar com conflitos. Hoje me sinto mais equilibrada." },
+    { benefit: "Autoconfiança", name: "Camila", quote: "O acolhimento e a escuta da Sueli me deram coragem para reconstruir minha autoestima. Sou grata por cada sessão." }
   ];
 
   return (
@@ -155,21 +156,21 @@ const Index = () => {
       {/* About - Professional Profile with Featured Portrait */}
       <Section id="sobre" className="bg-paper-50">
         <div className="mx-auto max-w-6xl px-8">
-          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-20">Quem sou</h2>
           
           {/* Top Section: Featured Portrait + Opening Bio */}
           <div className="grid lg:grid-cols-[400px_1fr] gap-12 mb-16">
             {/* Featured Professional Portrait */}
             <div>
               <img 
-                src={sueliPortrait} 
-                alt="Sueli Custódio - Coach e Mentora especializada em desenvolvimento emocional" 
+                src={sueliSpeaking} 
+                alt="Sueli Custódio apresentando em evento profissional" 
                 className="rounded-2xl aspect-[3/4] object-cover shadow-card w-full" 
               />
             </div>
 
             {/* Opening Bio + Credentials */}
             <div className="space-y-6">
+              <h2 className="font-playfair text-4xl text-ink-900 mb-6">Quem sou</h2>
               <p className="text-2xl text-ink-900 leading-[1.6] font-medium">
                 Sou Sueli Custódio, Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental.
               </p>
@@ -188,7 +189,6 @@ const Index = () => {
           {/* Pull Quote - Featured Philosophy */}
           <div className="max-w-4xl mx-auto mb-16">
             <blockquote className="border-l-4 border-brand-400 pl-8 py-4 relative">
-              <Sparkles className="w-6 h-6 text-brand-400 opacity-60 absolute -left-3 -top-2" />
               <p className="text-2xl text-brand-600 italic leading-[1.8]">
                 "Cada mulher possui em si a força necessária para superar traumas e reconstruir sua identidade — meu papel é guiá-la nessa jornada de autodescoberta e fortalecimento."
               </p>
@@ -199,8 +199,8 @@ const Index = () => {
           <div className="bg-white rounded-3xl p-10 md:p-12 shadow-soft mb-16">
             <div className="grid md:grid-cols-2 gap-10">
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Heart className="w-6 h-6 text-brand-400 opacity-60" />
+                <div className="flex items-start gap-3 mb-4">
+                  <Heart className="w-6 h-6 text-brand-400 opacity-60 mt-1" />
                   <h3 className="font-playfair text-2xl text-ink-900">Minha Abordagem</h3>
                 </div>
                 <p className="text-lg text-ink-700 leading-[1.8] mb-4">
@@ -211,8 +211,8 @@ const Index = () => {
                 </p>
               </div>
               <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Sunrise className="w-6 h-6 text-brand-400 opacity-60" />
+                <div className="flex items-start gap-3 mb-4">
+                  <Sunrise className="w-6 h-6 text-brand-400 opacity-60 mt-1" />
                   <h3 className="font-playfair text-2xl text-ink-900">Impacto & Resultados</h3>
                 </div>
                 <p className="text-lg text-ink-700 leading-[1.8] mb-4">
@@ -348,8 +348,8 @@ const Index = () => {
                 <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-smooth">
                   <img className="w-full aspect-[16/10] object-cover" src={s.img} alt={s.alt} />
                   <div className="p-10">
-                    <div className="flex items-center gap-3 mb-3">
-                      <IconComponent className="w-6 h-6 text-brand-400 opacity-60" />
+                    <div className="flex items-start gap-3 mb-3">
+                      <IconComponent className="w-6 h-6 text-brand-400 opacity-60 mt-1" />
                       <h3 className="font-playfair text-2xl text-ink-900">
                         {s.title}
                       </h3>
@@ -451,6 +451,9 @@ const Index = () => {
             {testimonials.map((t, i) => (
               <blockquote key={i} className="bg-white rounded-3xl p-8 shadow-soft relative">
                 <Quote className="w-6 h-6 text-brand-300 opacity-40 absolute top-6 right-6" />
+                <h4 className="text-brand-600 font-semibold text-lg mb-4 uppercase tracking-wide">
+                  {t.benefit}
+                </h4>
                 <p className="text-ink-700 leading-[1.8] mb-6">
                   "{t.quote}"
                 </p>
