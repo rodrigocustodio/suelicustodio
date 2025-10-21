@@ -12,7 +12,7 @@ import { track, scrollToId } from '@/lib/analytics';
 import { Mail, Phone, Instagram, Youtube, MapPin, Heart, Sparkles, Mic, Users, User, Play, BookOpen, Sunrise, Quote, Clock, Calendar } from 'lucide-react';
 
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
-import sueliSpeaking from '@/assets/sueli-speaking.jpg';
+import palestrando from '@/assets/palestrando.jpg';
 import heroHills from '@/assets/hero-hills.jpg';
 import session1 from '@/assets/session-1.jpg';
 import groupMentoring from '@/assets/group-mentoring.jpg';
@@ -165,8 +165,8 @@ const Index = () => {
             {/* Featured Professional Portrait */}
             <div>
               <img 
-                src={sueliSpeaking} 
-                alt="Sueli Custódio apresentando em evento profissional" 
+                src={palestrando} 
+                alt="Sueli Custódio palestrando em auditório profissional" 
                 className="rounded-2xl aspect-[3/4] object-cover shadow-card w-full" 
               />
             </div>
