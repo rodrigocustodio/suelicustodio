@@ -83,12 +83,22 @@ export default {
         },
       },
       spacing: {
-        section: '8rem',
-        sectionLg: '10rem',
-        gutter: '2rem',
+        section: '10rem',      // 160px - generous vertical spacing
+        sectionLg: '12.5rem',  // 200px - extra generous
+        sectionXl: '15rem',    // 240px - for hero/contact
+        gutter: '3rem',        // 48px - increased from 2rem
+        breath: '4rem',        // 64px - internal section spacing
       },
       boxShadow: {
-        card: '0 8px 28px rgba(20, 35, 30, 0.08)',
+        card: '0 4px 16px rgba(20, 35, 30, 0.04)',      // much lighter
+        cardHover: '0 8px 24px rgba(20, 35, 30, 0.08)', // subtle hover
+        soft: '0 2px 12px rgba(20, 35, 30, 0.03)',      // very minimal
+      },
+      transitionDuration: {
+        smooth: '350ms',
+      },
+      transitionTimingFunction: {
+        smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       borderRadius: {
         lg: "var(--radius)",
