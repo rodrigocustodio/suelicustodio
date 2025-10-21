@@ -8,9 +8,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { track, scrollToId } from '@/lib/analytics';
-import { Mail, Phone, Instagram, Youtube, MapPin } from 'lucide-react';
+import { Mail, Phone, Instagram, Youtube, MapPin, Heart, Sparkles, Mic, Users, User, Play, BookOpen, Sunrise, Quote, Clock, Calendar } from 'lucide-react';
 
-import sueliPortrait from '@/assets/sueli-professional.jpg';
+import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
 import heroHills from '@/assets/hero-hills.jpg';
 import session1 from '@/assets/session-1.jpg';
 import groupMentoring from '@/assets/group-mentoring.jpg';
@@ -38,25 +38,29 @@ const Index = () => {
       img: talkStage,
       alt: "Sueli palestrando em evento corporativo",
       title: "Palestras Interativas e Motivacionais",
-      desc: "Técnicas de fortalecimento emocional aplicadas à rotina."
+      desc: "Palestras dinâmicas e envolventes que combinam teoria e prática. Durante 1h30, sua equipe aprenderá técnicas concretas de gestão emocional que podem ser aplicadas imediatamente no dia a dia. Inclui momentos de reflexão, exercícios práticos e ferramentas para fortalecer a autoestima individual e coletiva.",
+      icon: Mic
     },
     {
       img: groupMentoring,
       alt: "Mentoria em grupo via Zoom",
       title: "Mentorias em Grupo (Zoom)",
-      desc: "Segurança, apoio e evolução contínua."
+      desc: "Encontros semanais online com até 8 participantes, criando um ambiente seguro de acolhimento e transformação. Você compartilha experiências, aprende com outras mulheres e recebe orientação estruturada para desenvolver inteligência emocional. Inclui materiais de apoio e práticas guiadas entre sessões.",
+      icon: Users
     },
     {
       img: session1,
       alt: "Atendimento individual em consultório",
       title: "Atendimentos Individuais",
-      desc: "Ressignificação mental personalizada."
+      desc: "Sessões personalizadas de 1h focadas 100% em você e sua jornada emocional. Através de técnicas de ressignificação mental, PNL e coaching comportamental, trabalhamos traumas, bloqueios e padrões limitantes. Atendimento presencial em São Paulo ou online, com acompanhamento contínuo entre sessões.",
+      icon: User
     },
     {
       img: sunsetReflection,
       alt: "Pessoa em momento de reflexão",
       title: "Cursos e Aulas Gravadas",
-      desc: "Aprendizado no seu ritmo, com exercícios práticos."
+      desc: "Conteúdos estruturados que você pode acessar no seu próprio ritmo, incluindo vídeo-aulas, apostilas e exercícios práticos. Ideal para quem busca autonomia no processo de desenvolvimento emocional, com suporte via grupo exclusivo no WhatsApp e encontros ao vivo mensais para tira-dúvidas.",
+      icon: Play
     }
   ];
 
@@ -170,17 +174,21 @@ const Index = () => {
                 Sou Sueli Custódio, Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental.
               </p>
               <p className="text-lg text-ink-700 leading-[1.8]">
-                Com mais de <span className="font-semibold text-brand-600">13 anos de experiência</span> e formação em <span className="font-semibold">técnicas avançadas de coaching comportamental, programação neurolinguística e inteligência emocional aplicada</span>, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão.
+                Com mais de <span className="font-semibold text-brand-600">13 anos de experiência</span> e formação em <span className="font-semibold">Coaching Comportamental, Programação Neurolinguística (PNL), Inteligência Emocional Aplicada, Constelação Familiar e Análise Comportamental</span>, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão e desafios emocionais complexos.
               </p>
               <p className="text-lg text-ink-700 leading-[1.8]">
-                Meu trabalho é fundamentado em metodologias comprovadas que transformam vidas através da ressignificação mental e do desenvolvimento de uma autoestima sólida e duradoura.
+                Minha jornada começou quando percebi que muitas mulheres brilhantes estavam silenciosamente sofrendo com ansiedade, autocrítica devastadora e uma sensação de nunca serem "suficientes". Essa dor me tocou profundamente — eu mesma havia enfrentado esses desafios. Foi então que decidi dedicar minha vida a ajudar outras mulheres a reconectarem-se com sua essência, valor e poder interior.
+              </p>
+              <p className="text-lg text-ink-700 leading-[1.8]">
+                Trabalho com metodologias integradas e cientificamente validadas, combinando técnicas práticas de ressignificação mental, PNL e coaching ontológico para criar transformações reais e duradouras. Não se trata apenas de teoria — cada sessão é estruturada para gerar mudanças concretas na forma como você pensa, sente e age.
               </p>
             </div>
           </div>
 
           {/* Pull Quote - Featured Philosophy */}
           <div className="max-w-4xl mx-auto mb-16">
-            <blockquote className="border-l-4 border-brand-400 pl-8 py-4">
+            <blockquote className="border-l-4 border-brand-400 pl-8 py-4 relative">
+              <Sparkles className="w-6 h-6 text-brand-400 opacity-60 absolute -left-3 -top-2" />
               <p className="text-2xl text-brand-600 italic leading-[1.8]">
                 "Cada mulher possui em si a força necessária para superar traumas e reconstruir sua identidade — meu papel é guiá-la nessa jornada de autodescoberta e fortalecimento."
               </p>
@@ -191,15 +199,27 @@ const Index = () => {
           <div className="bg-white rounded-3xl p-10 md:p-12 shadow-soft mb-16">
             <div className="grid md:grid-cols-2 gap-10">
               <div>
-                <h3 className="font-playfair text-2xl text-ink-900 mb-4">Minha Abordagem</h3>
-                <p className="text-lg text-ink-700 leading-[1.8]">
+                <div className="flex items-center gap-3 mb-4">
+                  <Heart className="w-6 h-6 text-brand-400 opacity-60" />
+                  <h3 className="font-playfair text-2xl text-ink-900">Minha Abordagem</h3>
+                </div>
+                <p className="text-lg text-ink-700 leading-[1.8] mb-4">
                   Combino técnicas práticas de ressignificação mental com acolhimento genuíno e escuta ativa. Através dessa metodologia integrada, ajudo mulheres a reconectarem-se com seu propósito, estabelecerem limites saudáveis e desenvolverem uma inteligência emocional que as sustenta nos desafios do dia a dia.
+                </p>
+                <p className="text-lg text-ink-700 leading-[1.8]">
+                  Utilizo ferramentas como PNL para ressignificar memórias limitantes, técnicas de ancoragem emocional para criar novos padrões de resposta, e práticas de autocompaixão para reconstruir a relação com você mesma. Cada sessão é estruturada para gerar insights profundos e mudanças práticas.
                 </p>
               </div>
               <div>
-                <h3 className="font-playfair text-2xl text-ink-900 mb-4">Impacto & Resultados</h3>
-                <p className="text-lg text-ink-700 leading-[1.8]">
+                <div className="flex items-center gap-3 mb-4">
+                  <Sunrise className="w-6 h-6 text-brand-400 opacity-60" />
+                  <h3 className="font-playfair text-2xl text-ink-900">Impacto & Resultados</h3>
+                </div>
+                <p className="text-lg text-ink-700 leading-[1.8] mb-4">
                   Ao longo da minha carreira, já transformei a vida de mais de <span className="font-semibold text-brand-600">500 mulheres</span>, especialmente profissionais da área da saúde que lidam diariamente com estresse crônico, ansiedade e esgotamento emocional. Através de mentorias individuais, sessões em grupo e palestras corporativas, crio espaços de transformação real e duradoura.
+                </p>
+                <p className="text-lg text-ink-700 leading-[1.8]">
+                  Minhas clientes relatam redução significativa de ansiedade, melhora na qualidade do sono, aumento da autoconfiança e reconstrução de relacionamentos mais saudáveis. Muitas conseguiram estabelecer limites claros no trabalho, superar traumas do passado e redescobrir a alegria de viver.
                 </p>
               </div>
             </div>
@@ -207,20 +227,33 @@ const Index = () => {
 
           {/* Mission Statement */}
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-2xl text-ink-900 leading-[1.8] font-semibold">
+            <p className="text-2xl text-ink-900 leading-[1.8] font-semibold flex items-center justify-center gap-3">
+              <Heart className="w-7 h-7 text-brand-500" />
               Minha missão é clara: ressignificar mentes, curar emoções e fortalecer vidas.
             </p>
             <p className="text-lg text-ink-700 leading-[1.8] mt-4">
-              Seja em atendimentos presenciais em São Paulo ou através de mentorias online, trabalho para que cada mulher redescubra o poder transformador que existe dentro dela.
+              Seja em atendimentos presenciais em São Paulo ou através de mentorias online, trabalho para que cada mulher redescubra o poder transformador que existe dentro dela. Você não precisa carregar esse peso sozinha — estou aqui para caminhar ao seu lado nessa jornada de cura e fortalecimento.
             </p>
           </div>
 
-          {/* Dynamic Photo Gallery - Redesigned */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {/* Large Featured Image - Spans 2 columns on desktop */}
-            <div className="col-span-2">
+          {/* Dynamic Photo Gallery - All in One Row with Different Designs */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_0.8fr] gap-6">
+            {/* Photo 1: Medium Portrait */}
+            <div>
               <img 
-                className="rounded-2xl aspect-[16/9] object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                className="rounded-2xl aspect-[4/5] object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                src={session1} 
+                alt="Atendimento individual em consultório acolhedor" 
+              />
+              <p className="text-sm text-ink-500 mt-3 text-center">
+                Atendimento individual personalizado
+              </p>
+            </div>
+            
+            {/* Photo 2: Large Landscape (centered, slightly elevated on desktop) */}
+            <div className="md:-mt-4">
+              <img 
+                className="rounded-2xl aspect-[16/9] object-cover shadow-card hover:shadow-cardHover transition-smooth w-full" 
                 src={talkStage} 
                 alt="Sueli Custódio palestrando em evento corporativo sobre autoestima" 
               />
@@ -228,29 +261,17 @@ const Index = () => {
                 Palestra corporativa sobre autoestima inabalável
               </p>
             </div>
-            
-            {/* Two Smaller Images Stack on Right */}
-            <div className="col-span-2 md:col-span-1 grid grid-cols-2 md:grid-cols-1 gap-6">
-              <div>
-                <img 
-                  className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
-                  src={session1} 
-                  alt="Atendimento individual em consultório" 
-                />
-                <p className="text-sm text-ink-500 mt-3 text-center">
-                  Sessão individual
-                </p>
-              </div>
-              <div>
-                <img 
-                  className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
-                  src={groupMentoring} 
-                  alt="Mentoria em grupo via Zoom" 
-                />
-                <p className="text-sm text-ink-500 mt-3 text-center">
-                  Mentoria em grupo
-                </p>
-              </div>
+
+            {/* Photo 3: Small Portrait */}
+            <div>
+              <img 
+                className="rounded-3xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                src={groupMentoring} 
+                alt="Mentoria em grupo via Zoom com participantes engajadas" 
+              />
+              <p className="text-sm text-ink-500 mt-3 text-center">
+                Mentoria em grupo
+              </p>
             </div>
           </div>
         </div>
@@ -284,7 +305,8 @@ const Index = () => {
           </div>
 
           {/* Solution Card */}
-          <div className="bg-white rounded-3xl p-12 shadow-soft border-2 border-brand-200">
+          <div className="bg-white rounded-3xl p-12 shadow-soft border-2 border-brand-200 relative">
+            <Sunrise className="w-8 h-8 text-brand-400 opacity-40 absolute top-8 right-8" />
             <h3 className="font-playfair text-3xl text-ink-900 mb-6">
               Existe solução
             </h3>
@@ -314,19 +336,25 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {services.map((s, i) => (
-              <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-smooth">
-                <img className="w-full aspect-[16/10] object-cover" src={s.img} alt={s.alt} />
-                <div className="p-10">
-                  <h3 className="font-playfair text-2xl text-ink-900 mb-3">
-                    {s.title}
-                  </h3>
-                  <p className="text-lg text-ink-700 leading-relaxed">
-                    {s.desc}
-                  </p>
+            {services.map((s, i) => {
+              const IconComponent = s.icon;
+              return (
+                <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-smooth">
+                  <img className="w-full aspect-[16/10] object-cover" src={s.img} alt={s.alt} />
+                  <div className="p-10">
+                    <div className="flex items-center gap-3 mb-3">
+                      <IconComponent className="w-6 h-6 text-brand-400 opacity-60" />
+                      <h3 className="font-playfair text-2xl text-ink-900">
+                        {s.title}
+                      </h3>
+                    </div>
+                    <p className="text-lg text-ink-700 leading-[1.8]">
+                      {s.desc}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="text-center mt-16">
@@ -366,12 +394,23 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="flex flex-wrap justify-center gap-6 mb-12 text-lg">
-            <span className="text-ink-700">Duração: 1h30</span>
-            <span className="text-ink-500">•</span>
-            <span className="text-ink-700">Atendimento: a combinar</span>
-            <span className="text-ink-500">•</span>
-            <span className="text-ink-700">Local: presencial ou online</span>
+          <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 mb-12 border border-brand-200/30">
+            <div className="flex flex-wrap justify-center gap-6 text-lg">
+              <span className="flex items-center gap-2 text-ink-700">
+                <Clock className="w-5 h-5 text-brand-500" />
+                Duração: 1h30
+              </span>
+              <span className="text-ink-300">|</span>
+              <span className="flex items-center gap-2 text-ink-700">
+                <Calendar className="w-5 h-5 text-brand-500" />
+                Atendimento: a combinar
+              </span>
+              <span className="text-ink-300">|</span>
+              <span className="flex items-center gap-2 text-ink-700">
+                <MapPin className="w-5 h-5 text-brand-500" />
+                Local: presencial ou online
+              </span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 text-ink-700">
@@ -404,7 +443,8 @@ const Index = () => {
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
-              <blockquote key={i} className="bg-white rounded-3xl p-8 shadow-soft">
+              <blockquote key={i} className="bg-white rounded-3xl p-8 shadow-soft relative">
+                <Quote className="w-6 h-6 text-brand-300 opacity-40 absolute top-6 right-6" />
                 <p className="text-ink-700 leading-[1.8] mb-6">
                   "{t.quote}"
                 </p>
