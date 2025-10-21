@@ -13,7 +13,35 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        playfair: ['Playfair Display', 'serif'],
+        inter: ['Inter', 'sans-serif'],
+      },
       colors: {
+        brand: {
+          50: '#F8FAF8',
+          100: '#F3F6F3',
+          200: '#E7EDE7',
+          300: '#D6DED6',
+          400: '#AFC3B3',
+          500: '#6B8E73',
+          600: '#58755E',
+          700: '#3E5644',
+          800: '#2E4033',
+          900: '#1E2A22',
+        },
+        accent: {
+          500: '#C5AFA0',
+        },
+        ink: {
+          500: '#6A6A6A',
+          700: '#3C3C3C',
+          900: '#1E1E1E',
+        },
+        paper: {
+          50: '#FAF8F4',
+          100: '#F7F5F1',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -35,10 +63,6 @@ export default {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -58,10 +82,20 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      spacing: {
+        section: '8rem',
+        sectionLg: '10rem',
+        gutter: '2rem',
+      },
+      boxShadow: {
+        card: '0 8px 28px rgba(20, 35, 30, 0.08)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        soft: '16px',
+        xl: '24px',
       },
       keyframes: {
         "accordion-down": {
