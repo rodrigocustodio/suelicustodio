@@ -21,6 +21,7 @@ import talkStage from '@/assets/talk-stage.jpg';
 import windowFlowers from '@/assets/window-flowers.jpg';
 import sunsetReflection from '@/assets/sunset-reflection.jpg';
 import leavesPattern from '@/assets/leaves-pattern.svg';
+import teamGroup from '@/assets/team-group.jpg';
 
 const Index = () => {
   const { toast } = useToast();
@@ -134,8 +135,8 @@ const Index = () => {
             <div className="order-first lg:order-none">
               <div className="relative">
                 <img 
-                  src={sueliPortrait} 
-                  alt="Foto de Sueli Custódio sorrindo" 
+                  src={teamGroup} 
+                  alt="Equipe de profissionais confiantes e diversificados" 
                   className="rounded-3xl w-full aspect-[3/4] object-cover shadow-soft" 
                 />
               </div>
@@ -166,8 +167,8 @@ const Index = () => {
             {/* Featured Professional Portrait */}
             <div>
               <img 
-                src={palestrando} 
-                alt="Sueli Custódio palestrando em auditório profissional" 
+                src={sueliPortrait} 
+                alt="Foto de Sueli Custódio sorrindo" 
                 className="rounded-2xl aspect-[3/4] object-cover shadow-card w-full" 
               />
             </div>
@@ -269,7 +270,7 @@ const Index = () => {
             <div>
               <img 
                 className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
-                src={talkStage} 
+                src={palestrando} 
                 alt="Sueli Custódio palestrando em evento corporativo sobre autoestima"
                 loading="lazy"
               />
