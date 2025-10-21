@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Section } from '@/components/Section';
 import { Header } from '@/components/Header';
 import { Stat } from '@/components/Stat';
+import { HeroCarousel } from '@/components/HeroCarousel';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,10 +27,21 @@ import palestraCorporativa from '@/assets/palestra-corporativa.jpg';
 import mentoriaGrupo from '@/assets/mentoria-grupo.jpg';
 import atendimentoIndividual from '@/assets/atendimento-individual.jpg';
 import cursosGravados from '@/assets/cursos-gravados.jpg';
+import heroCarousel1 from '@/assets/hero-carousel-1.jpg';
+import heroCarousel2 from '@/assets/hero-carousel-2.jpg';
+import heroCarousel3 from '@/assets/hero-carousel-3.jpg';
+import heroCarousel4 from '@/assets/hero-carousel-4.webp';
 
 const Index = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  const heroImages = [
+    { src: heroCarousel1, alt: "Equipe profissional colaborando" },
+    { src: heroCarousel2, alt: "Mulher confiante sorrindo" },
+    { src: heroCarousel3, alt: "Casal feliz se abraçando" },
+    { src: heroCarousel4, alt: "Grupo diverso de pessoas felizes" }
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -142,11 +154,7 @@ const Index = () => {
             {/* Center: Portrait */}
             <div className="order-first lg:order-none">
               <div className="relative">
-                <img 
-                  src={teamGroup} 
-                  alt="Equipe de profissionais confiantes e diversificados" 
-                  className="rounded-3xl w-full aspect-[3/4] object-cover shadow-soft" 
-                />
+                <HeroCarousel images={heroImages} interval={3000} />
               </div>
             </div>
 
