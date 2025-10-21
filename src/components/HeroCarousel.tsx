@@ -21,7 +21,7 @@ export const HeroCarousel = ({ images, interval = 3000 }: HeroCarouselProps) => 
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
         setIsTransitioning(true);
-      }, 300);
+      }, 500);
     }, interval);
 
     return () => clearInterval(timer);
@@ -31,8 +31,8 @@ export const HeroCarousel = ({ images, interval = 3000 }: HeroCarouselProps) => 
     <img
       src={images[currentIndex].src}
       alt={images[currentIndex].alt}
-      className={`rounded-3xl w-full aspect-[3/4] object-cover shadow-soft transition-opacity duration-300 ${
-        isTransitioning ? "opacity-100" : "opacity-0"
+      className={`rounded-3xl w-full aspect-[3/4] object-cover shadow-soft transition-all duration-500 ${
+        isTransitioning ? "opacity-100 blur-0" : "opacity-0 blur-sm"
       }`}
     />
   );

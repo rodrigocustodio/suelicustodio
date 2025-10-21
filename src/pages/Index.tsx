@@ -154,7 +154,7 @@ const Index = () => {
             {/* Center: Portrait */}
             <div className="order-first lg:order-none">
               <div className="relative">
-                <HeroCarousel images={heroImages} interval={3000} />
+                <HeroCarousel images={heroImages} interval={5000} />
               </div>
             </div>
 
