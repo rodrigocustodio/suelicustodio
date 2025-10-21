@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Section } from '@/components/Section';
+import { Header } from '@/components/Header';
 import { Stat } from '@/components/Stat';
 
 import { Button } from '@/components/ui/button';
@@ -92,8 +93,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-paper-50 font-inter">
+      <Header />
+      
       {/* Header/Hero - Full Height, Anna Keller Style */}
-      <header className="relative flex items-center">
+      <header className="relative flex items-center pt-16 sm:pt-20">
         {/* Gradient background with subtle image */}
         <div className="absolute inset-0 bg-gradient-to-b from-paper-50 via-brand-50/30 to-paper-50">
           <div 
@@ -381,7 +384,7 @@ const Index = () => {
       </Section>
 
       {/* Featured Talks - Refined Cards */}
-      <Section className="bg-paper-50">
+      <Section id="palestras" className="bg-paper-50 scroll-mt-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           <h2 className="font-playfair text-4xl text-center text-ink-900 mb-10">
             Palestras em destaque
