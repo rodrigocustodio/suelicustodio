@@ -47,28 +47,32 @@ const Index = () => {
       alt: "Profissional apresentando em ambiente corporativo",
       title: "Palestras Interativas e Motivacionais",
       desc: "Palestras dinâmicas e envolventes que combinam teoria e prática. Durante 1h30, sua equipe aprenderá técnicas concretas de gestão emocional que podem ser aplicadas imediatamente no dia a dia. Inclui momentos de reflexão, exercícios práticos e ferramentas para fortalecer a autoestima individual e coletiva.",
-      icon: Mic
+      icon: Mic,
+      objectPosition: 'object-top'
     },
     {
       img: mentoriaGrupo,
       alt: "Sessão de mentoria em grupo online",
       title: "Mentorias em Grupo (Zoom)",
       desc: "Encontros semanais online com até 8 participantes, criando um ambiente seguro de acolhimento e transformação. Você compartilha experiências, aprende com outras mulheres e recebe orientação estruturada para desenvolver inteligência emocional. Inclui materiais de apoio e práticas guiadas entre sessões.",
-      icon: Users
+      icon: Users,
+      objectPosition: 'object-top'
     },
     {
       img: atendimentoIndividual,
       alt: "Conversa acolhedora em atendimento individual",
       title: "Atendimentos Individuais",
       desc: "Sessões personalizadas de 1h focadas 100% em você e sua jornada emocional. Através de técnicas de ressignificação mental, PNL e coaching comportamental, trabalhamos traumas, bloqueios e padrões limitantes. Atendimento presencial em São Paulo ou online, com acompanhamento contínuo entre sessões.",
-      icon: User
+      icon: User,
+      objectPosition: 'object-center'
     },
     {
       img: cursosGravados,
       alt: "Pessoa estudando com cursos online",
       title: "Cursos e Aulas Gravadas",
       desc: "Conteúdos estruturados que você pode acessar no seu próprio ritmo, incluindo vídeo-aulas, apostilas e exercícios práticos. Ideal para quem busca autonomia no processo de desenvolvimento emocional, com suporte via grupo exclusivo no WhatsApp e encontros ao vivo mensais para tira-dúvidas.",
-      icon: Play
+      icon: Play,
+      objectPosition: 'object-top'
     }
   ];
 
@@ -362,7 +366,7 @@ const Index = () => {
               const IconComponent = s.icon;
               return (
                 <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-smooth">
-                  <img className="w-full aspect-[16/10] object-cover object-top" src={s.img} alt={s.alt} loading="lazy" />
+                  <img className={`w-full aspect-[16/10] object-cover ${s.objectPosition}`} src={s.img} alt={s.alt} loading="lazy" />
                   <div className="p-6 sm:p-8 lg:p-10">
                     <div className="flex items-start gap-3 mb-3">
                       <IconComponent className="w-6 h-6 text-brand-400 opacity-60 mt-1" />
