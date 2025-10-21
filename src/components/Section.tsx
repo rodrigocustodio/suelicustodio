@@ -9,7 +9,7 @@ interface SectionProps {
 
 export const Section = ({ children, className = '', id }: SectionProps) => {
   return (
-    <section id={id} className={cn('py-section md:py-sectionLg', className)}>
+    <section id={id} className={cn('py-12 sm:py-section md:py-sectionLg', className)}>
       {children}
     </section>
   );

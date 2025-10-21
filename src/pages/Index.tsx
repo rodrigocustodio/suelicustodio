@@ -102,21 +102,21 @@ const Index = () => {
           />
         </div>
         
-        <div className="relative mx-auto max-w-7xl px-8 py-16 lg:py-20 w-full">
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-8 py-12 sm:py-16 lg:py-20 w-full">
           <div className="grid lg:grid-cols-[1fr_400px_1fr] gap-16 items-center">
             {/* Left: Headline */}
             <div className="space-y-6">
               <p className="text-brand-600 font-medium tracking-widest uppercase text-sm">
                 Sueli Custódio
               </p>
-              <h1 className="font-playfair text-5xl lg:text-6xl leading-[1.15] text-ink-900">
+              <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] text-ink-900">
                 Redescubra o poder da sua mente e a força da sua identidade.
               </h1>
               <p className="text-xl text-ink-700 leading-relaxed">
                 Terapia emocional, coaching e mentoria para restaurar autoestima e propósito.
               </p>
               <Button 
-                className="mt-8 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth"
+                className="mt-8 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth w-full sm:w-auto"
                 onClick={() => {
                   track('cta_hero_book');
                   scrollToId('contato');
@@ -138,7 +138,7 @@ const Index = () => {
             </div>
 
             {/* Right: Stats - Minimal, No Borders */}
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               <Stat value="500+" label="mulheres transformadas" />
               <Stat value="87%" label="relatam melhora significativa em autoestima" />
               <Stat value="13+" label="anos de experiência" />
@@ -154,11 +154,11 @@ const Index = () => {
       </header>
 
       {/* About - Professional Profile with Featured Portrait */}
-      <Section id="sobre" className="bg-paper-50">
-        <div className="mx-auto max-w-6xl px-8">
+      <Section id="sobre" className="bg-paper-50 scroll-mt-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           
           {/* Top Section: Featured Portrait + Opening Bio */}
-          <div className="grid lg:grid-cols-[400px_1fr] gap-12 mb-16">
+          <div className="grid lg:grid-cols-[minmax(300px,400px)_1fr] gap-8 lg:gap-12 mb-16">
             {/* Featured Professional Portrait */}
             <div>
               <img 
@@ -196,7 +196,7 @@ const Index = () => {
           </div>
 
           {/* Methodology + Impact - Soft Card */}
-          <div className="bg-white rounded-3xl p-10 md:p-12 shadow-soft mb-16">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-soft mb-16">
             <div className="grid md:grid-cols-2 gap-10">
               <div>
                 <div className="flex items-start gap-3 mb-4">
@@ -243,13 +243,14 @@ const Index = () => {
           </div>
 
           {/* Dynamic Photo Gallery - Uniform Size, Boxed, Rounded */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Photo 1 */}
             <div>
               <img 
                 className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
                 src={session1} 
-                alt="Atendimento individual em consultório acolhedor" 
+                alt="Atendimento individual em consultório acolhedor"
+                loading="lazy"
               />
               <p className="text-sm text-ink-500 mt-3 text-center">
                 Atendimento individual personalizado
@@ -261,7 +262,8 @@ const Index = () => {
               <img 
                 className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
                 src={talkStage} 
-                alt="Sueli Custódio palestrando em evento corporativo sobre autoestima" 
+                alt="Sueli Custódio palestrando em evento corporativo sobre autoestima"
+                loading="lazy"
               />
               <p className="text-sm text-ink-500 mt-3 text-center">
                 Palestra corporativa sobre autoestima inabalável
@@ -273,7 +275,8 @@ const Index = () => {
               <img 
                 className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
                 src={groupMentoring} 
-                alt="Mentoria em grupo via Zoom com participantes engajadas" 
+                alt="Mentoria em grupo via Zoom com participantes engajadas"
+                loading="lazy"
               />
               <p className="text-sm text-ink-500 mt-3 text-center">
                 Mentoria em grupo
@@ -285,9 +288,9 @@ const Index = () => {
 
       {/* Problem → Solution - Side-by-Side Minimal Cards */}
       <Section className="bg-paper-50">
-        <div className="mx-auto max-w-7xl px-8 grid lg:grid-cols-2 gap-12">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 grid xl:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
           {/* Problem Card */}
-          <div className="bg-white rounded-3xl p-12 shadow-soft">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-soft">
             <h2 className="font-playfair text-3xl text-ink-900 mb-6">
               O desafio emocional
             </h2>
@@ -311,7 +314,7 @@ const Index = () => {
           </div>
 
           {/* Solution Card */}
-          <div className="bg-white rounded-3xl p-12 shadow-soft border-2 border-brand-200 relative">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-soft border-2 border-brand-200 relative">
             <Sunrise className="w-8 h-8 text-brand-400 opacity-40 absolute top-8 right-8" />
             <h3 className="font-playfair text-3xl text-ink-900 mb-6">
               Existe solução
@@ -320,7 +323,7 @@ const Index = () => {
               A autoestima é base de emoções saudáveis. Com técnicas de ressignificação, é possível recuperar identidade, foco e bem-estar.
             </p>
             <Button 
-              className="rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth"
+              className="rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth w-full sm:w-auto"
               onClick={() => scrollToId('servicos')}
             >
               Quero fortalecer meu emocional
@@ -330,8 +333,8 @@ const Index = () => {
       </Section>
 
       {/* Services - Light Background, Minimal Cards */}
-      <Section id="servicos" className="bg-brand-50">
-        <div className="mx-auto max-w-7xl px-8">
+      <Section id="servicos" className="bg-brand-50 scroll-mt-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
           <div className="text-center mb-12">
             <h2 className="font-playfair text-4xl text-ink-900 mb-4">
               Personalize sua jornada
@@ -341,13 +344,13 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
             {services.map((s, i) => {
               const IconComponent = s.icon;
               return (
                 <div key={i} className="bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-card transition-smooth">
-                  <img className="w-full aspect-[16/10] object-cover" src={s.img} alt={s.alt} />
-                  <div className="p-10">
+                  <img className="w-full aspect-[16/10] object-cover" src={s.img} alt={s.alt} loading="lazy" />
+                  <div className="p-6 sm:p-8 lg:p-10">
                     <div className="flex items-start gap-3 mb-3">
                       <IconComponent className="w-6 h-6 text-brand-400 opacity-60 mt-1" />
                       <h3 className="font-playfair text-2xl text-ink-900">
@@ -365,7 +368,7 @@ const Index = () => {
 
           <div className="text-center mt-16">
             <Button 
-              className="rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth"
+              className="rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth w-full sm:w-auto"
               onClick={() => {
                 track('cta_services_start');
                 scrollToId('contato');
@@ -379,7 +382,7 @@ const Index = () => {
 
       {/* Featured Talks - Refined Cards */}
       <Section className="bg-paper-50">
-        <div className="mx-auto max-w-6xl px-8">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8">
           <h2 className="font-playfair text-4xl text-center text-ink-900 mb-10">
             Palestras em destaque
           </h2>
@@ -441,15 +444,15 @@ const Index = () => {
       </Section>
 
       {/* Testimonials - Minimal Cards */}
-      <Section id="depoimentos" className="bg-brand-50/30">
-        <div className="mx-auto max-w-7xl px-8">
+      <Section id="depoimentos" className="bg-brand-50/30 scroll-mt-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
           <h2 className="font-playfair text-4xl text-center text-ink-900 mb-10">
             Depoimentos reais
           </h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {testimonials.map((t, i) => (
-              <blockquote key={i} className="bg-white rounded-3xl p-8 shadow-soft relative">
+              <blockquote key={i} className="bg-white rounded-3xl p-6 sm:p-8 shadow-soft relative">
                 <Quote className="w-6 h-6 text-brand-300 opacity-40 absolute top-6 right-6" />
                 <h4 className="text-brand-600 font-semibold text-lg mb-4 uppercase tracking-wide">
                   {t.benefit}
@@ -467,8 +470,8 @@ const Index = () => {
       </Section>
 
       {/* Contact - Anna Keller Style */}
-      <Section id="contato" className="bg-paper-50">
-        <div className="mx-auto max-w-6xl px-8 grid lg:grid-cols-5 gap-12">
+      <Section id="contato" className="bg-paper-50 scroll-mt-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 grid lg:grid-cols-5 gap-12">
           {/* Left: Contact Info (2 cols) */}
           <div className="lg:col-span-2">
             <h2 className="font-playfair text-4xl text-ink-900 mb-6">
@@ -478,22 +481,50 @@ const Index = () => {
               Envie sua mensagem e eu retorno pessoalmente.
             </p>
 
-            <ul className="space-y-6">
-              <li className="flex items-start gap-4">
-                <Mail className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0" />
-                <span className="text-ink-700">sueliscustodio@gmail.com</span>
+            <ul className="space-y-4 sm:space-y-6">
+              <li>
+                <a 
+                  href="mailto:sueliscustodio@gmail.com" 
+                  className="flex items-start gap-4 hover:text-brand-600 transition-smooth group"
+                  aria-label="Enviar email para Sueli Custódio"
+                >
+                  <Mail className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0 group-hover:text-brand-600" />
+                  <span className="text-ink-700 group-hover:text-brand-600">sueliscustodio@gmail.com</span>
+                </a>
               </li>
-              <li className="flex items-start gap-4">
-                <Phone className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0" />
-                <span className="text-ink-700">(11) 95170-1226</span>
+              <li>
+                <a 
+                  href="tel:+5511951701226" 
+                  className="flex items-start gap-4 hover:text-brand-600 transition-smooth group"
+                  aria-label="Ligar para Sueli Custódio"
+                >
+                  <Phone className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0 group-hover:text-brand-600" />
+                  <span className="text-ink-700 group-hover:text-brand-600">(11) 95170-1226</span>
+                </a>
               </li>
-              <li className="flex items-start gap-4">
-                <Instagram className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0" />
-                <span className="text-ink-700">@sueli_scustodio</span>
+              <li>
+                <a 
+                  href="https://instagram.com/sueli_scustodio" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 hover:text-brand-600 transition-smooth group"
+                  aria-label="Seguir Sueli Custódio no Instagram"
+                >
+                  <Instagram className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0 group-hover:text-brand-600" />
+                  <span className="text-ink-700 group-hover:text-brand-600">@sueli_scustodio</span>
+                </a>
               </li>
-              <li className="flex items-start gap-4">
-                <Youtube className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0" />
-                <span className="text-ink-700">Sueli Custódio Inteligência Emocional</span>
+              <li>
+                <a 
+                  href="https://youtube.com/@suelicustodio" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-4 hover:text-brand-600 transition-smooth group"
+                  aria-label="Inscrever-se no canal do YouTube de Sueli Custódio"
+                >
+                  <Youtube className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0 group-hover:text-brand-600" />
+                  <span className="text-ink-700 group-hover:text-brand-600">Sueli Custódio Inteligência Emocional</span>
+                </a>
               </li>
               <li className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-brand-500 mt-1 flex-shrink-0" />
@@ -503,7 +534,7 @@ const Index = () => {
           </div>
 
           {/* Right: Form (3 cols) */}
-          <div className="lg:col-span-3 bg-white rounded-3xl p-10 shadow-soft">
+          <div className="lg:col-span-3 bg-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-soft">
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <Label className="text-ink-700 mb-2 block">Nome</Label>
@@ -513,7 +544,7 @@ const Index = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  className="rounded-xl border-2 border-brand-200 focus:border-brand-500 px-4 py-3"
+                  className="rounded-xl border-2 border-brand-200 focus:border-brand-500 px-4 py-3 text-base"
                 />
               </div>
               <div>
@@ -525,7 +556,7 @@ const Index = () => {
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  className="rounded-xl border-2 border-brand-200 focus:border-brand-500 px-4 py-3"
+                  className="rounded-xl border-2 border-brand-200 focus:border-brand-500 px-4 py-3 text-base"
                 />
               </div>
               <div>
@@ -537,7 +568,7 @@ const Index = () => {
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  className="rounded-xl border-2 border-brand-200 focus:border-brand-500 px-4 py-3"
+                  className="rounded-xl border-2 border-brand-200 focus:border-brand-500 px-4 py-3 text-base"
                 />
               </div>
               <Button 
@@ -552,9 +583,9 @@ const Index = () => {
       </Section>
 
       {/* Footer - Minimal */}
-      <footer className="bg-white border-t border-brand-200 py-16">
-        <div className="mx-auto max-w-6xl px-8 text-center">
-          <nav className="flex justify-center gap-8 mb-8">
+      <footer className="bg-white border-t border-brand-200 py-10 sm:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-8 text-center">
+          <nav className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 mb-8">
             <a href="#sobre" className="text-ink-700 hover:text-brand-600 transition-smooth">
               Sobre
             </a>
