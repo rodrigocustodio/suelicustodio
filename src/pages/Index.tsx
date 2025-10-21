@@ -10,6 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { track, scrollToId } from '@/lib/analytics';
+import { contactFormSchema } from '@/lib/validation';
+import { supabase } from '@/integrations/supabase/client';
 import { Mail, Phone, Instagram, Youtube, MapPin, Heart, Sparkles, Mic, Users, User, Play, BookOpen, Sunrise, Quote, Clock, Calendar } from 'lucide-react';
 
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
@@ -35,6 +37,7 @@ import heroCarousel4 from '@/assets/hero-carousel-4.webp';
 const Index = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const heroImages = [
     { src: heroCarousel1, alt: "Equipe profissional colaborando" },
@@ -43,14 +46,64 @@ const Index = () => {
     { src: heroCarousel4, alt: "Grupo diverso de pessoas felizes" }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     track('cta_contact_submit');
-    toast({
-      title: "Mensagem enviada!",
-      description: "Obrigada por entrar em contato. Retornarei em breve.",
-    });
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+    
+    try {
+      // Validate form data
+      const validatedData = contactFormSchema.parse({
+        name: formData.name,
+        email: formData.email,
+        message: formData.message
+      });
+
+      // Insert into database
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert({
+          name: validatedData.name,
+          email: validatedData.email,
+          message: validatedData.message
+        });
+
+      if (error) {
+        console.error('Error saving message:', error);
+        toast({
+          title: "Erro ao enviar mensagem",
+          description: "Por favor, tente novamente ou entre em contato diretamente pelo email.",
+          variant: "destructive"
+        });
+        return;
+      }
+
+      // Success message in Portuguese
+      toast({
+        title: "✨ Mensagem enviada com sucesso!",
+        description: "Obrigada por entrar em contato! Sua mensagem foi recebida e retornarei em breve.",
+      });
+
+      // Clear form
+      setFormData({ name: '', email: '', message: '' });
+
+    } catch (error) {
+      if (error instanceof Error) {
+        toast({
+          title: "Erro de validação",
+          description: error.message,
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Erro inesperado",
+          description: "Por favor, tente novamente mais tarde.",
+          variant: "destructive"
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const services = [
@@ -598,9 +651,10 @@ const Index = () => {
               </div>
               <Button 
                 type="submit" 
-                className="w-full rounded-full bg-brand-500 hover:bg-brand-600 text-white py-6 text-lg transition-smooth"
+                disabled={isSubmitting}
+                className="w-full rounded-full bg-brand-500 hover:bg-brand-600 text-white py-6 text-lg transition-smooth disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar mensagem
+                {isSubmitting ? 'Enviando...' : 'Enviar mensagem'}
               </Button>
             </form>
           </div>
