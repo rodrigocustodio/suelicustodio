@@ -74,7 +74,7 @@ const Index = () => {
       img: atendimentoIndividual,
       alt: "Conversa acolhedora em atendimento individual",
       title: "Atendimentos Individuais",
-      desc: "Sessões personalizadas de 1h focadas 100% em você e sua jornada emocional. Através de técnicas de ressignificação mental, PNL e coaching comportamental, trabalhamos traumas, bloqueios e padrões limitantes. Atendimento presencial em São Paulo ou online, com acompanhamento contínuo entre sessões.",
+      desc: "Sessões personalizadas de 1h focadas 100% em você e sua jornada emocional. Através de técnicas de ressignificação mental, ferramentas validadas e método próprio desenvolvido ao longo de 13 anos, trabalhamos traumas, bloqueios e padrões limitantes. Atendimento presencial em São Paulo ou online, com acompanhamento contínuo entre sessões.",
       icon: User,
       objectPosition: 'object-center'
     },
@@ -138,7 +138,7 @@ const Index = () => {
                 Redescubra sua força interior.
               </h1>
               <p className="text-xl text-ink-700 leading-relaxed">
-                Terapia emocional, coaching e mentoria para restaurar autoestima e propósito.
+                Processo de transformação emocional, coaching e mentoria para restaurar autoestima e propósito.
               </p>
               <Button 
                 className="mt-8 rounded-full bg-brand-500 hover:bg-brand-600 text-white px-8 py-6 text-lg transition-smooth w-full sm:w-auto"
@@ -196,13 +196,13 @@ const Index = () => {
                 Sou Sueli Custódio, Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental.
               </p>
               <p className="text-lg text-ink-700 leading-[1.8]">
-                Com mais de <span className="font-semibold text-brand-600">13 anos de experiência</span> e formação em <span className="font-semibold">Coaching Comportamental, Programação Neurolinguística (PNL), Inteligência Emocional Aplicada, Constelação Familiar e Análise Comportamental</span>, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão e desafios emocionais complexos.
+                Com mais de <span className="font-semibold text-brand-600">13 anos de experiência</span> e formação em <span className="font-semibold">Coaching Comportamental, Inteligência Emocional Aplicada e Análise Comportamental</span>, além de <span className="font-semibold">ferramentas validadas e método próprio desenvolvido ao longo de 13 anos de atuação</span>, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão e desafios emocionais complexos.
               </p>
               <p className="text-lg text-ink-700 leading-[1.8]">
                 Minha jornada começou quando percebi que muitas mulheres brilhantes estavam silenciosamente sofrendo com ansiedade, autocrítica devastadora e uma sensação de nunca serem "suficientes". Essa dor me tocou profundamente — eu mesma havia enfrentado esses desafios. Foi então que decidi dedicar minha vida a ajudar outras mulheres a reconectarem-se com sua essência, valor e poder interior.
               </p>
               <p className="text-lg text-ink-700 leading-[1.8]">
-                Trabalho com metodologias integradas e cientificamente validadas, combinando técnicas práticas de ressignificação mental, PNL e coaching ontológico para criar transformações reais e duradouras. Não se trata apenas de teoria — cada sessão é estruturada para gerar mudanças concretas na forma como você pensa, sente e age.
+                Trabalho com metodologias integradas e cientificamente validadas, combinando técnicas práticas de ressignificação mental, ferramentas validadas e coaching ontológico para criar transformações reais e duradouras. Não se trata apenas de teoria — cada sessão é estruturada para gerar mudanças concretas na forma como você pensa, sente e age.
               </p>
             </div>
           </div>
@@ -228,7 +228,7 @@ const Index = () => {
                   Combino técnicas práticas de ressignificação mental com acolhimento genuíno e escuta ativa. Através dessa metodologia integrada, ajudo mulheres a reconectarem-se com seu propósito, estabelecerem limites saudáveis e desenvolverem uma inteligência emocional que as sustenta nos desafios do dia a dia.
                 </p>
                 <p className="text-lg text-ink-700 leading-[1.8]">
-                  Utilizo ferramentas como PNL para ressignificar memórias limitantes, técnicas de ancoragem emocional para criar novos padrões de resposta, e práticas de autocompaixão para reconstruir a relação com você mesma. Cada sessão é estruturada para gerar insights profundos e mudanças práticas.
+                  Utilizo ferramentas validadas e método próprio para ressignificar memórias limitantes, técnicas de ancoragem emocional para criar novos padrões de resposta, e práticas de autocompaixão para reconstruir a relação com você mesma. Cada sessão é estruturada para gerar insights profundos e mudanças práticas.
                 </p>
               </div>
               <div>
