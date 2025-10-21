@@ -13,6 +13,7 @@ import { Mail, Phone, Instagram, Youtube, MapPin, Heart, Sparkles, Mic, Users, U
 
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
 import palestrando from '@/assets/palestrando.jpg';
+import sueliCircle from '@/assets/suelicicle.png';
 import heroHills from '@/assets/hero-hills.jpg';
 import session1 from '@/assets/session-1.jpg';
 import groupMentoring from '@/assets/group-mentoring.jpg';
@@ -231,7 +232,11 @@ const Index = () => {
           {/* Mission Statement */}
           <div className="text-center max-w-4xl mx-auto mb-16">
             <div className="flex justify-center mb-4">
-              <Heart className="w-8 h-8 text-brand-500" />
+              <img 
+                src={sueliCircle} 
+                alt="Sueli Custódio" 
+                className="w-16 h-16 rounded-full object-cover mx-auto shadow-md"
+              />
             </div>
             <h3 className="text-2xl text-ink-900 leading-[1.8] font-semibold mb-2">
               Minha missão é clara:
