@@ -92,7 +92,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-paper-50 font-inter">
       {/* Header/Hero - Full Height, Anna Keller Style */}
-      <header className="relative min-h-screen flex items-center">
+      <header className="relative flex items-center">
         {/* Gradient background with subtle image */}
         <div className="absolute inset-0 bg-gradient-to-b from-paper-50 via-brand-50/30 to-paper-50">
           <div 
@@ -101,7 +101,7 @@ const Index = () => {
           />
         </div>
         
-        <div className="relative mx-auto max-w-7xl px-8 py-32 w-full">
+        <div className="relative mx-auto max-w-7xl px-8 py-16 lg:py-20 w-full">
           <div className="grid lg:grid-cols-[1fr_400px_1fr] gap-16 items-center">
             {/* Left: Headline */}
             <div className="space-y-6">
@@ -155,7 +155,7 @@ const Index = () => {
       {/* About - Professional Profile with Featured Portrait */}
       <Section id="sobre" className="bg-paper-50">
         <div className="mx-auto max-w-6xl px-8">
-          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-16">Quem sou</h2>
+          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-20">Quem sou</h2>
           
           {/* Top Section: Featured Portrait + Opening Bio */}
           <div className="grid lg:grid-cols-[400px_1fr] gap-12 mb-16">
@@ -227,21 +227,27 @@ const Index = () => {
 
           {/* Mission Statement */}
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <p className="text-2xl text-ink-900 leading-[1.8] font-semibold flex items-center justify-center gap-3">
-              <Heart className="w-7 h-7 text-brand-500" />
-              Minha missão é clara: ressignificar mentes, curar emoções e fortalecer vidas.
+            <div className="flex justify-center mb-4">
+              <Heart className="w-8 h-8 text-brand-500" />
+            </div>
+            <h3 className="text-2xl text-ink-900 leading-[1.8] font-semibold mb-2">
+              Minha missão é clara:
+            </h3>
+            <p className="text-xl text-brand-600 leading-[1.8] font-medium italic mb-6">
+              ressignificar mentes, curar emoções e fortalecer vidas.
             </p>
-            <p className="text-lg text-ink-700 leading-[1.8] mt-4">
+            <div className="w-24 h-px bg-brand-300 mx-auto mb-6"></div>
+            <p className="text-lg text-ink-700 leading-[1.8]">
               Seja em atendimentos presenciais em São Paulo ou através de mentorias online, trabalho para que cada mulher redescubra o poder transformador que existe dentro dela. Você não precisa carregar esse peso sozinha — estou aqui para caminhar ao seu lado nessa jornada de cura e fortalecimento.
             </p>
           </div>
 
-          {/* Dynamic Photo Gallery - All in One Row with Different Designs */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_0.8fr] gap-6">
-            {/* Photo 1: Medium Portrait */}
+          {/* Dynamic Photo Gallery - Uniform Size, Boxed, Rounded */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Photo 1 */}
             <div>
               <img 
-                className="rounded-2xl aspect-[4/5] object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
                 src={session1} 
                 alt="Atendimento individual em consultório acolhedor" 
               />
@@ -250,10 +256,10 @@ const Index = () => {
               </p>
             </div>
             
-            {/* Photo 2: Large Landscape (centered, slightly elevated on desktop) */}
-            <div className="md:-mt-4">
+            {/* Photo 2 */}
+            <div>
               <img 
-                className="rounded-2xl aspect-[16/9] object-cover shadow-card hover:shadow-cardHover transition-smooth w-full" 
+                className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
                 src={talkStage} 
                 alt="Sueli Custódio palestrando em evento corporativo sobre autoestima" 
               />
@@ -262,10 +268,10 @@ const Index = () => {
               </p>
             </div>
 
-            {/* Photo 3: Small Portrait */}
+            {/* Photo 3 */}
             <div>
               <img 
-                className="rounded-3xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
                 src={groupMentoring} 
                 alt="Mentoria em grupo via Zoom com participantes engajadas" 
               />
