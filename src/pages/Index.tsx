@@ -235,7 +235,7 @@ const Index = () => {
               <img 
                 src={sueliCircle} 
                 alt="Sueli Custódio" 
-                className="w-16 h-16 rounded-full object-cover mx-auto shadow-md"
+                className="w-24 h-24 rounded-full object-cover mx-auto shadow-md"
               />
             </div>
             <h3 className="text-2xl text-ink-900 leading-[1.8] font-semibold mb-2">
