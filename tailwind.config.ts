@@ -83,11 +83,11 @@ export default {
         },
       },
       spacing: {
-        section: '10rem',      // 160px - generous vertical spacing
-        sectionLg: '12.5rem',  // 200px - extra generous
-        sectionXl: '15rem',    // 240px - for hero/contact
-        gutter: '3rem',        // 48px - increased from 2rem
-        breath: '4rem',        // 64px - internal section spacing
+        section: '5rem',      // 80px - reduced spacing
+        sectionLg: '6rem',    // 96px - reduced spacing
+        sectionXl: '8rem',    // 128px - for hero/contact
+        gutter: '2rem',       // 32px
+        breath: '3rem',       // 48px - internal section spacing
       },
       boxShadow: {
         card: '0 4px 16px rgba(20, 35, 30, 0.04)',      // much lighter

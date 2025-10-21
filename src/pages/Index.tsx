@@ -10,7 +10,7 @@ import { useToast } from '@/hooks/use-toast';
 import { track, scrollToId } from '@/lib/analytics';
 import { Mail, Phone, Instagram, Youtube, MapPin } from 'lucide-react';
 
-import sueliPortrait from '@/assets/sueli-portrait.jpg';
+import sueliPortrait from '@/assets/sueli-professional.jpg';
 import heroHills from '@/assets/hero-hills.jpg';
 import session1 from '@/assets/session-1.jpg';
 import groupMentoring from '@/assets/group-mentoring.jpg';
@@ -80,7 +80,9 @@ const Index = () => {
     { name: "Janair", quote: "O trabalho em grupo trouxe acolhimento e aprendizado. Não estou sozinha nessa jornada." },
     { name: "Fátima", quote: "Consegui melhorar minha relação com minha equipe e comigo mesma. Gratidão!" },
     { name: "Doralice", quote: "As palestras inspiram mudanças reais. Saí motivada e com ferramentas práticas." },
-    { name: "Letícia", quote: "Aprendi a cuidar da minha saúde emocional com a mesma dedicação que cuido dos pacientes." }
+    { name: "Letícia", quote: "Aprendi a cuidar da minha saúde emocional com a mesma dedicação que cuido dos pacientes." },
+    { name: "Mariana", quote: "As técnicas de ressignificação mudaram minha forma de lidar com conflitos. Hoje me sinto mais equilibrada." },
+    { name: "Camila", quote: "O acolhimento e a escuta da Sueli me deram coragem para reconstruir minha autoestima. Sou grata por cada sessão." }
   ];
 
   return (
@@ -150,18 +152,24 @@ const Index = () => {
       <Section id="sobre" className="bg-paper-50">
         <div className="mx-auto max-w-4xl px-8 text-center">
           <h2 className="font-playfair text-4xl text-ink-900 mb-12">Quem sou</h2>
-          <p className="text-xl text-ink-700 leading-[1.8] mb-4">
+          <p className="text-xl text-ink-700 leading-[1.8] mb-6">
             Sou Sueli Custódio, Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental.
           </p>
-          <p className="text-xl text-ink-700 leading-[1.8] mb-4">
-            Há mais de 13 anos ajudo mulheres a superarem traumas, curarem feridas emocionais e reconstruírem sua identidade.
+          <p className="text-lg text-ink-700 leading-[1.8] mb-6">
+            Com mais de 13 anos de experiência e formação em técnicas avançadas de coaching comportamental, programação neurolinguística e inteligência emocional aplicada, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão. Meu trabalho é fundamentado em metodologias comprovadas que transformam vidas através da ressignificação mental e do desenvolvimento de uma autoestima sólida e duradoura.
           </p>
-          <p className="text-xl text-ink-700 leading-[1.8]">
-            Minha missão é: ressignificar mentes, curar emoções e fortalecer vidas.
+          <p className="text-lg text-ink-700 leading-[1.8] mb-6">
+            Minha abordagem combina técnicas práticas de ressignificação mental com acolhimento genuíno e escuta ativa. Acredito profundamente que cada mulher possui em si a força necessária para superar traumas, reconstruir sua identidade e reconectar-se com seu propósito — meu papel é guiá-la nessa jornada de autodescoberta, fortalecimento emocional e transformação pessoal.
+          </p>
+          <p className="text-lg text-ink-700 leading-[1.8] mb-6">
+            Ao longo da minha carreira, já transformei a vida de mais de 500 mulheres, especialmente profissionais da área da saúde que lidam diariamente com estresse crônico, ansiedade e esgotamento emocional. Através de mentorias individuais personalizadas, sessões em grupo que promovem conexão e aprendizado coletivo, e palestras corporativas inspiradoras, ajudo mulheres a recuperarem sua autoestima, estabelecerem limites saudáveis, desenvolverem inteligência emocional e reconectarem-se com aquilo que realmente importa.
+          </p>
+          <p className="text-xl text-ink-700 leading-[1.8] font-medium">
+            Minha missão é clara: ressignificar mentes, curar emoções e fortalecer vidas. Seja em atendimentos presenciais em São Paulo ou através de mentorias online, trabalho para que cada mulher redescubra o poder transformador que existe dentro dela.
           </p>
         </div>
 
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 px-8">
+        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 px-8">
           <img 
             className="rounded-2xl aspect-[4/5] object-cover shadow-soft hover:shadow-card transition-smooth" 
             src={session1} 
@@ -228,7 +236,7 @@ const Index = () => {
       {/* Services - Light Background, Minimal Cards */}
       <Section id="servicos" className="bg-brand-50">
         <div className="mx-auto max-w-7xl px-8">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <h2 className="font-playfair text-4xl text-ink-900 mb-4">
               Personalize sua jornada
             </h2>
@@ -270,7 +278,7 @@ const Index = () => {
       {/* Featured Talks - Refined Cards */}
       <Section className="bg-paper-50">
         <div className="mx-auto max-w-6xl px-8">
-          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-16">
+          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-10">
             Palestras em destaque
           </h2>
           
@@ -322,7 +330,7 @@ const Index = () => {
       {/* Testimonials - Minimal Cards */}
       <Section id="depoimentos" className="bg-brand-50/30">
         <div className="mx-auto max-w-7xl px-8">
-          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-16">
+          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-10">
             Depoimentos reais
           </h2>
           
@@ -343,7 +351,7 @@ const Index = () => {
 
       {/* Contact - Anna Keller Style */}
       <Section id="contato" className="bg-paper-50">
-        <div className="mx-auto max-w-6xl px-8 grid lg:grid-cols-5 gap-16">
+        <div className="mx-auto max-w-6xl px-8 grid lg:grid-cols-5 gap-12">
           {/* Left: Contact Info (2 cols) */}
           <div className="lg:col-span-2">
             <h2 className="font-playfair text-4xl text-ink-900 mb-6">
