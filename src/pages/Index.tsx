@@ -148,43 +148,111 @@ const Index = () => {
         </div>
       </header>
 
-      {/* About - Centered, Floating Text */}
+      {/* About - Professional Profile with Featured Portrait */}
       <Section id="sobre" className="bg-paper-50">
-        <div className="mx-auto max-w-4xl px-8 text-center">
-          <h2 className="font-playfair text-4xl text-ink-900 mb-12">Quem sou</h2>
-          <p className="text-xl text-ink-700 leading-[1.8] mb-6">
-            Sou Sueli Custódio, Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental.
-          </p>
-          <p className="text-lg text-ink-700 leading-[1.8] mb-6">
-            Com mais de 13 anos de experiência e formação em técnicas avançadas de coaching comportamental, programação neurolinguística e inteligência emocional aplicada, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão. Meu trabalho é fundamentado em metodologias comprovadas que transformam vidas através da ressignificação mental e do desenvolvimento de uma autoestima sólida e duradoura.
-          </p>
-          <p className="text-lg text-ink-700 leading-[1.8] mb-6">
-            Minha abordagem combina técnicas práticas de ressignificação mental com acolhimento genuíno e escuta ativa. Acredito profundamente que cada mulher possui em si a força necessária para superar traumas, reconstruir sua identidade e reconectar-se com seu propósito — meu papel é guiá-la nessa jornada de autodescoberta, fortalecimento emocional e transformação pessoal.
-          </p>
-          <p className="text-lg text-ink-700 leading-[1.8] mb-6">
-            Ao longo da minha carreira, já transformei a vida de mais de 500 mulheres, especialmente profissionais da área da saúde que lidam diariamente com estresse crônico, ansiedade e esgotamento emocional. Através de mentorias individuais personalizadas, sessões em grupo que promovem conexão e aprendizado coletivo, e palestras corporativas inspiradoras, ajudo mulheres a recuperarem sua autoestima, estabelecerem limites saudáveis, desenvolverem inteligência emocional e reconectarem-se com aquilo que realmente importa.
-          </p>
-          <p className="text-xl text-ink-700 leading-[1.8] font-medium">
-            Minha missão é clara: ressignificar mentes, curar emoções e fortalecer vidas. Seja em atendimentos presenciais em São Paulo ou através de mentorias online, trabalho para que cada mulher redescubra o poder transformador que existe dentro dela.
-          </p>
-        </div>
+        <div className="mx-auto max-w-6xl px-8">
+          <h2 className="font-playfair text-4xl text-center text-ink-900 mb-16">Quem sou</h2>
+          
+          {/* Top Section: Featured Portrait + Opening Bio */}
+          <div className="grid lg:grid-cols-[400px_1fr] gap-12 mb-16">
+            {/* Featured Professional Portrait */}
+            <div>
+              <img 
+                src={sueliPortrait} 
+                alt="Sueli Custódio - Coach e Mentora especializada em desenvolvimento emocional" 
+                className="rounded-2xl aspect-[3/4] object-cover shadow-card w-full" 
+              />
+            </div>
 
-        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 px-8">
-          <img 
-            className="rounded-2xl aspect-[4/5] object-cover shadow-soft hover:shadow-card transition-smooth" 
-            src={session1} 
-            alt="Sueli em atendimento individual" 
-          />
-          <img 
-            className="rounded-2xl aspect-[4/5] object-cover shadow-soft hover:shadow-card transition-smooth" 
-            src={groupMentoring} 
-            alt="Mentoria em grupo" 
-          />
-          <img 
-            className="rounded-2xl aspect-[4/5] object-cover shadow-soft hover:shadow-card transition-smooth" 
-            src={talkStage} 
-            alt="Sueli palestrando" 
-          />
+            {/* Opening Bio + Credentials */}
+            <div className="space-y-6">
+              <p className="text-2xl text-ink-900 leading-[1.6] font-medium">
+                Sou Sueli Custódio, Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental.
+              </p>
+              <p className="text-lg text-ink-700 leading-[1.8]">
+                Com mais de <span className="font-semibold text-brand-600">13 anos de experiência</span> e formação em <span className="font-semibold">técnicas avançadas de coaching comportamental, programação neurolinguística e inteligência emocional aplicada</span>, dedico-me ao fortalecimento emocional de mulheres que enfrentam ambientes de alta pressão.
+              </p>
+              <p className="text-lg text-ink-700 leading-[1.8]">
+                Meu trabalho é fundamentado em metodologias comprovadas que transformam vidas através da ressignificação mental e do desenvolvimento de uma autoestima sólida e duradoura.
+              </p>
+            </div>
+          </div>
+
+          {/* Pull Quote - Featured Philosophy */}
+          <div className="max-w-4xl mx-auto mb-16">
+            <blockquote className="border-l-4 border-brand-400 pl-8 py-4">
+              <p className="text-2xl text-brand-600 italic leading-[1.8]">
+                "Cada mulher possui em si a força necessária para superar traumas e reconstruir sua identidade — meu papel é guiá-la nessa jornada de autodescoberta e fortalecimento."
+              </p>
+            </blockquote>
+          </div>
+
+          {/* Methodology + Impact - Soft Card */}
+          <div className="bg-white rounded-3xl p-10 md:p-12 shadow-soft mb-16">
+            <div className="grid md:grid-cols-2 gap-10">
+              <div>
+                <h3 className="font-playfair text-2xl text-ink-900 mb-4">Minha Abordagem</h3>
+                <p className="text-lg text-ink-700 leading-[1.8]">
+                  Combino técnicas práticas de ressignificação mental com acolhimento genuíno e escuta ativa. Através dessa metodologia integrada, ajudo mulheres a reconectarem-se com seu propósito, estabelecerem limites saudáveis e desenvolverem uma inteligência emocional que as sustenta nos desafios do dia a dia.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-playfair text-2xl text-ink-900 mb-4">Impacto & Resultados</h3>
+                <p className="text-lg text-ink-700 leading-[1.8]">
+                  Ao longo da minha carreira, já transformei a vida de mais de <span className="font-semibold text-brand-600">500 mulheres</span>, especialmente profissionais da área da saúde que lidam diariamente com estresse crônico, ansiedade e esgotamento emocional. Através de mentorias individuais, sessões em grupo e palestras corporativas, crio espaços de transformação real e duradoura.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Mission Statement */}
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <p className="text-2xl text-ink-900 leading-[1.8] font-semibold">
+              Minha missão é clara: ressignificar mentes, curar emoções e fortalecer vidas.
+            </p>
+            <p className="text-lg text-ink-700 leading-[1.8] mt-4">
+              Seja em atendimentos presenciais em São Paulo ou através de mentorias online, trabalho para que cada mulher redescubra o poder transformador que existe dentro dela.
+            </p>
+          </div>
+
+          {/* Dynamic Photo Gallery - Redesigned */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {/* Large Featured Image - Spans 2 columns on desktop */}
+            <div className="col-span-2">
+              <img 
+                className="rounded-2xl aspect-[16/9] object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                src={talkStage} 
+                alt="Sueli Custódio palestrando em evento corporativo sobre autoestima" 
+              />
+              <p className="text-sm text-ink-500 mt-3 text-center">
+                Palestra corporativa sobre autoestima inabalável
+              </p>
+            </div>
+            
+            {/* Two Smaller Images Stack on Right */}
+            <div className="col-span-2 md:col-span-1 grid grid-cols-2 md:grid-cols-1 gap-6">
+              <div>
+                <img 
+                  className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                  src={session1} 
+                  alt="Atendimento individual em consultório" 
+                />
+                <p className="text-sm text-ink-500 mt-3 text-center">
+                  Sessão individual
+                </p>
+              </div>
+              <div>
+                <img 
+                  className="rounded-2xl aspect-square object-cover shadow-soft hover:shadow-card transition-smooth w-full" 
+                  src={groupMentoring} 
+                  alt="Mentoria em grupo via Zoom" 
+                />
+                <p className="text-sm text-ink-500 mt-3 text-center">
+                  Mentoria em grupo
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
 
