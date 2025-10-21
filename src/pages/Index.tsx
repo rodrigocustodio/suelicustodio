@@ -115,7 +115,7 @@ const Index = () => {
                 Sueli Custódio
               </p>
               <h1 className="font-playfair text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15] text-ink-900">
-                Redescubra o poder da sua mente e a força da sua identidade.
+                Redescubra sua força interior.
               </h1>
               <p className="text-xl text-ink-700 leading-relaxed">
                 Terapia emocional, coaching e mentoria para restaurar autoestima e propósito.
