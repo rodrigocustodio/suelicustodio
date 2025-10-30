@@ -34,27 +34,28 @@ const AutoestimaLanding = () => {
   return (
     <div className="min-h-screen bg-paper-50">
       {/* Hero Section */}
-      <Section className="text-center">
+      <Section className="text-center pb-4">
         <div className="max-w-3xl mx-auto px-4">
-          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
-            Conquiste sua{' '}
-            <span className="text-brand-600">Autoestima Inabalável</span>
+          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            Conquiste sua Autoestima Inabalável
           </h1>
-          <p className="text-lg md:text-xl text-ink-700 mb-2">
-            Descubra seu valor e brilhe com confiança
-          </p>
-          <p className="text-base text-ink-600 mb-6">
-            Descubra como transformar sua autoestima
-          </p>
+          <h2 className="text-lg md:text-xl text-ink-700 font-normal">
+            Descubra seu valor, brilhe com confiança e transforme sua autoestima.
+          </h2>
         </div>
       </Section>
 
       {/* Video Section */}
-      <Section className="bg-white">
+      <Section className="bg-white pt-6">
         <div className="max-w-container-medium mx-auto px-4">
+          <div className="text-center mb-6">
+            <p className="text-base md:text-lg text-ink-700">
+              Assista agora e descubra o método comprovado.
+            </p>
+          </div>
           <VideoSection
             title="Transforme sua Autoestima"
-            subtitle="Assista agora e descubra o método comprovado"
+            subtitle=""
             videoId="j1_Ogi4tuDQ"
             onProgressChange={setShowButton}
           />
