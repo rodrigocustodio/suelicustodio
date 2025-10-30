@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Section } from '@/components/Section';
 import { VideoSection } from '@/components/autoestima/VideoSection';
 import { VisualTestimonialCard } from '@/components/autoestima/VisualTestimonialCard';
@@ -19,6 +19,8 @@ import depoimento3 from '@/assets/depoimento-3.webp';
 import depoimento4 from '@/assets/depoimento-4.webp';
 
 const AutoestimaLanding = () => {
+  const [showButton, setShowButton] = useState(false);
+
   useEffect(() => {
     track('autoestima_page_view');
   }, []);
@@ -44,13 +46,6 @@ const AutoestimaLanding = () => {
           <p className="text-base text-ink-600 mb-6">
             Descubra como transformar sua autoestima
           </p>
-          
-          <button
-            onClick={scrollToForm}
-            className="inline-block bg-brand-600 hover:bg-brand-700 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors shadow-soft hover:shadow-elegant"
-          >
-            Assista agora e descubra o método comprovado
-          </button>
         </div>
       </Section>
 
@@ -61,16 +56,19 @@ const AutoestimaLanding = () => {
             title="Transforme sua Autoestima"
             subtitle="Assista agora e descubra o método comprovado"
             videoId="j1_Ogi4tuDQ"
+            onProgressChange={setShowButton}
           />
           
-          <div className="text-center mt-6">
-            <button
-              onClick={scrollToForm}
-              className="inline-block bg-accent-500 hover:bg-accent-600 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors"
-            >
-              Agende sua Sessão Agora
-            </button>
-          </div>
+          {showButton && (
+            <div className="text-center mt-6 animate-fade-in">
+              <button
+                onClick={scrollToForm}
+                className="inline-block bg-accent-500 hover:bg-accent-600 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors"
+              >
+                Agende sua Sessão Agora
+              </button>
+            </div>
+          )}
         </div>
       </Section>
 
