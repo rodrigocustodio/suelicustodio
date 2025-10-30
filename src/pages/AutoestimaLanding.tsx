@@ -60,6 +60,7 @@ const AutoestimaLanding = () => {
           <VideoSection
             title="Transforme sua Autoestima"
             subtitle="Assista agora e descubra o método comprovado"
+            videoId="j1_Ogi4tuDQ"
           />
           
           <div className="text-center mt-6">
