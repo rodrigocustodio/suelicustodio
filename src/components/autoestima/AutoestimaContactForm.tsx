@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import InputMask from 'react-input-mask';
 import { autoestimaContactFormSchema, AutoestimaContactFormData } from '@/lib/validation';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -114,20 +113,26 @@ export const AutoestimaContactForm = () => {
             <FormItem>
               <FormLabel>WhatsApp *</FormLabel>
               <FormControl>
-                <InputMask
-                  mask="(99) 99999-9999"
-                  value={field.value}
-                  onChange={field.onChange}
-                  onBlur={field.onBlur}
-                >
-                  {(inputProps: any) => (
-                    <Input 
-                      {...inputProps}
-                      type="tel"
-                      placeholder="(11) 99999-9999"
-                    />
-                  )}
-                </InputMask>
+                <Input 
+                  type="tel"
+                  placeholder="(11) 99999-9999"
+                  {...field}
+                  onChange={(e) => {
+                    // Format phone number as user types
+                    const value = e.target.value.replace(/\D/g, '');
+                    let formatted = '';
+                    if (value.length > 0) {
+                      formatted = '(' + value.substring(0, 2);
+                      if (value.length >= 3) {
+                        formatted += ') ' + value.substring(2, 7);
+                      }
+                      if (value.length >= 7) {
+                        formatted += '-' + value.substring(7, 11);
+                      }
+                    }
+                    field.onChange(formatted);
+                  }}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
