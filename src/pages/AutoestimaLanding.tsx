@@ -109,10 +109,6 @@ const AutoestimaLanding = () => {
       {/* About Sueli */}
       <Section className="bg-brand-100/50">
         <div className="max-w-container-medium mx-auto px-4">
-          <h2 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900 text-center mb-8">
-            Conheça sua mentora
-          </h2>
-
           <div className="grid md:grid-cols-2 gap-6 lg:gap-8 items-center">
             <div className="relative">
               <div className="bg-white p-4 rounded-2xl shadow-soft">
