@@ -13,6 +13,10 @@ import heroCarousel3 from '@/assets/hero-carousel-3.jpg';
 import heroCarousel4 from '@/assets/hero-carousel-4.webp';
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
 import sessionImage from '@/assets/session-1.jpg';
+import depoimento1 from '@/assets/depoimento-1.webp';
+import depoimento2 from '@/assets/depoimento-2.webp';
+import depoimento3 from '@/assets/depoimento-3.webp';
+import depoimento4 from '@/assets/depoimento-4.webp';
 
 const AutoestimaLanding = () => {
   useEffect(() => {
@@ -168,21 +172,25 @@ const AutoestimaLanding = () => {
               name="Juliana Zamarian"
               quote="Passar pelo processo com a Sueli Custódio foi um divisor de águas em minha vida eu fui curada da depressão e fibromialgia"
               rating={5}
+              photo={depoimento1}
             />
             <TestimonialCard
               name="Aline Lima"
               quote="Antes de passar pelo Processo com a Sueli eu não sabia me amar, na verdade eu não me conhecia. Hoje eu sei quem sou e tenho conquistado tudo o que sempre sonhei"
               rating={5}
+              photo={depoimento2}
             />
             <TestimonialCard
               name="Jô Souza"
               quote="Eu estava num relacionamento abusivo onde eu apanhava do meu marido e após sair de casa praticamente expulsa depois de 21 anos de casamento eu pude através do processo mudar totalmente minha história"
               rating={5}
+              photo={depoimento3}
             />
             <TestimonialCard
               name="Janair Lisboa"
               quote="Eu recomendo o processo individual que mudou minha vida e a forma como eu me enxergava, hoje eu sou outra pessoa"
               rating={5}
+              photo={depoimento4}
             />
           </div>
         </div>
