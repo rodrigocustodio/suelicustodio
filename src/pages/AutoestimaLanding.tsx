@@ -34,7 +34,7 @@ const AutoestimaLanding = () => {
   return (
     <div className="min-h-screen bg-paper-50">
       {/* Hero Section */}
-      <Section className="text-center pb-4">
+      <Section className="text-center pb-0">
         <div className="max-w-3xl mx-auto px-4">
           <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Conquiste sua{' '}
@@ -47,7 +47,7 @@ const AutoestimaLanding = () => {
       </Section>
 
       {/* Video Section */}
-      <Section className="bg-white pt-6">
+      <Section className="bg-white pt-0">
         <div className="max-w-container-medium mx-auto px-4">
           <div className="text-center mb-6">
             <p className="text-base md:text-lg text-ink-700">
