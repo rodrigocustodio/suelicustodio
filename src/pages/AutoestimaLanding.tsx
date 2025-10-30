@@ -81,29 +81,27 @@ const AutoestimaLanding = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <VisualTestimonialCard
-              image={heroCarousel1}
+              image="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&cs=tinysrgb&w=800&h=600"
               label="Confiante"
-              alt="Mulher loira de 35 anos sorrindo feliz ao ar livre"
+              alt="Mulher confiante e feliz"
             />
             <VisualTestimonialCard
-              image={heroCarousel2}
+              image="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=800&h=600"
               label="Resiliente"
-              alt="Mulher morena de 40 anos sorrindo radiante em ambiente externo"
+              alt="Mulher resiliente e determinada"
             />
             <VisualTestimonialCard
-              image={heroCarousel3}
+              image="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=800&h=600"
               label="Empoderada"
-              alt="Mulher negra cacheada de 50 anos sorrindo feliz ao ar livre"
+              alt="Mulher empoderada e segura"
             />
-            <div className="md:col-span-2 lg:col-span-1">
-              <VisualTestimonialCard
-                image={heroCarousel4}
-                label="Autêntica"
-                alt="Mulher de 60 anos sorrindo com alegria em ambiente externo"
-              />
-            </div>
+            <VisualTestimonialCard
+              image="https://images.pexels.com/photos/1729931/pexels-photo-1729931.jpeg?auto=compress&cs=tinysrgb&w=800&h=600"
+              label="Autêntica"
+              alt="Mulher autêntica e verdadeira"
+            />
           </div>
         </div>
       </Section>
