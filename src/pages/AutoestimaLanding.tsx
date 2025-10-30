@@ -40,7 +40,7 @@ const AutoestimaLanding = () => {
             Conquiste sua Autoestima Inabalável
           </h1>
           <h2 className="text-lg md:text-xl text-ink-700 font-normal">
-            Descubra seu valor, brilhe com confiança e transforme sua autoestima.
+            Descubra seu valor, brilhe com confiança e transformar sua autoestima.
           </h2>
         </div>
       </Section>
