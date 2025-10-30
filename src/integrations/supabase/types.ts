@@ -16,28 +16,40 @@ export type Database = {
     Tables: {
       contact_messages: {
         Row: {
+          consent_contact: boolean | null
+          consent_privacy: boolean | null
           created_at: string | null
           email: string
           id: string
           message: string
           name: string
           read: boolean | null
+          source_page: string | null
+          whatsapp: string | null
         }
         Insert: {
+          consent_contact?: boolean | null
+          consent_privacy?: boolean | null
           created_at?: string | null
           email: string
           id?: string
           message: string
           name: string
           read?: boolean | null
+          source_page?: string | null
+          whatsapp?: string | null
         }
         Update: {
+          consent_contact?: boolean | null
+          consent_privacy?: boolean | null
           created_at?: string | null
           email?: string
           id?: string
           message?: string
           name?: string
           read?: boolean | null
+          source_page?: string | null
+          whatsapp?: string | null
         }
         Relationships: []
       }
