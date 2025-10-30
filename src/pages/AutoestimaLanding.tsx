@@ -242,7 +242,7 @@ const AutoestimaLanding = () => {
                 contato@suelicustodio.com.br
               </p>
               <p className="text-brand-100">
-                (11) 99999-9999
+                (11) 94530-0128
               </p>
             </div>
 
