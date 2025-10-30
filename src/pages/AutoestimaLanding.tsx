@@ -122,12 +122,12 @@ const AutoestimaLanding = () => {
                   className="w-full aspect-[3/4] object-cover rounded-xl"
                 />
               </div>
-              <p className="text-center mt-4 text-ink-700 font-medium">
-                Sueli Custódio
-              </p>
             </div>
 
             <div className="space-y-3">
+              <p className="text-brand-600 font-semibold uppercase tracking-wide text-sm">
+                Conheça sua mentora
+              </p>
               <h3 className="font-playfair text-xl md:text-2xl font-bold text-ink-900">
                 Sueli Custódio
               </h3>
