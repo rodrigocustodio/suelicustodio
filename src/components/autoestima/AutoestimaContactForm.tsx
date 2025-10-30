@@ -74,8 +74,8 @@ export const AutoestimaContactForm = () => {
           control={form.control}
           name="name"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nome Completo *</FormLabel>
+          <FormItem>
+              <FormLabel className="text-base">Nome Completo *</FormLabel>
               <FormControl>
                 <Input 
                   placeholder="Como você gostaria de ser chamada?" 
@@ -92,8 +92,8 @@ export const AutoestimaContactForm = () => {
           control={form.control}
           name="email"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email *</FormLabel>
+          <FormItem>
+              <FormLabel className="text-base">Email *</FormLabel>
               <FormControl>
                 <Input 
                   type="email"
@@ -110,8 +110,8 @@ export const AutoestimaContactForm = () => {
           control={form.control}
           name="whatsapp"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>WhatsApp *</FormLabel>
+          <FormItem>
+              <FormLabel className="text-base">WhatsApp *</FormLabel>
               <FormControl>
                 <Input 
                   type="tel"
@@ -151,7 +151,7 @@ export const AutoestimaContactForm = () => {
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel className="font-normal">
+                <FormLabel className="font-normal text-base">
                   Concordo em receber contato via WhatsApp e email *
                 </FormLabel>
                 <FormMessage />
@@ -172,7 +172,7 @@ export const AutoestimaContactForm = () => {
                 />
               </FormControl>
               <div className="space-y-1 leading-none">
-                <FormLabel className="font-normal">
+                <FormLabel className="font-normal text-base">
                   Li e aceito a Política de Privacidade *
                 </FormLabel>
                 <FormMessage />
@@ -185,7 +185,7 @@ export const AutoestimaContactForm = () => {
 
         <Button 
           type="submit" 
-          className="w-full" 
+          className="w-full text-lg" 
           size="lg"
           disabled={isSubmitting}
         >

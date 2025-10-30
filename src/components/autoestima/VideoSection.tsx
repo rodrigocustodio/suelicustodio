@@ -9,7 +9,7 @@ export const VideoSection = ({ title, subtitle }: VideoSectionProps) => {
   return (
     <div className="w-full">
       <div className="text-center mb-6">
-        <h2 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900 mb-2">
+        <h2 className="font-playfair text-3xl md:text-4xl font-bold text-ink-900 mb-2">
           {title}
         </h2>
         <p className="text-base text-ink-700">

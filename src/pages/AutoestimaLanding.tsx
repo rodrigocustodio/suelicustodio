@@ -34,7 +34,7 @@ const AutoestimaLanding = () => {
       {/* Hero Section */}
       <Section className="text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h1 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold mb-3">
+          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-3">
             Conquiste sua{' '}
             <span className="text-brand-600">Autoestima Inabalável</span>
           </h1>
@@ -47,7 +47,7 @@ const AutoestimaLanding = () => {
           
           <button
             onClick={scrollToForm}
-            className="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors shadow-soft hover:shadow-elegant"
+            className="inline-block bg-brand-600 hover:bg-brand-700 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors shadow-soft hover:shadow-elegant"
           >
             Assista agora e descubra o método comprovado
           </button>
@@ -65,7 +65,7 @@ const AutoestimaLanding = () => {
           <div className="text-center mt-6">
             <button
               onClick={scrollToForm}
-              className="inline-block bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              className="inline-block bg-accent-500 hover:bg-accent-600 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors"
             >
               Agende sua Sessão Agora
             </button>
@@ -77,7 +77,7 @@ const AutoestimaLanding = () => {
       <Section>
         <div className="max-w-container-medium mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900 mb-3">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-ink-900 mb-3">
               Seu momento de brilhar
             </h2>
             <p className="text-base text-ink-700 max-w-2xl mx-auto">
@@ -125,28 +125,28 @@ const AutoestimaLanding = () => {
             </div>
 
             <div className="space-y-3">
-              <p className="text-brand-600 font-semibold uppercase tracking-wide text-sm">
+              <p className="text-brand-600 font-semibold uppercase tracking-wide text-base">
                 Conheça sua mentora
               </p>
-              <h3 className="font-playfair text-xl md:text-2xl font-bold text-ink-900">
+              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900">
                 Sueli Custódio
               </h3>
               
-              <p className="text-ink-700 leading-relaxed text-sm md:text-base">
+              <p className="text-ink-700 leading-relaxed text-base">
                 Mentora especializada em autoestima feminina, dedico minha carreira a ajudar mulheres a descobrirem seu valor único e resgatarem a confiança que sempre esteve dentro delas.
               </p>
               
-              <p className="text-ink-700 leading-relaxed text-sm md:text-base">
+              <p className="text-ink-700 leading-relaxed text-base">
                 Com mais de 10 anos de experiência, desenvolvi uma metodologia acolhedora que combina técnicas de coaching, psicologia positiva e empoderamento feminino.
               </p>
               
-              <p className="text-ink-700 leading-relaxed text-sm md:text-base">
+              <p className="text-ink-700 leading-relaxed text-base">
                 Acredito que toda mulher merece se sentir amada, valorizada e confiante. Minha missão é guiá-la nessa jornada de transformação pessoal, onde você se reconectará com sua essência e aprenderá a brilhar autenticamente.
               </p>
 
               <button
                 onClick={scrollToForm}
-                className="inline-block bg-brand-600 hover:bg-brand-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors mt-2"
+                className="inline-block bg-brand-600 hover:bg-brand-700 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors mt-2"
               >
                 Quero Transformar Minha Autoestima
               </button>
@@ -159,7 +159,7 @@ const AutoestimaLanding = () => {
       <Section className="bg-white">
         <div className="max-w-container-medium mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900 mb-3">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-ink-900 mb-3">
               Histórias de Transformação
             </h2>
             <p className="text-base text-ink-700">
@@ -200,7 +200,7 @@ const AutoestimaLanding = () => {
       <Section id="contact-form" className="bg-gradient-to-br from-brand-50 to-accent-50">
         <div className="max-w-container-medium mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900 mb-3">
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-ink-900 mb-3">
               Dê o Primeiro Passo
             </h2>
             <p className="text-base text-ink-700">
@@ -229,7 +229,7 @@ const AutoestimaLanding = () => {
         <div className="max-w-container-medium mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="font-playfair text-xl font-bold mb-2">
+              <h3 className="font-playfair text-xl md:text-2xl font-bold mb-2">
                 Sueli Custódio
               </h3>
               <p className="text-brand-100">
