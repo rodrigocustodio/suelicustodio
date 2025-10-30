@@ -51,10 +51,15 @@ export const AutoestimaContactForm = () => {
 
       toast({
         title: 'Mensagem enviada!',
-        description: 'Entrarei em contato em breve.',
+        description: 'Redirecionando para WhatsApp...',
       });
 
       form.reset();
+      
+      // Redirect to WhatsApp after successful submission
+      setTimeout(() => {
+        window.open('https://wa.link/ugc1zl', '_blank');
+      }, 1000);
     } catch (error) {
       console.error('Error submitting form:', error);
       toast({
