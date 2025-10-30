@@ -13,6 +13,11 @@ export default {
       },
     },
     extend: {
+      maxWidth: {
+        'container-narrow': '800px',
+        'container-medium': '1024px',
+        'container-wide': '1280px',
+      },
       fontFamily: {
         playfair: ['Playfair Display', 'serif'],
         inter: ['Inter', 'sans-serif'],
@@ -83,11 +88,11 @@ export default {
         },
       },
       spacing: {
-        section: '5rem',      // 80px - reduced spacing
-        sectionLg: '6rem',    // 96px - reduced spacing
-        sectionXl: '8rem',    // 128px - for hero/contact
-        gutter: '2rem',       // 32px
-        breath: '3rem',       // 48px - internal section spacing
+        section: '3rem',      // 48px - comfortable spacing
+        sectionLg: '4rem',    // 64px - larger sections
+        sectionXl: '5rem',    // 80px - hero/contact
+        gutter: '1.5rem',     // 24px
+        breath: '2rem',       // 32px - internal section spacing
       },
       boxShadow: {
         card: '0 4px 16px rgba(20, 35, 30, 0.04)',      // much lighter

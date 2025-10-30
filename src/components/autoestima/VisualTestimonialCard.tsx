@@ -17,8 +17,8 @@ export const VisualTestimonialCard = ({ image, label, alt }: VisualTestimonialCa
       <div className="absolute inset-0 bg-gradient-to-t from-brand-900/80 via-brand-900/40 to-transparent"></div>
       
       {/* Label */}
-      <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="font-playfair text-2xl md:text-3xl font-bold text-white uppercase tracking-wide">
+      <div className="absolute bottom-0 left-0 right-0 p-4">
+        <h3 className="font-playfair text-xl md:text-2xl font-bold text-white uppercase tracking-wide">
           {label}
         </h3>
       </div>

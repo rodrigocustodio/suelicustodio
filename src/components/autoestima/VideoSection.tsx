@@ -7,12 +7,12 @@ interface VideoSectionProps {
 
 export const VideoSection = ({ title, subtitle }: VideoSectionProps) => {
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="font-playfair text-3xl md:text-4xl font-bold text-ink-900 mb-3">
+    <div className="w-full">
+      <div className="text-center mb-6">
+        <h2 className="font-playfair text-2xl md:text-3xl font-bold text-ink-900 mb-2">
           {title}
         </h2>
-        <p className="text-lg text-ink-700">
+        <p className="text-base text-ink-700">
           {subtitle}
         </p>
       </div>
