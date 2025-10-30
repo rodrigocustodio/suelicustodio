@@ -55,7 +55,7 @@ const AutoestimaLanding = () => {
             </p>
           </div>
           <VideoSection
-            title="Transforme sua Autoestima"
+            title=""
             subtitle=""
             videoId="j1_Ogi4tuDQ"
             onProgressChange={setShowButton}
