@@ -5,6 +5,7 @@ import { VisualTestimonialCard } from '@/components/autoestima/VisualTestimonial
 import { TestimonialCard } from '@/components/autoestima/TestimonialCard';
 import { AutoestimaContactForm } from '@/components/autoestima/AutoestimaContactForm';
 import { track } from '@/lib/analytics';
+import { trackFacebookEvent } from '@/lib/facebook';
 
 // Import images
 import heroCarousel1 from '@/assets/hero-carousel-1.jpg';
@@ -23,10 +24,19 @@ const AutoestimaLanding = () => {
 
   useEffect(() => {
     track('autoestima_page_view');
+    trackFacebookEvent('PageView', {
+      content_name: 'Autoestima Inabalável Landing Page',
+      content_category: 'Landing Page'
+    });
   }, []);
 
   const scrollToForm = () => {
     track('autoestima_cta_scroll_to_form');
+    trackFacebookEvent('InitiateCheckout', {
+      content_name: 'Autoestima Session Booking',
+      value: 0,
+      currency: 'BRL'
+    });
     const formElement = document.getElementById('contact-form');
     formElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
