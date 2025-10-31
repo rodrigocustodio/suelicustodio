@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { track } from '@/lib/analytics';
+import { trackFacebookEvent } from '@/lib/facebook';
 import {
   Form,
   FormControl,
@@ -37,6 +38,15 @@ export const AutoestimaContactForm = () => {
     track('autoestima_form_submit');
 
     try {
+      // Track Facebook Lead event
+      await trackFacebookEvent('Lead', {
+        content_name: 'Autoestima Inabalável',
+        content_category: 'Contact Form',
+      }, {
+        email: data.email,
+        phone: data.whatsapp.replace(/\D/g, ''),
+      });
+
       const { error } = await supabase.from('contact_messages').insert({
         name: data.name,
         email: data.email,

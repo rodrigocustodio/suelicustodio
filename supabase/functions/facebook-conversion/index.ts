@@ -1,0 +1,87 @@
+import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+};
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const { eventName, eventData, userData } = await req.json();
+    
+    const pixelId = '3881783168788352';
+    const accessToken = Deno.env.get('FACEBOOK_CONVERSION_API_TOKEN');
+
+    if (!accessToken) {
+      throw new Error('Facebook API token not configured');
+    }
+
+    // Prepare the conversion event
+    const payload = {
+      data: [{
+        event_name: eventName,
+        event_time: Math.floor(Date.now() / 1000),
+        action_source: 'website',
+        event_source_url: userData.event_source_url || '',
+        user_data: {
+          em: userData.email ? await hashValue(userData.email) : undefined,
+          ph: userData.phone ? await hashValue(userData.phone) : undefined,
+          client_ip_address: req.headers.get('x-forwarded-for') || '',
+          client_user_agent: req.headers.get('user-agent') || '',
+        },
+        custom_data: eventData || {},
+      }],
+    };
+
+    console.log('Sending conversion event to Facebook:', eventName);
+
+    // Send to Facebook Conversion API
+    const response = await fetch(
+      `https://graph.facebook.com/v21.0/${pixelId}/events?access_token=${accessToken}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    const result = await response.json();
+    
+    if (!response.ok) {
+      console.error('Facebook API error:', result);
+      throw new Error(`Facebook API error: ${JSON.stringify(result)}`);
+    }
+
+    console.log('Facebook conversion sent successfully:', result);
+
+    return new Response(
+      JSON.stringify({ success: true, result }),
+      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+    );
+  } catch (error) {
+    console.error('Error in facebook-conversion function:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    return new Response(
+      JSON.stringify({ error: errorMessage }),
+      { 
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      }
+    );
+  }
+});
+
+// Hash function for user data (Facebook requires SHA-256)
+async function hashValue(value: string): Promise<string> {
+  const normalized = value.toLowerCase().trim();
+  const msgBuffer = new TextEncoder().encode(normalized);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
