@@ -11,6 +11,7 @@ export const VisualTestimonialCard = ({ image, label, alt }: VisualTestimonialCa
         src={image} 
         alt={alt}
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
       />
       
       {/* Gradient overlay */}

@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { Section } from '@/components/Section';
 import { VideoSection } from '@/components/autoestima/VideoSection';
 import { VisualTestimonialCard } from '@/components/autoestima/VisualTestimonialCard';
@@ -42,19 +44,33 @@ const AutoestimaLanding = () => {
   };
 
   return (
-    <div className="min-h-screen bg-paper-50">
-      {/* Hero Section */}
-      <Section className="text-center pb-0">
-        <div className="max-w-3xl mx-auto px-4">
-          <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Conquiste sua{' '}
-            <span className="text-brand-600">Autoestima Inabalável</span>
-          </h1>
-          <h2 className="text-lg md:text-xl text-ink-700 font-normal">
-            Descubra seu valor, brilhe com confiança e transforme sua autoestima.
-          </h2>
-        </div>
-      </Section>
+    <>
+      <Helmet>
+        <title>Autoestima Inabalável - Programa de Transformação com Sueli Custódio</title>
+        <meta name="description" content="Conquiste uma autoestima inabalável com o programa exclusivo de mentoria da Sueli Custódio. Descubra seu valor, brilhe com confiança e transforme sua vida." />
+        <meta name="keywords" content="autoestima, mentoria feminina, desenvolvimento pessoal, empoderamento, coach emocional, Sueli Custódio" />
+        
+        <meta property="og:title" content="Autoestima Inabalável - Transforme sua Vida com Sueli Custódio" />
+        <meta property="og:description" content="Programa exclusivo de mentoria para mulheres que desejam fortalecer sua autoestima e conquistar confiança inabalável." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://sueliscustodio.com.br/autoestima-inabalavel" />
+        
+        <link rel="canonical" href="https://sueliscustodio.com.br/autoestima-inabalavel" />
+      </Helmet>
+
+      <main className="min-h-screen bg-paper-50">
+        {/* Hero Section */}
+        <Section className="text-center pb-0">
+          <div className="max-w-3xl mx-auto px-4">
+            <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+              Conquiste sua{' '}
+              <span className="text-brand-600">Autoestima Inabalável</span>
+            </h1>
+            <p className="text-lg md:text-xl text-ink-700 font-normal">
+              Descubra seu valor, brilhe com confiança e transforme sua autoestima.
+            </p>
+          </div>
+        </Section>
 
       {/* Video Section */}
       <Section className="bg-white pt-0">
@@ -131,6 +147,7 @@ const AutoestimaLanding = () => {
                   src={sueliPortrait}
                   alt="Sueli Custódio - Mentora de Autoestima especializada em empoderamento feminino"
                   className="w-full aspect-[3/4] object-cover rounded-xl"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -229,6 +246,7 @@ const AutoestimaLanding = () => {
                 src={sessionImage}
                 alt="Mulher confiante tomando decisão positiva sobre seu futuro"
                 className="w-full aspect-[4/3] object-cover rounded-2xl shadow-soft"
+                loading="lazy"
               />
             </div>
           </div>
@@ -262,14 +280,14 @@ const AutoestimaLanding = () => {
               <h4 className="font-semibold mb-3">Legal</h4>
               <ul className="space-y-2 text-brand-100">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link to="/politica-de-privacidade" className="hover:text-white transition-colors">
                     Política de Privacidade
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <Link to="/termos-de-uso" className="hover:text-white transition-colors">
                     Termos de Uso
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -280,7 +298,8 @@ const AutoestimaLanding = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
+    </>
   );
 };
 
