@@ -38,7 +38,16 @@ export const AutoestimaContactForm = () => {
     track('autoestima_form_submit');
 
     try {
-      // Track Facebook Lead event
+      // Fire browser-side Facebook Pixel Lead event
+      if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'Autoestima Inabalável',
+          content_category: 'Contact Form',
+        });
+        console.log('Facebook Pixel Lead event fired');
+      }
+
+      // Track Facebook Lead event via Conversion API
       await trackFacebookEvent('Lead', {
         content_name: 'Autoestima Inabalável',
         content_category: 'Contact Form',

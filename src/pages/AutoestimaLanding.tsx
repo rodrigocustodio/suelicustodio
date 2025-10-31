@@ -26,6 +26,14 @@ const AutoestimaLanding = () => {
 
   useEffect(() => {
     track('autoestima_page_view');
+    
+    // Fire browser-side Facebook Pixel event
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'PageView');
+      console.log('Facebook Pixel PageView fired');
+    }
+    
+    // Also track via Conversion API for server-side redundancy
     trackFacebookEvent('PageView', {
       content_name: 'Autoestima Inabalável Landing Page',
       content_category: 'Landing Page'
@@ -34,11 +42,20 @@ const AutoestimaLanding = () => {
 
   const scrollToForm = () => {
     track('autoestima_cta_scroll_to_form');
+    
+    // Fire browser-side Facebook Pixel event
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'InitiateCheckout');
+      console.log('Facebook Pixel InitiateCheckout fired');
+    }
+    
+    // Also track via Conversion API
     trackFacebookEvent('InitiateCheckout', {
       content_name: 'Autoestima Session Booking',
       value: 0,
       currency: 'BRL'
     });
+    
     const formElement = document.getElementById('contact-form');
     formElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
