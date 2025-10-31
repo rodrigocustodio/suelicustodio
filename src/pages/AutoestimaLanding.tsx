@@ -57,7 +57,7 @@ const AutoestimaLanding = () => {
           <VideoSection
             title=""
             subtitle=""
-            videoId="j1_Ogi4tuDQ"
+            videoId="kK25PFSL_fQ"
             onProgressChange={setShowButton}
           />
           
