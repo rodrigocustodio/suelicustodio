@@ -20,6 +20,28 @@ serve(async (req) => {
       throw new Error('Facebook API token not configured');
     }
 
+    // Get client IP from various possible headers
+    const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() 
+      || req.headers.get('x-real-ip')
+      || req.headers.get('cf-connecting-ip');
+
+    // Build user_data object, only including fields that have values
+    const user_data: Record<string, string> = {};
+    
+    if (userData.email) {
+      user_data.em = await hashValue(userData.email);
+    }
+    if (userData.phone) {
+      user_data.ph = await hashValue(userData.phone);
+    }
+    if (clientIp) {
+      user_data.client_ip_address = clientIp;
+    }
+    const userAgent = req.headers.get('user-agent');
+    if (userAgent) {
+      user_data.client_user_agent = userAgent;
+    }
+
     // Prepare the conversion event
     const payload = {
       data: [{
@@ -27,12 +49,7 @@ serve(async (req) => {
         event_time: Math.floor(Date.now() / 1000),
         action_source: 'website',
         event_source_url: userData.event_source_url || '',
-        user_data: {
-          em: userData.email ? await hashValue(userData.email) : undefined,
-          ph: userData.phone ? await hashValue(userData.phone) : undefined,
-          client_ip_address: req.headers.get('x-forwarded-for') || '',
-          client_user_agent: req.headers.get('user-agent') || '',
-        },
+        user_data,
         custom_data: eventData || {},
       }],
     };
