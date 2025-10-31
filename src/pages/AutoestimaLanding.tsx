@@ -108,7 +108,7 @@ const AutoestimaLanding = () => {
             <div className="text-center mt-6 animate-fade-in">
               <button
                 onClick={scrollToForm}
-                className="inline-block bg-accent-500 hover:bg-accent-600 text-white text-lg font-semibold px-6 py-3 rounded-lg transition-colors"
+                className="inline-block bg-brand-600 hover:bg-brand-700 text-white text-lg font-semibold px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
                 Agende sua Sessão Agora
               </button>
