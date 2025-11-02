@@ -38,24 +38,7 @@ export const AutoestimaContactForm = () => {
     track('autoestima_form_submit');
 
     try {
-      // Fire browser-side Facebook Pixel Lead event
-      if (typeof window !== 'undefined' && window.fbq) {
-        window.fbq('track', 'Lead', {
-          content_name: 'Autoestima Inabalável',
-          content_category: 'Contact Form',
-        });
-        console.log('Facebook Pixel Lead event fired');
-      }
-
-      // Track Facebook Lead event via Conversion API
-      await trackFacebookEvent('Lead', {
-        content_name: 'Autoestima Inabalável',
-        content_category: 'Contact Form',
-      }, {
-        email: data.email,
-        phone: data.whatsapp.replace(/\D/g, ''),
-      });
-
+      // First, save to database
       const { error } = await supabase.from('contact_messages').insert({
         name: data.name,
         email: data.email,
@@ -67,6 +50,25 @@ export const AutoestimaContactForm = () => {
       });
 
       if (error) throw error;
+
+      // Only track Facebook events AFTER successful database insert
+      // Fire browser-side Facebook Pixel Lead event
+      if (typeof window !== 'undefined' && window.fbq) {
+        window.fbq('track', 'Lead', {
+          content_name: 'Autoestima Inabalável',
+          content_category: 'Contact Form',
+        });
+        console.log('Facebook Pixel Lead event fired');
+      }
+
+      // Track Facebook Lead event via Conversion API (non-blocking)
+      trackFacebookEvent('Lead', {
+        content_name: 'Autoestima Inabalável',
+        content_category: 'Contact Form',
+      }, {
+        email: data.email,
+        phone: data.whatsapp.replace(/\D/g, ''),
+      }).catch(err => console.error('Facebook tracking error:', err));
 
       toast({
         title: 'Mensagem enviada!',
