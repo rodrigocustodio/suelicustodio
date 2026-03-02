@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { track } from '@/lib/analytics';
 import { Star, MessageCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
 import juliana from '@/assets/juliana.png';
@@ -14,9 +14,11 @@ const YOUTUBE_ID = 'IIEezIOz0LM';
 const CHECKOUT_URL = 'https://pay.kiwify.com.br/GX9EKPK';
 
 const VSLPage = () => {
+  const [searchParams] = useSearchParams();
+  const autoplay = searchParams.get('autoplay') === '1';
   const [showCTA, setShowCTA] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
-  const [videoStarted, setVideoStarted] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(autoplay);
   const playerRef = useRef<any>(null);
   const hasTriggeredRef = useRef(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -44,6 +46,11 @@ const VSLPage = () => {
     function createPlayer() {
       playerRef.current = new (window as any).YT.Player('vsl-player', {
         events: {
+          onReady: () => {
+            if (autoplay) {
+              playerRef.current?.playVideo();
+            }
+          },
           onStateChange: (event: any) => {
               if (event.data === (window as any).YT.PlayerState.PLAYING && !hasTriggeredRef.current) {
                 startProgressCheck();
@@ -178,11 +185,11 @@ const VSLPage = () => {
               showCTA ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none'
             }`}
           >
-            <button
+          <button
               onClick={handleCheckout}
               className="group w-full py-4 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-lg transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)]"
             >
-              COMEÇAR AGORA
+              COMEÇAR AGORA — 10x de R$5,76
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
             </button>
           </div>
@@ -309,7 +316,7 @@ const VSLPage = () => {
               onClick={handleCheckout}
               className="group w-full py-5 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-xl transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)] mb-10"
             >
-              QUERO COMEÇAR AGORA
+              QUERO COMEÇAR AGORA — 10x de R$5,76
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
             </button>
 
@@ -400,7 +407,7 @@ const VSLPage = () => {
               onClick={handleCheckout}
               className="group w-full py-5 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-xl transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)]"
             >
-              QUERO COMEÇAR AGORA
+              QUERO COMEÇAR AGORA — 10x de R$5,76
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
             </button>
 
@@ -491,7 +498,7 @@ const VSLPage = () => {
               onClick={handleCheckout}
               className="group w-full py-5 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-xl transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)]"
             >
-              QUERO COMEÇAR AGORA
+              QUERO COMEÇAR AGORA — 10x de R$5,76
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
             </button>
             <p className="font-inter text-xs text-ink-500 text-center mt-3 opacity-70">
@@ -505,9 +512,15 @@ const VSLPage = () => {
           <p className="font-inter text-ink-500 text-xs mb-2">
             © {new Date().getFullYear()} Sueli Custódio. Todos os direitos reservados.
           </p>
-          <Link to="/politica-de-privacidade" className="font-inter text-xs text-brand-500 hover:text-brand-600 underline underline-offset-2 transition-colors">
-            Política de Privacidade
-          </Link>
+          <div className="flex items-center justify-center gap-3 font-inter text-xs">
+            <Link to="/politica-de-privacidade" className="text-brand-500 hover:text-brand-600 underline underline-offset-2 transition-colors">
+              Política de Privacidade
+            </Link>
+            <span className="text-ink-300">•</span>
+            <Link to="/termos-de-uso" className="text-brand-500 hover:text-brand-600 underline underline-offset-2 transition-colors">
+              Termos de Uso
+            </Link>
+          </div>
         </footer>
 
         {/* WhatsApp Floating Button */}
