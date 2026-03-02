@@ -42,7 +42,7 @@ export const QuizResult = ({ name, overloadScore }: QuizResultProps) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/vsl?autoplay=1');
-    }, 5000);
+    }, 30000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
