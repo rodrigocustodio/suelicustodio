@@ -7,6 +7,7 @@ import Admin from "./pages/Admin";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
+import QuizPage from "./pages/QuizPage";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/autoestima-inabalavel" element={<AutoestimaLanding />} />
+        <Route path="/teste" element={<QuizPage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
         <Route path="/termos-de-uso" element={<TermsOfService />} />
         <Route path="/auth" element={<Auth />} />

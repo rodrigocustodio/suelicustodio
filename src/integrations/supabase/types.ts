@@ -71,6 +71,45 @@ export type Database = {
         }
         Relationships: []
       }
+      quiz_responses: {
+        Row: {
+          answers: Json
+          awareness_level: string
+          consent_marketing: boolean
+          created_at: string
+          disc_profile: string
+          email: string
+          id: string
+          name: string
+          overload_score: string
+          whatsapp: string
+        }
+        Insert: {
+          answers?: Json
+          awareness_level?: string
+          consent_marketing?: boolean
+          created_at?: string
+          disc_profile?: string
+          email: string
+          id?: string
+          name: string
+          overload_score?: string
+          whatsapp: string
+        }
+        Update: {
+          answers?: Json
+          awareness_level?: string
+          consent_marketing?: boolean
+          created_at?: string
+          disc_profile?: string
+          email?: string
+          id?: string
+          name?: string
+          overload_score?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
