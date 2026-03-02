@@ -1,6 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { track } from '@/lib/analytics';
+import { Star } from 'lucide-react';
+
+import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
+import juliana from '@/assets/juliana.png';
+import aline from '@/assets/aline.png';
+import jo from '@/assets/jo.png';
+import janair from '@/assets/janair.png';
 
 const YOUTUBE_ID = 'IIEezIOz0LM';
 const CHECKOUT_URL = 'https://pay.kiwify.com.br/GX9EKPK';
@@ -238,6 +245,96 @@ const VSLPage = () => {
             </p>
           </section>
         </div>
+
+        {/* Bio Section */}
+        <section className="px-4 py-12 max-w-2xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-12 bg-brand-200" />
+            <div className="w-2 h-2 rounded-full bg-brand-300" />
+            <div className="h-px w-12 bg-brand-200" />
+          </div>
+
+          <div className="flex flex-col items-center text-center mb-6">
+            <div className="relative mb-4">
+              <div className="absolute -inset-1 bg-gradient-to-br from-brand-300/40 to-brand-500/30 rounded-full blur-sm" />
+              <img
+                src={sueliPortrait}
+                alt="Sueli Custódio - Mentora de Autoestima"
+                className="relative w-28 h-28 rounded-full object-cover shadow-lg ring-2 ring-white"
+              />
+            </div>
+            <p className="font-inter text-xs uppercase tracking-[0.2em] text-brand-500 mb-2">Conheça sua mentora</p>
+            <h2 className="font-playfair text-2xl md:text-3xl text-ink-900 mb-4">Sueli Custódio</h2>
+          </div>
+
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-soft border border-brand-100/50 space-y-4">
+            <p className="font-inter text-ink-700 text-base leading-relaxed">
+              Coach, Mentora e Palestrante especializada em desenvolvimento emocional e ressignificação mental, com mais de <strong className="text-brand-600">13 anos de experiência</strong> e formação em Coaching Comportamental, Inteligência Emocional Aplicada e Análise Comportamental.
+            </p>
+            <p className="font-inter text-ink-700 text-base leading-relaxed">
+              Já transformou a vida de mais de <strong className="text-brand-600">500 mulheres</strong>, especialmente profissionais que lidam com estresse crônico, ansiedade e esgotamento emocional, através de mentorias, sessões individuais e palestras corporativas.
+            </p>
+            <blockquote className="border-l-3 border-brand-400 pl-4 py-2 mt-4">
+              <p className="font-playfair text-lg text-brand-600 italic leading-relaxed">
+                "Cada mulher possui em si a força necessária para superar traumas e reconstruir sua identidade."
+              </p>
+            </blockquote>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="px-4 pb-16 max-w-2xl mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <div className="h-px w-12 bg-brand-200" />
+            <div className="w-2 h-2 rounded-full bg-brand-300" />
+            <div className="h-px w-12 bg-brand-200" />
+          </div>
+
+          <h2 className="font-playfair text-2xl md:text-3xl text-ink-900 text-center mb-2">
+            Histórias de Transformação
+          </h2>
+          <p className="font-inter text-ink-500 text-sm text-center mb-8">
+            Veja o que mulheres reais alcançaram
+          </p>
+
+          <div className="space-y-4">
+            {[
+              { name: 'Juliana Zamarian', photo: juliana, quote: 'Passar pelo processo com a Sueli Custódio foi um divisor de águas em minha vida eu fui curada da depressão e fibromialgia' },
+              { name: 'Aline Lima', photo: aline, quote: 'Antes de passar pelo Processo com a Sueli eu não sabia me amar, na verdade eu não me conhecia. Hoje eu sei quem sou e tenho conquistado tudo o que sempre sonhei' },
+              { name: 'Jô Souza', photo: jo, quote: 'Eu estava num relacionamento abusivo onde eu apanhava do meu marido e após sair de casa praticamente expulsa depois de 21 anos de casamento eu pude através do processo mudar totalmente minha história' },
+              { name: 'Janair Lisboa', photo: janair, quote: 'Eu recomendo o processo individual que mudou minha vida e a forma como eu me enxergava, hoje eu sou outra pessoa' },
+            ].map((t) => (
+              <div key={t.name} className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-soft border border-brand-100/50">
+                <div className="flex items-center gap-3 mb-3">
+                  <img src={t.photo} alt={t.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-brand-100" />
+                  <div>
+                    <p className="font-inter font-semibold text-ink-900 text-sm">{t.name}</p>
+                    <div className="flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <p className="font-inter text-ink-700 text-sm leading-relaxed">"{t.quote}"</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Final final CTA */}
+          <div className={`mt-10 transition-all duration-700 ${showCTA ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <button
+              onClick={handleCheckout}
+              className="group w-full py-5 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-xl transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)]"
+            >
+              QUERO COMEÇAR AGORA
+              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
+            </button>
+            <p className="font-inter text-xs text-ink-500 text-center mt-3 opacity-70">
+              Garantia de 7 dias • Pagamento seguro
+            </p>
+          </div>
+        </section>
       </div>
     </>
   );
