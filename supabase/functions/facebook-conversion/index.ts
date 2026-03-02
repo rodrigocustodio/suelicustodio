@@ -2,8 +2,20 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
+
+// Allowed Facebook event names to prevent arbitrary event injection
+const ALLOWED_EVENTS = new Set([
+  'Lead',
+  'CompleteRegistration',
+  'Contact',
+  'ViewContent',
+  'PageView',
+  'InitiateCheckout',
+  'Purchase',
+  'Subscribe',
+]);
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -11,7 +23,40 @@ serve(async (req) => {
   }
 
   try {
+    // Validate authorization header (anon key present via supabase.functions.invoke)
+    const authHeader = req.headers.get('authorization');
+    const apiKey = req.headers.get('apikey');
+    if (!authHeader && !apiKey) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     const { eventName, eventData, userData } = await req.json();
+
+    // Validate eventName
+    if (!eventName || typeof eventName !== 'string') {
+      return new Response(
+        JSON.stringify({ error: 'Invalid event name' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    if (!ALLOWED_EVENTS.has(eventName)) {
+      return new Response(
+        JSON.stringify({ error: 'Event not allowed' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Validate userData is an object if provided
+    if (userData && typeof userData !== 'object') {
+      return new Response(
+        JSON.stringify({ error: 'Invalid user data' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
     
     const pixelId = Deno.env.get('FACEBOOK_PIXEL_ID');
     const accessToken = Deno.env.get('FACEBOOK_CONVERSION_API_TOKEN');
@@ -28,10 +73,10 @@ serve(async (req) => {
     // Build user_data object, only including fields that have values
     const user_data: Record<string, string> = {};
     
-    if (userData.email) {
+    if (userData?.email && typeof userData.email === 'string') {
       user_data.em = await hashValue(userData.email);
     }
-    if (userData.phone) {
+    if (userData?.phone && typeof userData.phone === 'string') {
       user_data.ph = await hashValue(userData.phone);
     }
     if (clientIp) {
@@ -48,7 +93,7 @@ serve(async (req) => {
         event_name: eventName,
         event_time: Math.floor(Date.now() / 1000),
         action_source: 'website',
-        event_source_url: userData.event_source_url || '',
+        event_source_url: (userData?.event_source_url && typeof userData.event_source_url === 'string') ? userData.event_source_url : '',
         user_data,
         custom_data: eventData || {},
       }],
@@ -72,20 +117,19 @@ serve(async (req) => {
     
     if (!response.ok) {
       console.error('Facebook API error:', result);
-      throw new Error(`Facebook API error: ${JSON.stringify(result)}`);
+      throw new Error('Facebook API error');
     }
 
-    console.log('Facebook conversion sent successfully:', result);
+    console.log('Facebook conversion sent successfully');
 
     return new Response(
-      JSON.stringify({ success: true, result }),
+      JSON.stringify({ success: true }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
     console.error('Error in facebook-conversion function:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     return new Response(
-      JSON.stringify({ error: errorMessage }),
+      JSON.stringify({ error: 'Internal server error' }),
       { 
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
