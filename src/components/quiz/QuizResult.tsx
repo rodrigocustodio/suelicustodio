@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Download, ArrowRight } from 'lucide-react';
 
@@ -37,6 +37,14 @@ export const QuizResult = ({ name, overloadScore }: QuizResultProps) => {
   const result = resultData[overloadScore] || resultData['médio'];
 
   const firstName = name.split(' ')[0];
+
+  // Auto-redirect to VSL after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/vsl?autoplay=1');
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [navigate]);
 
   const handleDownload = () => {
     // Generate a simple text report for download
@@ -138,15 +146,15 @@ Todos os direitos reservados.
 
         {/* CTA to VSL */}
         <button
-          onClick={() => navigate('/vsl')}
+          onClick={() => navigate('/vsl?autoplay=1')}
           className="group w-full py-4 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-lg transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)]"
         >
           ASSISTIR O VÍDEO AGORA
           <ArrowRight className="inline-block w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
         </button>
 
-        <p className="font-inter text-xs text-ink-400 text-center mt-3">
-          Vídeo gratuito • 100% online
+        <p className="font-inter text-xs text-ink-400 text-center mt-3 animate-pulse">
+          Redirecionando em alguns segundos...
         </p>
       </div>
     </div>
