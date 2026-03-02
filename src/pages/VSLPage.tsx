@@ -16,6 +16,7 @@ const CHECKOUT_URL = 'https://pay.kiwify.com.br/GX9EKPK';
 const VSLPage = () => {
   const [showCTA, setShowCTA] = useState(false);
   const [videoEnded, setVideoEnded] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
   const playerRef = useRef<any>(null);
   const hasTriggeredRef = useRef(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -119,10 +120,35 @@ const VSLPage = () => {
           <div className="relative">
             <div className="absolute -inset-2 bg-gradient-to-br from-brand-200/40 via-transparent to-brand-300/30 rounded-3xl blur-sm" />
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg bg-ink-900 ring-1 ring-brand-200/50">
+              {/* Custom thumbnail before play */}
+              {!videoStarted && (
+                <div
+                  className="absolute inset-0 z-10 cursor-pointer group"
+                  onClick={() => {
+                    setVideoStarted(true);
+                    // Small delay to let iframe load, then play
+                    setTimeout(() => {
+                      playerRef.current?.playVideo();
+                    }, 500);
+                  }}
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${YOUTUBE_ID}/maxresdefault.jpg`}
+                    alt="Capa do vídeo"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-cta-500/90 group-hover:bg-cta-500 flex items-center justify-center shadow-[0_4px_20px_rgba(255,107,53,0.5)] group-hover:scale-110 transition-all">
+                      <svg className="w-9 h-9 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  </div>
+                </div>
+              )}
               <iframe
                 id="vsl-player"
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${YOUTUBE_ID}?enablejsapi=1&autoplay=1&mute=1&rel=0&modestbranding=1&controls=0&showinfo=0&iv_load_policy=3&disablekb=1`}
+                src={`https://www.youtube.com/embed/${YOUTUBE_ID}?enablejsapi=1&rel=0&modestbranding=1&controls=0&showinfo=0&iv_load_policy=3&disablekb=1`}
                 title="Autoestima Inabalável"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -130,7 +156,7 @@ const VSLPage = () => {
               {/* Overlay to hide end screen suggestions */}
               {videoEnded && (
                 <div 
-                  className="absolute inset-0 bg-ink-900 flex flex-col items-center justify-center cursor-pointer"
+                  className="absolute inset-0 z-10 bg-ink-900 flex flex-col items-center justify-center cursor-pointer"
                   onClick={() => {
                     setVideoEnded(false);
                     playerRef.current?.seekTo(0);
