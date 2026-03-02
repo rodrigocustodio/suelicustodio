@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { track } from '@/lib/analytics';
-import { Star } from 'lucide-react';
+import { Star, MessageCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 import sueliPortrait from '@/assets/sueli-portrait-warm.jpg';
 import juliana from '@/assets/juliana.png';
@@ -178,20 +179,35 @@ const VSLPage = () => {
 
             {/* Pricing Card */}
             <div className="relative mb-10">
-              <div className="absolute -inset-1 bg-gradient-to-br from-cta-500/20 to-brand-400/20 rounded-3xl blur-md" />
-              <div className="relative bg-white rounded-2xl p-8 shadow-card text-center border border-brand-100/60">
-                <p className="font-inter text-brand-500 text-xs uppercase tracking-widest mb-3">Investimento</p>
+              <div className="absolute -inset-2 bg-gradient-to-br from-cta-500/25 to-brand-400/25 rounded-3xl blur-lg animate-pulse" />
+              <div className="relative bg-gradient-to-br from-white to-brand-50 rounded-2xl p-8 shadow-card text-center border-2 border-cta-500/30">
+                <div className="inline-block bg-cta-500 text-white font-inter font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+                  Oferta especial
+                </div>
+                
+                {/* Installment - PROMINENT */}
+                <p className="font-inter text-ink-500 text-sm mb-1">em até</p>
                 <div className="flex items-baseline justify-center gap-1 mb-1">
-                  <span className="font-inter text-ink-500 text-lg">R$</span>
-                  <span className="font-playfair text-5xl text-ink-900 font-bold">47</span>
-                  <span className="font-playfair text-2xl text-ink-900 font-bold">,90</span>
+                  <span className="font-inter text-cta-500 text-2xl font-bold">10x</span>
+                  <span className="font-inter text-ink-500 text-xl">de</span>
                 </div>
-                <p className="font-inter text-ink-500 text-sm">à vista</p>
-                <div className="flex items-center justify-center gap-2 mt-3">
-                  <div className="h-px w-8 bg-brand-200" />
-                  <p className="font-inter text-ink-500 text-sm">ou <strong className="text-ink-900">10x R$5,76</strong></p>
-                  <div className="h-px w-8 bg-brand-200" />
+                <div className="flex items-baseline justify-center gap-1 mb-2">
+                  <span className="font-inter text-cta-600 text-2xl font-bold">R$</span>
+                  <span className="font-playfair text-6xl text-cta-600 font-bold leading-none">5</span>
+                  <span className="font-playfair text-3xl text-cta-600 font-bold">,76</span>
                 </div>
+                
+                {/* Divider */}
+                <div className="flex items-center justify-center gap-3 my-4">
+                  <div className="h-px w-16 bg-brand-200" />
+                  <span className="font-inter text-ink-400 text-xs uppercase tracking-wider">ou</span>
+                  <div className="h-px w-16 bg-brand-200" />
+                </div>
+                
+                {/* Cash - secondary */}
+                <p className="font-inter text-ink-500 text-base">
+                  <span className="font-semibold text-ink-700">R$ 47,90</span> à vista
+                </p>
               </div>
             </div>
 
@@ -335,6 +351,27 @@ const VSLPage = () => {
             </p>
           </div>
         </section>
+
+        {/* Footer */}
+        <footer className="px-4 py-8 max-w-2xl mx-auto text-center border-t border-brand-100/50">
+          <p className="font-inter text-ink-500 text-xs mb-2">
+            © {new Date().getFullYear()} Sueli Custódio. Todos os direitos reservados.
+          </p>
+          <Link to="/politica-de-privacidade" className="font-inter text-xs text-brand-500 hover:text-brand-600 underline underline-offset-2 transition-colors">
+            Política de Privacidade
+          </Link>
+        </footer>
+
+        {/* WhatsApp Floating Button */}
+        <a
+          href="https://wa.me/5511945300128?text=Olá! Tenho uma dúvida sobre o curso Autoestima Inabalável."
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_24px_rgba(37,211,102,0.5)] transition-all hover:scale-110"
+          aria-label="Tirar dúvidas no WhatsApp"
+        >
+          <MessageCircle className="w-7 h-7 text-white fill-white" />
+        </a>
       </div>
     </>
   );
