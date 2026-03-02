@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { quizQuestions, calculateOverloadScore, calculateAwarenessLevel, calculateDiscProfile } from '@/lib/quiz-data';
 import { QuizQuestion } from '@/components/quiz/QuizQuestion';
@@ -104,6 +105,7 @@ const QuizPage = () => {
       </Helmet>
 
       <div className="min-h-screen bg-paper-50 flex flex-col">
+
         {/* Progress bar — visible during quiz and lead phases */}
         {(phase === 'quiz' || phase === 'lead') && (
           <div className="pt-6 pb-2">
@@ -146,6 +148,18 @@ const QuizPage = () => {
 
           {phase === 'result' && <QuizResult name={leadName} overloadScore={overloadResult} />}
         </div>
+
+        <footer className="py-4 text-center">
+          <div className="flex items-center justify-center gap-3 font-inter text-xs text-ink-400">
+            <Link to="/politica-de-privacidade" className="underline hover:text-ink-600 transition-colors">
+              Política de Privacidade
+            </Link>
+            <span>•</span>
+            <Link to="/termos-de-uso" className="underline hover:text-ink-600 transition-colors">
+              Termos de Uso
+            </Link>
+          </div>
+        </footer>
       </div>
     </>
   );
