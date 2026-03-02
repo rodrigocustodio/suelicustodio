@@ -202,45 +202,88 @@ const VSLPage = () => {
           </div>
 
           <section className="px-4 pb-12 max-w-2xl mx-auto">
-            <h2 className="font-playfair text-2xl md:text-3xl text-ink-900 text-center mb-2">
-              Autoestima Inabalável
-            </h2>
-            <p className="font-inter text-ink-500 text-sm text-center mb-8">
-              Tudo o que você precisa para começar sua transformação
+            {/* Header */}
+            <div className="text-center mb-8">
+              <p className="font-inter text-2xl mb-2">🌸</p>
+              <h2 className="font-playfair text-2xl md:text-3xl text-ink-900 mb-2">
+                Oferta Especial — Mês das Mulheres
+              </h2>
+              <p className="font-inter text-ink-600 text-base leading-relaxed max-w-md mx-auto">
+                Março é o mês das mulheres.<br />
+                E você vai ganhar um <strong className="text-cta-600">presentão!</strong>
+              </p>
+            </div>
+
+            <p className="font-inter text-ink-700 text-base text-center mb-8 leading-relaxed max-w-md mx-auto">
+              Todas as mulheres que entrarem agora no <strong>Programa Autoestima Inabalável</strong> vão receber, além do curso:
             </p>
 
-            {/* Features */}
-            <div className="space-y-3 mb-10">
-              {[
-                { icon: '▶', text: 'Aulas curtas e práticas' },
-                { icon: '⚡', text: 'Acesso imediato' },
-                { icon: '🕐', text: 'Pode assistir no próprio ritmo' },
-              ].map((item) => (
-                <div key={item.text} className="flex items-center gap-4 bg-white/80 backdrop-blur-sm rounded-2xl px-5 py-4 shadow-soft border border-brand-100/50">
-                  <span className="text-lg">{item.icon}</span>
-                  <span className="font-inter text-ink-700 text-base">{item.text}</span>
+            {/* BÔNUS 1 */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-brand-100/50 mb-4">
+              <div className="flex items-start gap-3 mb-3">
+                <span className="text-2xl">🎁</span>
+                <div>
+                  <p className="font-inter text-xs uppercase tracking-widest text-cta-500 font-bold mb-1">Bônus 1 — Guia Prático</p>
+                  <h3 className="font-playfair text-lg text-ink-900 font-semibold">"Aprenda a Dizer Não Sem Culpa"</h3>
                 </div>
-              ))}
+              </div>
+              <p className="font-inter text-ink-600 text-sm leading-relaxed">
+                Um material complementar para você aplicar junto com as aulas.<br />
+                Não é teoria. São <strong>exercícios simples</strong> para começar a mudar o padrão no dia a dia.
+              </p>
+            </div>
+
+            {/* BÔNUS 2 */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-soft border border-brand-100/50 mb-4">
+              <div className="flex items-start gap-3 mb-3">
+                <span className="text-2xl">🎁</span>
+                <div>
+                  <p className="font-inter text-xs uppercase tracking-widest text-cta-500 font-bold mb-1">Bônus 2 — Aula Ao Vivo no Zoom</p>
+                  <h3 className="font-playfair text-lg text-ink-900 font-semibold">Encontro com Sueli Custódio</h3>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3 mb-3">
+                <span className="inline-flex items-center gap-1.5 bg-brand-50 text-ink-700 font-inter text-sm px-3 py-1.5 rounded-full border border-brand-100">
+                  📅 Dia 16 de Março
+                </span>
+                <span className="inline-flex items-center gap-1.5 bg-brand-50 text-ink-700 font-inter text-sm px-3 py-1.5 rounded-full border border-brand-100">
+                  ⏰ Ao vivo
+                </span>
+              </div>
+              <p className="font-inter text-ink-600 text-sm leading-relaxed mb-3">
+                Um encontro para tirar dúvidas, aprofundar pontos importantes e te orientar pessoalmente nos primeiros passos.
+              </p>
+              <div className="bg-cta-500/10 rounded-xl px-4 py-2.5 border border-cta-500/20">
+                <p className="font-inter text-cta-700 text-sm font-semibold">
+                  ⚠️ Limitado a 100 participantes no Zoom. Assim que completar, encerra.
+                </p>
+              </div>
             </div>
 
             {/* Pricing Card */}
-            <div className="relative mb-10">
-              <div className="absolute -inset-2 bg-gradient-to-br from-cta-500/25 to-brand-400/25 rounded-3xl blur-lg animate-pulse" />
-              <div className="relative bg-gradient-to-br from-white to-brand-50 rounded-2xl p-8 shadow-card text-center border-2 border-cta-500/30">
-                <div className="inline-block bg-cta-500 text-white font-inter font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
-                  Oferta especial
+            <div className="relative my-10">
+              <div className="absolute -inset-3 bg-gradient-to-br from-cta-500/25 to-brand-400/25 rounded-3xl blur-xl animate-pulse" />
+              <div className="relative bg-gradient-to-br from-white to-brand-50 rounded-2xl p-8 md:p-10 shadow-card text-center border-2 border-cta-500/30">
+                <div className="inline-block bg-cta-500 text-white font-inter font-bold text-xs uppercase tracking-widest px-5 py-2 rounded-full mb-6">
+                  💰 Investimento
                 </div>
                 
+                <p className="font-inter text-ink-600 text-sm mb-4">
+                  Acesso completo ao <strong>Autoestima Inabalável</strong>:
+                </p>
+
                 {/* Installment - PROMINENT */}
-                <p className="font-inter text-ink-500 text-sm mb-1">em até</p>
-                <div className="flex items-baseline justify-center gap-1 mb-1">
-                  <span className="font-inter text-cta-500 text-2xl font-bold">10x</span>
-                  <span className="font-inter text-ink-500 text-xl">de</span>
-                </div>
-                <div className="flex items-baseline justify-center gap-1 mb-2">
-                  <span className="font-inter text-cta-600 text-2xl font-bold">R$</span>
-                  <span className="font-playfair text-6xl text-cta-600 font-bold leading-none">5</span>
-                  <span className="font-playfair text-3xl text-cta-600 font-bold">,76</span>
+                <div className="bg-cta-500/5 rounded-2xl p-6 mb-4 border border-cta-500/15">
+                  <p className="font-inter text-ink-500 text-sm mb-2">em até</p>
+                  <div className="flex items-baseline justify-center gap-1 mb-1">
+                    <span className="font-inter text-cta-600 text-3xl font-bold">10x</span>
+                    <span className="font-inter text-ink-500 text-xl">de</span>
+                  </div>
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="font-inter text-cta-600 text-3xl font-bold">R$</span>
+                    <span className="font-playfair text-7xl text-cta-600 font-bold leading-none">5</span>
+                    <span className="font-playfair text-4xl text-cta-600 font-bold">,76</span>
+                  </div>
                 </div>
                 
                 {/* Divider */}
@@ -251,30 +294,89 @@ const VSLPage = () => {
                 </div>
                 
                 {/* Cash - secondary */}
-                <p className="font-inter text-ink-500 text-base">
+                <p className="font-inter text-ink-500 text-base mb-5">
                   <span className="font-semibold text-ink-700">R$ 47,90</span> à vista
+                </p>
+
+                <p className="font-inter text-ink-600 text-sm">
+                  Acesso imediato. <strong>Você começa hoje.</strong>
                 </p>
               </div>
             </div>
 
-            {/* Bonuses */}
-            <div className="mb-10">
-              <div className="flex items-center justify-center gap-2 mb-5">
-                <div className="h-px w-6 bg-cta-500/40" />
-                <h3 className="font-playfair text-xl text-ink-900">Bônus inclusos</h3>
-                <div className="h-px w-6 bg-cta-500/40" />
+            {/* CTA after price */}
+            <button
+              onClick={handleCheckout}
+              className="group w-full py-5 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-xl transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)] mb-10"
+            >
+              QUERO COMEÇAR AGORA
+              <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
+            </button>
+
+            {/* Upsell - Aula de Ansiedade */}
+            <div className="mb-8">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <div className="h-px w-12 bg-brand-200" />
+                <span className="text-xl">🌿</span>
+                <div className="h-px w-12 bg-brand-200" />
               </div>
-              <div className="space-y-3">
-                {[
-                  { emoji: '📖', text: 'Material de apoio' },
-                  { emoji: '🎥', text: 'Aula ao vivo' },
-                  { emoji: '✍️', text: 'Exercícios guiados' },
-                ].map((bonus) => (
-                  <div key={bonus.text} className="flex items-center gap-4 bg-gradient-to-r from-brand-50 to-white rounded-2xl px-5 py-4 border border-brand-100/40">
-                    <span className="text-xl">{bonus.emoji}</span>
-                    <span className="font-inter text-ink-700 text-base">{bonus.text}</span>
-                  </div>
+              <h3 className="font-playfair text-xl md:text-2xl text-ink-900 text-center mb-3">
+                Para quem quer ir mais fundo
+              </h3>
+              <p className="font-inter text-ink-600 text-base text-center mb-5 max-w-md mx-auto leading-relaxed">
+                Existe também a <strong>Aula de Ansiedade</strong>, que complementa o processo.
+              </p>
+              <p className="font-inter text-ink-600 text-sm text-center mb-4">
+                Porque muitas vezes o cansaço vem acompanhado de:
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 mb-6">
+                {['mente acelerada', 'dificuldade de relaxar', 'tensão constante'].map((item) => (
+                  <span key={item} className="inline-flex items-center gap-1.5 bg-brand-50 text-ink-700 font-inter text-sm px-4 py-2 rounded-full border border-brand-100">
+                    • {item}
+                  </span>
                 ))}
+              </div>
+            </div>
+
+            {/* Condição Especial */}
+            <div className="relative mb-10">
+              <div className="absolute -inset-2 bg-gradient-to-br from-cta-500/15 to-brand-400/15 rounded-3xl blur-md" />
+              <div className="relative bg-gradient-to-br from-white via-brand-50/50 to-cta-500/5 rounded-2xl p-7 shadow-card border-2 border-cta-500/25">
+                <div className="text-center mb-5">
+                  <span className="inline-block bg-ink-900 text-white font-inter font-bold text-xs uppercase tracking-widest px-4 py-1.5 rounded-full mb-3">
+                    🎯 Condição Especial
+                  </span>
+                  <p className="font-inter text-cta-600 text-sm font-semibold">
+                    Somente para as 10 primeiras
+                  </p>
+                </div>
+                
+                <p className="font-inter text-ink-700 text-base text-center leading-relaxed mb-5">
+                  As 10 primeiras mulheres que adquirirem:<br />
+                  <strong>Autoestima Inabalável + Aula de Ansiedade</strong><br />
+                  recebem:
+                </p>
+
+                <div className="bg-white rounded-xl p-5 border border-brand-100 mb-5">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">🎁</span>
+                    <div>
+                      <h4 className="font-playfair text-lg text-ink-900 font-semibold mb-1">
+                        Consulta Individual de 30 minutos com a Sueli
+                      </h4>
+                      <p className="font-inter text-ink-600 text-sm leading-relaxed">
+                        Um encontro particular. <strong>Você e ela.</strong><br />
+                        Para organizar seus próximos passos e aplicar o método à sua realidade.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-cta-500/10 rounded-xl px-4 py-3 border border-cta-500/20 text-center">
+                  <p className="font-inter text-cta-700 text-sm font-semibold">
+                    ⚠️ Assim que as 10 vagas forem preenchidas, essa condição sai do ar.
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -298,7 +400,7 @@ const VSLPage = () => {
               onClick={handleCheckout}
               className="group w-full py-5 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-bold text-xl transition-all shadow-[0_4px_20px_rgba(255,107,53,0.35)] hover:shadow-[0_6px_28px_rgba(255,107,53,0.45)]"
             >
-              QUERO COMEÇAR
+              QUERO COMEÇAR AGORA
               <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">→</span>
             </button>
 
