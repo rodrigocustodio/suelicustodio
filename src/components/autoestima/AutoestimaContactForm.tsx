@@ -109,7 +109,7 @@ export const AutoestimaContactForm = () => {
       // Redirect to WhatsApp after confirmed successful submission
       setTimeout(() => {
         console.log('🔗 Opening WhatsApp...');
-        window.open('https://wa.link/ugc1zl', '_blank');
+        window.open('https://wa.me/5511945300128?text=Seja%20bem-vinda%20%F0%9F%8C%B7%0A%0AQue%20bom%20que%20voc%C3%AA%20decidiu%20falar%20comigo.%0A%0APara%20eu%20te%20entender%20melhor%2C%20me%20conta%20uma%20coisa%3A%0A%0AO%20que%20hoje%20est%C3%A1%20mais%20pesado%20emocionalmente%20para%20voc%C3%AA%3F', '_blank');
       }, 2000);
       
     } catch (error) {
