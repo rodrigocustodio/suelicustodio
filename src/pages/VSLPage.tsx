@@ -512,7 +512,7 @@ const VSLPage = () => {
 
         {/* WhatsApp Floating Button */}
         <a
-          href="https://wa.me/5511945300128?text=Olá! Tenho uma dúvida sobre o curso Autoestima Inabalável."
+          href="https://wa.me/5511945300128?text=Seja%20bem-vinda%20%F0%9F%8C%B7%0A%0AQue%20bom%20que%20voc%C3%AA%20decidiu%20falar%20comigo.%0A%0APara%20eu%20te%20entender%20melhor%2C%20me%20conta%20uma%20coisa%3A%0A%0AO%20que%20hoje%20est%C3%A1%20mais%20pesado%20emocionalmente%20para%20voc%C3%AA%3F"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[hsl(142,70%,45%)] hover:bg-[hsl(142,70%,40%)] rounded-full flex items-center justify-center shadow-[0_4px_16px_rgba(37,211,102,0.4)] hover:shadow-[0_6px_24px_rgba(37,211,102,0.5)] transition-all hover:scale-110"
