@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { track } from '@/lib/analytics';
 
-const YOUTUBE_ID = 'rdrjoe4LZjI';
+const YOUTUBE_ID = 'IIEezIOz0LM';
 const CHECKOUT_URL = 'https://pay.kiwify.com.br/GX9EKPK';
 
 const VSLPage = () => {
