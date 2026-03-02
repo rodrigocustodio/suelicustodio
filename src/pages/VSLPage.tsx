@@ -15,6 +15,7 @@ const CHECKOUT_URL = 'https://pay.kiwify.com.br/GX9EKPK';
 
 const VSLPage = () => {
   const [showCTA, setShowCTA] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
   const playerRef = useRef<any>(null);
   const hasTriggeredRef = useRef(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -43,10 +44,13 @@ const VSLPage = () => {
       playerRef.current = new (window as any).YT.Player('vsl-player', {
         events: {
           onStateChange: (event: any) => {
-            if (event.data === (window as any).YT.PlayerState.PLAYING && !hasTriggeredRef.current) {
-              startProgressCheck();
-            }
-          },
+              if (event.data === (window as any).YT.PlayerState.PLAYING && !hasTriggeredRef.current) {
+                startProgressCheck();
+              }
+              if (event.data === (window as any).YT.PlayerState.ENDED) {
+                setVideoEnded(true);
+              }
+            },
         },
       });
     }
@@ -118,11 +122,27 @@ const VSLPage = () => {
               <iframe
                 id="vsl-player"
                 className="w-full h-full"
-                src={`https://www.youtube.com/embed/${YOUTUBE_ID}?enablejsapi=1&autoplay=1&mute=1&rel=0&modestbranding=1`}
+                src={`https://www.youtube.com/embed/${YOUTUBE_ID}?enablejsapi=1&autoplay=1&mute=1&rel=0&modestbranding=1&controls=0&showinfo=0&iv_load_policy=3&disablekb=1`}
                 title="Autoestima Inabalável"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
+              {/* Overlay to hide end screen suggestions */}
+              {videoEnded && (
+                <div 
+                  className="absolute inset-0 bg-ink-900 flex flex-col items-center justify-center cursor-pointer"
+                  onClick={() => {
+                    setVideoEnded(false);
+                    playerRef.current?.seekTo(0);
+                    playerRef.current?.playVideo();
+                  }}
+                >
+                  <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <p className="font-inter text-white/70 text-sm">Assistir novamente</p>
+                </div>
+              )}
             </div>
           </div>
 
