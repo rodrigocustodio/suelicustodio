@@ -13,11 +13,11 @@ serve(async (req) => {
   try {
     const { eventName, eventData, userData } = await req.json();
     
-    const pixelId = '3881783168788352';
+    const pixelId = Deno.env.get('FACEBOOK_PIXEL_ID');
     const accessToken = Deno.env.get('FACEBOOK_CONVERSION_API_TOKEN');
 
-    if (!accessToken) {
-      throw new Error('Facebook API token not configured');
+    if (!pixelId || !accessToken) {
+      throw new Error('Facebook configuration missing');
     }
 
     // Get client IP from various possible headers
