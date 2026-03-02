@@ -3,18 +3,20 @@ import { Helmet } from 'react-helmet-async';
 import { quizQuestions, calculateOverloadScore, calculateAwarenessLevel, calculateDiscProfile } from '@/lib/quiz-data';
 import { QuizQuestion } from '@/components/quiz/QuizQuestion';
 import { QuizLeadCapture, type LeadData } from '@/components/quiz/QuizLeadCapture';
-import { QuizTransition } from '@/components/quiz/QuizTransition';
+import { QuizResult } from '@/components/quiz/QuizResult';
 import { QuizProgressBar } from '@/components/quiz/QuizProgressBar';
 import { supabase } from '@/integrations/supabase/client';
 import { track } from '@/lib/analytics';
 
-type Phase = 'intro' | 'quiz' | 'lead' | 'transition';
+type Phase = 'intro' | 'quiz' | 'lead' | 'result';
 
 const QuizPage = () => {
   const [phase, setPhase] = useState<Phase>('intro');
   const [currentQ, setCurrentQ] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [leadName, setLeadName] = useState('');
+  const [overloadResult, setOverloadResult] = useState('');
 
   // PageView pixel
   useEffect(() => {
@@ -72,7 +74,9 @@ const QuizPage = () => {
         });
       }
 
-      setPhase('transition');
+      setLeadName(data.name);
+      setOverloadResult(overloadScore);
+      setPhase('result');
     } catch (err) {
       console.error('Error saving quiz response:', err);
       alert('Erro ao salvar. Por favor, tente novamente.');
@@ -140,7 +144,7 @@ const QuizPage = () => {
             <QuizLeadCapture onSubmit={handleLeadSubmit} isSubmitting={isSubmitting} />
           )}
 
-          {phase === 'transition' && <QuizTransition />}
+          {phase === 'result' && <QuizResult name={leadName} overloadScore={overloadResult} />}
         </div>
       </div>
     </>
