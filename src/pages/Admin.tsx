@@ -63,7 +63,7 @@ const Admin = () => {
       if (error) throw error;
       setMessages(data || []);
     } catch (error) {
-      console.error('Error fetching messages:', error);
+      
       toast({
         title: 'Erro ao carregar mensagens',
         description: 'Tente novamente mais tarde.',
@@ -96,7 +96,7 @@ const Admin = () => {
         title: 'Status atualizado',
       });
     } catch (error) {
-      console.error('Error updating message:', error);
+      
       toast({
         title: 'Erro ao atualizar',
         variant: 'destructive',

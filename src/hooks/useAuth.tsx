@@ -54,7 +54,7 @@ export const useAuth = () => {
       if (error) throw error;
       setIsAdmin(!!data);
     } catch (error) {
-      console.error('Error checking admin status:', error);
+      
       setIsAdmin(false);
     } finally {
       setLoading(false);
