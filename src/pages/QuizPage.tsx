@@ -79,7 +79,7 @@ const QuizPage = () => {
       setOverloadResult(overloadScore);
       setPhase('result');
     } catch (err) {
-      console.error('Error saving quiz response:', err);
+      
       alert('Erro ao salvar. Por favor, tente novamente.');
     } finally {
       setIsSubmitting(false);

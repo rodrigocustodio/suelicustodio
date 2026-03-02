@@ -37,17 +37,8 @@ export const AutoestimaContactForm = () => {
     setIsSubmitting(true);
     track('autoestima_form_submit');
 
-    console.log('🔄 Form submission started', {
-      name: data.name,
-      email: data.email,
-      whatsapp: data.whatsapp,
-      timestamp: new Date().toISOString()
-    });
 
     try {
-      // First, save to database with explicit error handling
-      console.log('💾 Attempting database insert...');
-      
       const { data: insertedData, error } = await supabase
         .from('contact_messages')
         .insert({
@@ -62,19 +53,12 @@ export const AutoestimaContactForm = () => {
         .select();
 
       if (error) {
-        console.error('❌ Database insert failed:', error);
-        throw new Error(`Database error: ${error.message}`);
+        throw new Error('Database error');
       }
 
       if (!insertedData || insertedData.length === 0) {
-        console.error('❌ No data returned from insert');
-        throw new Error('Failed to save data - no confirmation received');
+        throw new Error('Failed to save data');
       }
-
-      console.log('✅ Database insert successful:', insertedData);
-
-      // Only track Facebook events AFTER confirmed successful database insert
-      console.log('📊 Tracking Facebook events...');
       
       // Fire browser-side Facebook Pixel Lead event
       if (typeof window !== 'undefined' && window.fbq) {
@@ -82,7 +66,6 @@ export const AutoestimaContactForm = () => {
           content_name: 'Autoestima Inabalável',
           content_category: 'Contact Form',
         });
-        console.log('✅ Facebook Pixel Lead event fired');
       }
 
       // Track Facebook Lead event via Conversion API (non-blocking)
@@ -92,7 +75,7 @@ export const AutoestimaContactForm = () => {
       }, {
         email: data.email,
         phone: data.whatsapp.replace(/\D/g, ''),
-      }).catch(err => console.error('⚠️ Facebook tracking error:', err));
+      }).catch(() => {});
 
       // Show success message
       toast({
@@ -101,26 +84,18 @@ export const AutoestimaContactForm = () => {
         duration: 5000,
       });
 
-      console.log('✅ Form submission completed successfully');
-
       // Reset form
       form.reset();
       
       // Redirect to WhatsApp after confirmed successful submission
       setTimeout(() => {
-        console.log('🔗 Opening WhatsApp...');
         window.open('https://wa.me/5511945300128?text=Seja%20bem-vinda%20%F0%9F%8C%B7%0A%0AQue%20bom%20que%20voc%C3%AA%20decidiu%20falar%20comigo.%0A%0APara%20eu%20te%20entender%20melhor%2C%20me%20conta%20uma%20coisa%3A%0A%0AO%20que%20hoje%20est%C3%A1%20mais%20pesado%20emocionalmente%20para%20voc%C3%AA%3F', '_blank');
       }, 2000);
       
     } catch (error) {
-      console.error('❌ CRITICAL ERROR in form submission:', error);
-      
-      // Show detailed error to user
-      const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
-      
       toast({
-        title: '❌ Erro ao salvar dados',
-        description: `Não foi possível salvar suas informações. Detalhes: ${errorMessage}. Por favor, tente novamente.`,
+        title: 'Erro ao salvar dados',
+        description: 'Não foi possível salvar suas informações. Por favor, tente novamente.',
         variant: 'destructive',
         duration: 7000,
       });

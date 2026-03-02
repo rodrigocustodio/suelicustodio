@@ -34,12 +34,12 @@ export const trackFacebookEvent = async (
       },
     });
 
-    if (error) {
+    if (error && import.meta.env.DEV) {
       console.error('Error tracking Facebook conversion:', error);
-    } else {
-      console.log('Facebook conversion tracked successfully');
     }
   } catch (error) {
-    console.error('Error in trackFacebookEvent:', error);
+    if (import.meta.env.DEV) {
+      console.error('Error in trackFacebookEvent:', error);
+    }
   }
 };
