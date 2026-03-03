@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import quizIntroImg from '@/assets/quiz-intro.png';
 import { quizQuestions, calculateOverloadScore, calculateAwarenessLevel, calculateDiscProfile } from '@/lib/quiz-data';
 import { QuizQuestion } from '@/components/quiz/QuizQuestion';
 import { QuizLeadCapture, type LeadData } from '@/components/quiz/QuizLeadCapture';
@@ -123,6 +124,11 @@ const QuizPage = () => {
                 Você diz sim…<br />
                 quando queria dizer não.
               </h1>
+              <img
+                src={quizIntroImg}
+                alt="Mulher pensativa no sofá"
+                className="w-full max-w-sm rounded-2xl mb-8 opacity-90"
+              />
               <p className="font-inter text-ink-600 text-base md:text-lg mb-2 max-w-sm leading-relaxed">
                 E isso vai acumulando.
               </p>
