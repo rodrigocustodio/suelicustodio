@@ -120,33 +120,33 @@ const QuizPage = () => {
         <div className="flex-1 flex flex-col">
           {phase === 'intro' && (
             <div className="flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
-              <h1 className="font-playfair text-3xl md:text-4xl text-ink-900 mb-6 leading-snug max-w-md">
+              <h1 className="font-playfair text-3xl md:text-4xl text-ink-900 mb-6 leading-snug max-w-md animate-fade-in" style={{ animationDuration: '0.6s' }}>
                 Você diz sim…<br />
                 quando queria dizer não.
               </h1>
               <img
                 src={quizIntroImg}
                 alt="Mulher pensativa no sofá"
-                className="w-full max-w-sm rounded-2xl mb-8 opacity-90"
+                className="w-full max-w-sm rounded-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDuration: '0.8s', animationDelay: '0.3s', animationFillMode: 'both' }}
               />
-              <p className="font-inter text-ink-600 text-base md:text-lg mb-2 max-w-sm leading-relaxed">
+              <p className="font-inter text-ink-600 text-base md:text-lg mb-2 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '0.6s', animationFillMode: 'both' }}>
                 E isso vai acumulando.
               </p>
-              <p className="font-inter text-ink-500 text-base md:text-lg mb-8 max-w-sm leading-relaxed">
+              <p className="font-inter text-ink-500 text-base md:text-lg mb-8 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '0.8s', animationFillMode: 'both' }}>
                 Cansaço.<br />
                 Sobrecarga.<br />
                 Silêncio.
               </p>
-              <p className="font-inter text-ink-500 text-sm md:text-base mb-2 max-w-sm leading-relaxed">
+              <p className="font-inter text-ink-500 text-sm md:text-base mb-2 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.0s', animationFillMode: 'both' }}>
                 Antes de continuar, responda algumas perguntas rápidas.
               </p>
-              <p className="font-inter text-ink-400 text-sm md:text-base mb-10 max-w-sm leading-relaxed">
+              <p className="font-inter text-ink-400 text-sm md:text-base mb-10 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.2s', animationFillMode: 'both' }}>
                 Pode levar menos de 2 minutos.<br />
                 E você vai entender qual padrão está por trás disso.
               </p>
               <button
                 onClick={handleStart}
-                className="w-full max-w-xs py-4 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-semibold text-lg transition-colors"
+                className="w-full max-w-xs py-4 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-semibold text-lg transition-colors animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.4s', animationFillMode: 'both' }}
               >
                 COMEÇAR TESTE
               </button>
