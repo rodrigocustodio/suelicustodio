@@ -127,7 +127,7 @@ const QuizPage = () => {
               <img
                 src={quizIntroImg}
                 alt="Mulher pensativa no sofá"
-                className="w-full max-w-sm rounded-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDuration: '0.8s', animationDelay: '0.3s', animationFillMode: 'both' }}
+                className="w-full max-w-sm aspect-[3/4] object-cover rounded-2xl mb-8 opacity-90 animate-fade-in" style={{ animationDuration: '0.8s', animationDelay: '0.3s', animationFillMode: 'both' }}
               />
               <p className="font-inter text-ink-600 text-base md:text-lg mb-2 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '0.6s', animationFillMode: 'both' }}>
                 E isso vai acumulando.
