@@ -133,20 +133,28 @@ const QuizPage = () => {
                 E isso vai acumulando.
               </p>
               <p className="font-inter text-ink-500 text-base md:text-lg mb-8 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '0.8s', animationFillMode: 'both' }}>
-                Cansaço.<br />
-                Sobrecarga.<br />
-                Silêncio.
+                Responsabilidades.<br />
+                Culpa.<br />
+                Cansaço que ninguém vê.
               </p>
-              <p className="font-inter text-ink-500 text-sm md:text-base mb-2 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.0s', animationFillMode: 'both' }}>
-                Antes de continuar, responda algumas perguntas rápidas.
+              <p className="font-inter text-ink-600 text-base md:text-lg mb-2 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.0s', animationFillMode: 'both' }}>
+                Mas talvez não seja falta de força.
               </p>
-              <p className="font-inter text-ink-400 text-sm md:text-base mb-10 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.2s', animationFillMode: 'both' }}>
-                Pode levar menos de 2 minutos.<br />
-                E você vai entender qual padrão está por trás disso.
+              <p className="font-inter text-ink-500 text-sm md:text-base mb-8 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.2s', animationFillMode: 'both' }}>
+                Pode ser apenas um padrão que você aprendeu sem perceber.
+              </p>
+              <p className="font-inter text-ink-500 text-sm md:text-base mb-1 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.4s', animationFillMode: 'both' }}>
+                Responda algumas perguntas rápidas
+              </p>
+              <p className="font-inter text-ink-400 text-sm md:text-base mb-3 max-w-sm leading-relaxed animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.5s', animationFillMode: 'both' }}>
+                (eu prometo que leva cerca de 2 minutos)
+              </p>
+              <p className="font-inter text-ink-600 text-sm md:text-base mb-10 max-w-sm leading-relaxed font-medium animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.6s', animationFillMode: 'both' }}>
+                E descubra qual padrão está por trás da sua sobrecarga.
               </p>
               <button
                 onClick={handleStart}
-                className="w-full max-w-xs py-4 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-semibold text-lg transition-colors animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.4s', animationFillMode: 'both' }}
+                className="w-full max-w-xs py-4 rounded-xl bg-cta-500 hover:bg-cta-600 active:bg-cta-700 text-white font-inter font-semibold text-lg transition-colors animate-fade-in" style={{ animationDuration: '0.6s', animationDelay: '1.8s', animationFillMode: 'both' }}
               >
                 COMEÇAR TESTE
               </button>
