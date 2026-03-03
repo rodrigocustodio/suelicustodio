@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import quizIntroImg from '@/assets/quiz-intro.png';
+import quizIntroImg from '@/assets/quiz-intro.webp';
 import { quizQuestions, calculateOverloadScore, calculateAwarenessLevel, calculateDiscProfile } from '@/lib/quiz-data';
 import { QuizQuestion } from '@/components/quiz/QuizQuestion';
 import { QuizLeadCapture, type LeadData } from '@/components/quiz/QuizLeadCapture';
