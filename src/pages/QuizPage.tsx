@@ -119,11 +119,24 @@ const QuizPage = () => {
         <div className="flex-1 flex flex-col">
           {phase === 'intro' && (
             <div className="flex flex-col items-center justify-center min-h-[80vh] px-6 text-center">
-              <h1 className="font-playfair text-3xl md:text-4xl text-ink-900 mb-4 leading-snug max-w-md">
-                Você não está exagerando.
+              <h1 className="font-playfair text-3xl md:text-4xl text-ink-900 mb-6 leading-snug max-w-md">
+                Você diz sim…<br />
+                quando queria dizer não.
               </h1>
-              <p className="font-inter text-ink-500 text-base md:text-lg mb-10 max-w-sm leading-relaxed">
-                Responda algumas perguntas rápidas e receba no seu email um relatório sobre seu padrão de sobrecarga.
+              <p className="font-inter text-ink-600 text-base md:text-lg mb-2 max-w-sm leading-relaxed">
+                E isso vai acumulando.
+              </p>
+              <p className="font-inter text-ink-500 text-base md:text-lg mb-8 max-w-sm leading-relaxed">
+                Cansaço.<br />
+                Sobrecarga.<br />
+                Silêncio.
+              </p>
+              <p className="font-inter text-ink-500 text-sm md:text-base mb-2 max-w-sm leading-relaxed">
+                Antes de continuar, responda algumas perguntas rápidas.
+              </p>
+              <p className="font-inter text-ink-400 text-sm md:text-base mb-10 max-w-sm leading-relaxed">
+                Pode levar menos de 2 minutos.<br />
+                E você vai entender qual padrão está por trás disso.
               </p>
               <button
                 onClick={handleStart}
