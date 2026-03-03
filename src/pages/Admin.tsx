@@ -23,11 +23,24 @@ interface ContactMessage {
   source_page: string | null;
 }
 
+interface QuizResponse {
+  id: string;
+  created_at: string;
+  name: string;
+  email: string;
+  whatsapp: string;
+  overload_score: string;
+  awareness_level: string;
+  disc_profile: string;
+  consent_marketing: boolean;
+}
+
 const Admin = () => {
   const navigate = useNavigate();
   const { user, loading, isAdmin, signOut } = useAuth();
   const { toast } = useToast();
   const [messages, setMessages] = useState<ContactMessage[]>([]);
+  const [quizResponses, setQuizResponses] = useState<QuizResponse[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
 
   useEffect(() => {
@@ -50,6 +63,7 @@ const Admin = () => {
   useEffect(() => {
     if (isAdmin) {
       fetchMessages();
+      fetchQuizResponses();
     }
   }, [isAdmin]);
 
@@ -71,6 +85,24 @@ const Admin = () => {
       });
     } finally {
       setLoadingMessages(false);
+    }
+  };
+
+  const fetchQuizResponses = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('quiz_responses')
+        .select('id, created_at, name, email, whatsapp, overload_score, awareness_level, disc_profile, consent_marketing')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setQuizResponses(data || []);
+    } catch {
+      toast({
+        title: 'Erro ao carregar respostas do quiz',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      });
     }
   };
 
@@ -180,6 +212,63 @@ const Admin = () => {
                           >
                             {message.read ? 'Marcar como nova' : 'Marcar como lida'}
                           </Button>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Respostas do Quiz</CardTitle>
+            <CardDescription>
+              Total de {quizResponses.length} cadastros do teste de sobrecarga
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {quizResponses.length === 0 ? (
+              <p className="text-center text-ink-500 py-8">
+                Nenhuma resposta recebida ainda.
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Nome</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>WhatsApp</TableHead>
+                      <TableHead>Sobrecarga</TableHead>
+                      <TableHead>Consciência</TableHead>
+                      <TableHead>Perfil DISC</TableHead>
+                      <TableHead>Marketing</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {quizResponses.map((resp) => (
+                      <TableRow key={resp.id}>
+                        <TableCell>
+                          {format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell className="font-medium">{resp.name}</TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.overload_score === 'alto' ? 'destructive' : resp.overload_score === 'moderado' ? 'default' : 'secondary'}>
+                            {resp.overload_score}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{resp.awareness_level}</TableCell>
+                        <TableCell>{resp.disc_profile}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.consent_marketing ? 'default' : 'outline'}>
+                            {resp.consent_marketing ? 'Sim' : 'Não'}
+                          </Badge>
                         </TableCell>
                       </TableRow>
                     ))}
