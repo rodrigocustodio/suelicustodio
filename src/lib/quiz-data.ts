@@ -6,27 +6,27 @@ export interface QuizQuestion {
 }
 
 export const quizQuestions: QuizQuestion[] = [
-  // Bloco 1 — Sobrecarga emocional
+  // Bloco 1 — Identificação Emocional
   {
     id: 1,
     block: 'overload',
-    text: 'Quando alguém pede ajuda, você:',
+    text: 'Você costuma sentir que:',
     options: [
-      { label: 'A', value: 'a', text: 'Avalia se pode ajudar' },
-      { label: 'B', value: 'b', text: 'Tenta ajudar se der' },
-      { label: 'C', value: 'c', text: 'Ajuda mesmo sem poder' },
-      { label: 'D', value: 'd', text: 'Ajuda mesmo ficando sobrecarregada' },
+      { label: 'A', value: 'a', text: 'Poderia colocar mais limites' },
+      { label: 'B', value: 'b', text: 'Se culpa quando diz não' },
+      { label: 'C', value: 'c', text: 'Carrega mais do que deveria' },
+      { label: 'D', value: 'd', text: 'Está sempre disponível para todos' },
     ],
   },
   {
     id: 2,
     block: 'overload',
-    text: 'No seu dia a dia, você sente:',
+    text: 'Ao final do dia sua mente fica:',
     options: [
-      { label: 'A', value: 'a', text: 'Equilíbrio' },
-      { label: 'B', value: 'b', text: 'Correria normal' },
-      { label: 'C', value: 'c', text: 'Cansaço frequente' },
-      { label: 'D', value: 'd', text: 'Exaustão mental' },
+      { label: 'A', value: 'a', text: 'Tranquila' },
+      { label: 'B', value: 'b', text: 'Pensativa' },
+      { label: 'C', value: 'c', text: 'Acelerada' },
+      { label: 'D', value: 'd', text: 'Não consegue desligar' },
     ],
   },
   {
@@ -51,44 +51,22 @@ export const quizQuestions: QuizQuestion[] = [
       { label: 'D', value: 'd', text: 'Sempre' },
     ],
   },
+  // Bloco 2 — Consciência
   {
     id: 5,
-    block: 'overload',
-    text: 'Ao final do dia, sua mente fica:',
-    options: [
-      { label: 'A', value: 'a', text: 'Tranquila' },
-      { label: 'B', value: 'b', text: 'Pensativa' },
-      { label: 'C', value: 'c', text: 'Acelerada' },
-      { label: 'D', value: 'd', text: 'Não consegue desligar' },
-    ],
-  },
-  // Bloco 2 — Consciência do problema
-  {
-    id: 6,
     block: 'awareness',
     text: 'Você acredita que esse cansaço vem de:',
     options: [
       { label: 'A', value: 'a', text: 'Rotina pesada' },
       { label: 'B', value: 'b', text: 'Falta de tempo' },
       { label: 'C', value: 'c', text: 'Forma como você lida com tudo' },
-      { label: 'D', value: 'd', text: 'Um padrão que se repete' },
+      { label: 'D', value: 'd', text: 'Um padrão seu que se repete' },
     ],
   },
   {
-    id: 7,
+    id: 6,
     block: 'awareness',
-    text: 'Você já tentou mudar isso antes?',
-    options: [
-      { label: 'A', value: 'a', text: 'Nunca pensei nisso' },
-      { label: 'B', value: 'b', text: 'Já pensei mas não fiz' },
-      { label: 'C', value: 'c', text: 'Já tentei sozinha' },
-      { label: 'D', value: 'd', text: 'Já procurei ajuda' },
-    ],
-  },
-  {
-    id: 8,
-    block: 'awareness',
-    text: 'Se existisse um método simples para mudar isso:',
+    text: 'Se existisse um método simples para mudar esse padrão:',
     options: [
       { label: 'A', value: 'a', text: 'Não funcionaria para mim' },
       { label: 'B', value: 'b', text: 'Talvez funcionasse' },
@@ -98,9 +76,9 @@ export const quizQuestions: QuizQuestion[] = [
   },
   // Bloco 3 — Perfil DISC
   {
-    id: 9,
+    id: 7,
     block: 'disc',
-    text: 'Em situações difíceis, você tende a:',
+    text: 'Em situações difíceis você tende a:',
     options: [
       { label: 'A', value: 'a', text: 'Resolver rápido' },
       { label: 'B', value: 'b', text: 'Conversar com alguém' },
@@ -109,7 +87,7 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
-    id: 10,
+    id: 8,
     block: 'disc',
     text: 'Você se sente mais confortável quando:',
     options: [
@@ -120,18 +98,7 @@ export const quizQuestions: QuizQuestion[] = [
     ],
   },
   {
-    id: 11,
-    block: 'disc',
-    text: 'Quando precisa decidir algo importante, você:',
-    options: [
-      { label: 'A', value: 'a', text: 'Decide rápido' },
-      { label: 'B', value: 'b', text: 'Pergunta opinião' },
-      { label: 'C', value: 'c', text: 'Demora um pouco' },
-      { label: 'D', value: 'd', text: 'Analisa muito' },
-    ],
-  },
-  {
-    id: 12,
+    id: 9,
     block: 'disc',
     text: 'O que mais te incomoda no dia a dia?',
     options: [
@@ -147,7 +114,7 @@ export const quizQuestions: QuizQuestion[] = [
 const scoreMap: Record<string, number> = { a: 1, b: 2, c: 3, d: 4 };
 
 export function calculateOverloadScore(answers: Record<number, string>): string {
-  const ids = [1, 2, 3, 4, 5];
+  const ids = [1, 2, 3, 4];
   const total = ids.reduce((sum, id) => sum + (scoreMap[answers[id]] || 0), 0);
   const avg = total / ids.length;
   if (avg <= 1.5) return 'baixo';
@@ -156,7 +123,7 @@ export function calculateOverloadScore(answers: Record<number, string>): string 
 }
 
 export function calculateAwarenessLevel(answers: Record<number, string>): string {
-  const ids = [6, 7, 8];
+  const ids = [5, 6];
   const total = ids.reduce((sum, id) => sum + (scoreMap[answers[id]] || 0), 0);
   const avg = total / ids.length;
   if (avg <= 1.5) return 'baixo';
@@ -166,7 +133,7 @@ export function calculateAwarenessLevel(answers: Record<number, string>): string
 }
 
 export function calculateDiscProfile(answers: Record<number, string>): string {
-  const ids = [9, 10, 11, 12];
+  const ids = [7, 8, 9];
   const counts: Record<string, number> = { a: 0, b: 0, c: 0, d: 0 };
   ids.forEach((id) => {
     const val = answers[id];

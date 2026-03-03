@@ -10,7 +10,7 @@ export const QuizQuestion = ({ question, selectedAnswer, onSelect }: QuizQuestio
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
       <p className="text-xs font-inter uppercase tracking-widest text-brand-500 mb-4">
-        Pergunta {question.id} de 12
+        Pergunta {question.id} de 9
       </p>
       <h2 className="font-playfair text-2xl md:text-3xl text-ink-900 text-center mb-8 leading-snug max-w-lg">
         {question.text}
