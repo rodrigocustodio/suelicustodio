@@ -64,6 +64,7 @@ export type Database = {
           forma_pagamento: string
           id: string
           nome_completo: string
+          source_page: string
         }
         Insert: {
           consent_privacy?: boolean
@@ -75,6 +76,7 @@ export type Database = {
           forma_pagamento?: string
           id?: string
           nome_completo: string
+          source_page?: string
         }
         Update: {
           consent_privacy?: boolean
@@ -86,6 +88,7 @@ export type Database = {
           forma_pagamento?: string
           id?: string
           nome_completo?: string
+          source_page?: string
         }
         Relationships: []
       }

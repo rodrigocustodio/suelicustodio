@@ -75,6 +75,7 @@ const MentoriaPage = () => {
         expectativa: result.data.expectativa,
         forma_pagamento: result.data.forma_pagamento,
         consent_privacy: result.data.consent_privacy,
+        source_page: 'mentoria',
       });
 
       if (error) throw error;
