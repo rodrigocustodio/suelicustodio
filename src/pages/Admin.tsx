@@ -101,6 +101,24 @@ const Admin = () => {
     }
   };
 
+  const fetchMentoriaInscricoes = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('mentoria_inscricoes')
+        .select('id, created_at, nome_completo, data_nascimento, email, contato, expectativa, forma_pagamento')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setMentoriaInscricoes(data || []);
+    } catch {
+      toast({
+        title: 'Erro ao carregar inscrições da mentoria',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      });
+    }
+  };
+
   const fetchQuizResponses = async () => {
     try {
       const { data, error } = await supabase
