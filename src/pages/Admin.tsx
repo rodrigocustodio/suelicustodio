@@ -35,6 +35,17 @@ interface QuizResponse {
   consent_marketing: boolean;
 }
 
+interface MentoriaInscricao {
+  id: string;
+  created_at: string;
+  nome_completo: string;
+  data_nascimento: string;
+  email: string;
+  contato: string;
+  expectativa: string;
+  forma_pagamento: string;
+}
+
 const Admin = () => {
   const navigate = useNavigate();
   const { user, loading, isAdmin, signOut } = useAuth();
