@@ -313,13 +313,13 @@ const Admin = () => {
 
         <Card className="mt-8">
           <CardHeader>
-            <CardTitle>Inscrições da Mentoria</CardTitle>
+            <CardTitle>Inscrições da Mentoria (Brasil)</CardTitle>
             <CardDescription>
-              Total de {mentoriaInscricoes.length} inscrições — Reconstruindo a Mulher Interior
+              Total de {mentoriaInscricoes.filter(i => i.source_page !== 'gosix').length} inscrições — Reconstruindo a Mulher Interior
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {mentoriaInscricoes.length === 0 ? (
+            {mentoriaInscricoes.filter(i => i.source_page !== 'gosix').length === 0 ? (
               <p className="text-center text-ink-500 py-8">
                 Nenhuma inscrição recebida ainda.
               </p>
@@ -338,7 +338,7 @@ const Admin = () => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {mentoriaInscricoes.map((insc) => (
+                    {mentoriaInscricoes.filter(i => i.source_page !== 'gosix').map((insc) => (
                       <TableRow key={insc.id}>
                         <TableCell>
                           {format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}
@@ -352,6 +352,61 @@ const Admin = () => {
                         <TableCell>
                           <Badge variant={insc.forma_pagamento === 'pix' ? 'default' : 'secondary'}>
                             {insc.forma_pagamento === 'pix' ? 'PIX' : 'Cartão'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="max-w-xs truncate" title={insc.expectativa}>
+                          {insc.expectativa}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Inscrições GoSix (EUA)</CardTitle>
+            <CardDescription>
+              Total de {mentoriaInscricoes.filter(i => i.source_page === 'gosix').length} inscrições — Público nos Estados Unidos
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {mentoriaInscricoes.filter(i => i.source_page === 'gosix').length === 0 ? (
+              <p className="text-center text-ink-500 py-8">
+                Nenhuma inscrição recebida ainda.
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Nome</TableHead>
+                      <TableHead>Nascimento</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Telefone (US)</TableHead>
+                      <TableHead>Pagamento</TableHead>
+                      <TableHead>Expectativa</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {mentoriaInscricoes.filter(i => i.source_page === 'gosix').map((insc) => (
+                      <TableRow key={insc.id}>
+                        <TableCell>
+                          {format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell className="font-medium">{insc.nome_completo}</TableCell>
+                        <TableCell>
+                          {format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell>{insc.email}</TableCell>
+                        <TableCell>{insc.contato}</TableCell>
+                        <TableCell>
+                          <Badge variant={insc.forma_pagamento === 'remitly' ? 'default' : 'secondary'}>
+                            {insc.forma_pagamento === 'remitly' ? 'Remitly' : 'Cartão'}
                           </Badge>
                         </TableCell>
                         <TableCell className="max-w-xs truncate" title={insc.expectativa}>
