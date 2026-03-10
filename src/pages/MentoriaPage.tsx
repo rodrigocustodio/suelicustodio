@@ -25,8 +25,10 @@ const MentoriaPage = () => {
   const [nome, setNome] = useState('');
   const [dataNasc, setDataNasc] = useState<Date>();
   const [email, setEmail] = useState('');
-  const [contato, setContato] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
   const [expectativa, setExpectativa] = useState('');
+  const [formaPagamento, setFormaPagamento] = useState<'pix' | 'cartao' | ''>('');
+  const [consentPrivacy, setConsentPrivacy] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
