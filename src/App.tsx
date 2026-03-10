@@ -9,6 +9,7 @@ import TermsOfService from "./pages/TermsOfService";
 import NotFound from "./pages/NotFound";
 import QuizPage from "./pages/QuizPage";
 import VSLPage from "./pages/VSLPage";
+import MentoriaPage from "./pages/MentoriaPage";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
         <Route path="/autoestima-inabalavel" element={<AutoestimaLanding />} />
         <Route path="/teste" element={<QuizPage />} />
         <Route path="/vsl" element={<VSLPage />} />
+        <Route path="/mentoria" element={<MentoriaPage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
         <Route path="/termos-de-uso" element={<TermsOfService />} />
         <Route path="/auth" element={<Auth />} />
