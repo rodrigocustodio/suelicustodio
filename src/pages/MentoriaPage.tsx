@@ -15,16 +15,20 @@ const inscricaoSchema = z.object({
   nome_completo: z.string().trim().min(1, 'Nome é obrigatório').max(200),
   data_nascimento: z.date({ required_error: 'Data de nascimento é obrigatória' }),
   email: z.string().trim().email('Email inválido').max(320),
-  contato: z.string().trim().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Use o formato (11) 99999-9999'),
+  whatsapp: z.string().trim().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Use o formato (11) 99999-9999'),
   expectativa: z.string().trim().min(10, 'Mínimo de 10 caracteres').max(2000),
+  forma_pagamento: z.enum(['pix', 'cartao'], { required_error: 'Selecione a forma de pagamento' }),
+  consent_privacy: z.literal(true, { errorMap: () => ({ message: 'Você precisa aceitar a Política de Privacidade' }) }),
 });
 
 const MentoriaPage = () => {
   const [nome, setNome] = useState('');
   const [dataNasc, setDataNasc] = useState<Date>();
   const [email, setEmail] = useState('');
-  const [contato, setContato] = useState('');
+  const [whatsapp, setWhatsapp] = useState('');
   const [expectativa, setExpectativa] = useState('');
+  const [formaPagamento, setFormaPagamento] = useState<'pix' | 'cartao' | ''>('');
+  const [consentPrivacy, setConsentPrivacy] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -44,8 +48,10 @@ const MentoriaPage = () => {
       nome_completo: nome,
       data_nascimento: dataNasc,
       email,
-      contato,
+      whatsapp,
       expectativa,
+      forma_pagamento: formaPagamento || undefined,
+      consent_privacy: consentPrivacy,
     });
 
     if (!result.success) {
@@ -65,8 +71,10 @@ const MentoriaPage = () => {
         nome_completo: result.data.nome_completo,
         data_nascimento: format(result.data.data_nascimento, 'yyyy-MM-dd'),
         email: result.data.email,
-        contato: result.data.contato,
+        contato: result.data.whatsapp,
         expectativa: result.data.expectativa,
+        forma_pagamento: result.data.forma_pagamento,
+        consent_privacy: result.data.consent_privacy,
       });
 
       if (error) throw error;
@@ -195,20 +203,20 @@ const MentoriaPage = () => {
             )}
           </div>
 
-          {/* Contato */}
+          {/* WhatsApp */}
           <div>
             <label className="block font-inter text-sm text-ink-700 mb-1.5">
-              Contato *
+              WhatsApp *
             </label>
             <input
               type="tel"
-              value={contato}
-              onChange={(e) => setContato(formatPhone(e.target.value))}
+              value={whatsapp}
+              onChange={(e) => setWhatsapp(formatPhone(e.target.value))}
               placeholder="(11) 99999-9999"
               className={inputClass}
             />
-            {errors.contato && (
-              <p className="text-sm text-destructive mt-1">{errors.contato}</p>
+            {errors.whatsapp && (
+              <p className="text-sm text-destructive mt-1">{errors.whatsapp}</p>
             )}
           </div>
 
@@ -228,6 +236,74 @@ const MentoriaPage = () => {
               <p className="text-sm text-destructive mt-1">{errors.expectativa}</p>
             )}
           </div>
+
+          {/* Forma de pagamento */}
+          <div>
+            <label className="block font-inter text-sm text-ink-700 mb-3">
+              Forma de pagamento *
+            </label>
+            <div className="space-y-3">
+              <label
+                className={cn(
+                  'flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-colors',
+                  formaPagamento === 'pix'
+                    ? 'border-brand-500 bg-brand-50'
+                    : 'border-brand-100 bg-white hover:border-brand-200'
+                )}
+              >
+                <input
+                  type="radio"
+                  name="forma_pagamento"
+                  value="pix"
+                  checked={formaPagamento === 'pix'}
+                  onChange={() => setFormaPagamento('pix')}
+                  className="h-5 w-5 text-brand-500 focus:ring-brand-500"
+                />
+                <span className="font-inter text-ink-900">PIX</span>
+              </label>
+              <label
+                className={cn(
+                  'flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-colors',
+                  formaPagamento === 'cartao'
+                    ? 'border-brand-500 bg-brand-50'
+                    : 'border-brand-100 bg-white hover:border-brand-200'
+                )}
+              >
+                <input
+                  type="radio"
+                  name="forma_pagamento"
+                  value="cartao"
+                  checked={formaPagamento === 'cartao'}
+                  onChange={() => setFormaPagamento('cartao')}
+                  className="h-5 w-5 text-brand-500 focus:ring-brand-500"
+                />
+                <span className="font-inter text-ink-900">Cartão de Crédito</span>
+              </label>
+            </div>
+            {errors.forma_pagamento && (
+              <p className="text-sm text-destructive mt-1">{errors.forma_pagamento}</p>
+            )}
+          </div>
+
+          {/* Consentimento LGPD */}
+          <label className="flex items-start gap-3 cursor-pointer pt-2">
+            <input
+              type="checkbox"
+              checked={consentPrivacy}
+              onChange={(e) => setConsentPrivacy(e.target.checked)}
+              className="mt-1 h-5 w-5 rounded border-brand-300 text-brand-500 focus:ring-brand-500"
+            />
+            <span className="font-inter text-sm text-ink-500 leading-snug">
+              Li e aceito a{' '}
+              <a href="/politica-de-privacidade" target="_blank" className="text-brand-500 underline">
+                Política de Privacidade
+              </a>{' '}
+              e autorizo o uso dos meus dados para fins de inscrição na mentoria, conforme a LGPD (Lei nº 13.709/2018). *
+            </span>
+          </label>
+          {errors.consent_privacy && (
+            <p className="text-sm text-destructive">{errors.consent_privacy}</p>
+          )}
 
           <button
             type="submit"

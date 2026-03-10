@@ -55,29 +55,35 @@ export type Database = {
       }
       mentoria_inscricoes: {
         Row: {
+          consent_privacy: boolean
           contato: string
           created_at: string
           data_nascimento: string
           email: string
           expectativa: string
+          forma_pagamento: string
           id: string
           nome_completo: string
         }
         Insert: {
+          consent_privacy?: boolean
           contato: string
           created_at?: string
           data_nascimento: string
           email: string
           expectativa: string
+          forma_pagamento?: string
           id?: string
           nome_completo: string
         }
         Update: {
+          consent_privacy?: boolean
           contato?: string
           created_at?: string
           data_nascimento?: string
           email?: string
           expectativa?: string
+          forma_pagamento?: string
           id?: string
           nome_completo?: string
         }
