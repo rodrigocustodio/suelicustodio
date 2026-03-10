@@ -35,12 +35,24 @@ interface QuizResponse {
   consent_marketing: boolean;
 }
 
+interface MentoriaInscricao {
+  id: string;
+  created_at: string;
+  nome_completo: string;
+  data_nascimento: string;
+  email: string;
+  contato: string;
+  expectativa: string;
+  forma_pagamento: string;
+}
+
 const Admin = () => {
   const navigate = useNavigate();
   const { user, loading, isAdmin, signOut } = useAuth();
   const { toast } = useToast();
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [quizResponses, setQuizResponses] = useState<QuizResponse[]>([]);
+  const [mentoriaInscricoes, setMentoriaInscricoes] = useState<MentoriaInscricao[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
 
   useEffect(() => {
@@ -64,6 +76,7 @@ const Admin = () => {
     if (isAdmin) {
       fetchMessages();
       fetchQuizResponses();
+      fetchMentoriaInscricoes();
     }
   }, [isAdmin]);
 
@@ -85,6 +98,24 @@ const Admin = () => {
       });
     } finally {
       setLoadingMessages(false);
+    }
+  };
+
+  const fetchMentoriaInscricoes = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('mentoria_inscricoes')
+        .select('id, created_at, nome_completo, data_nascimento, email, contato, expectativa, forma_pagamento')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setMentoriaInscricoes(data || []);
+    } catch {
+      toast({
+        title: 'Erro ao carregar inscrições da mentoria',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      });
     }
   };
 
@@ -269,6 +300,61 @@ const Admin = () => {
                           <Badge variant={resp.consent_marketing ? 'default' : 'outline'}>
                             {resp.consent_marketing ? 'Sim' : 'Não'}
                           </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Inscrições da Mentoria</CardTitle>
+            <CardDescription>
+              Total de {mentoriaInscricoes.length} inscrições — Reconstruindo a Mulher Interior
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {mentoriaInscricoes.length === 0 ? (
+              <p className="text-center text-ink-500 py-8">
+                Nenhuma inscrição recebida ainda.
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Nome</TableHead>
+                      <TableHead>Nascimento</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>WhatsApp</TableHead>
+                      <TableHead>Pagamento</TableHead>
+                      <TableHead>Expectativa</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {mentoriaInscricoes.map((insc) => (
+                      <TableRow key={insc.id}>
+                        <TableCell>
+                          {format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell className="font-medium">{insc.nome_completo}</TableCell>
+                        <TableCell>
+                          {format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell>{insc.email}</TableCell>
+                        <TableCell>{insc.contato}</TableCell>
+                        <TableCell>
+                          <Badge variant={insc.forma_pagamento === 'pix' ? 'default' : 'secondary'}>
+                            {insc.forma_pagamento === 'pix' ? 'PIX' : 'Cartão'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="max-w-xs truncate" title={insc.expectativa}>
+                          {insc.expectativa}
                         </TableCell>
                       </TableRow>
                     ))}
