@@ -53,6 +53,36 @@ export type Database = {
         }
         Relationships: []
       }
+      mentoria_inscricoes: {
+        Row: {
+          contato: string
+          created_at: string
+          data_nascimento: string
+          email: string
+          expectativa: string
+          id: string
+          nome_completo: string
+        }
+        Insert: {
+          contato: string
+          created_at?: string
+          data_nascimento: string
+          email: string
+          expectativa: string
+          id?: string
+          nome_completo: string
+        }
+        Update: {
+          contato?: string
+          created_at?: string
+          data_nascimento?: string
+          email?: string
+          expectativa?: string
+          id?: string
+          nome_completo?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string | null
