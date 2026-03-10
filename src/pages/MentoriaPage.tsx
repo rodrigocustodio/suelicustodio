@@ -48,8 +48,10 @@ const MentoriaPage = () => {
       nome_completo: nome,
       data_nascimento: dataNasc,
       email,
-      contato,
+      whatsapp,
       expectativa,
+      forma_pagamento: formaPagamento || undefined,
+      consent_privacy: consentPrivacy,
     });
 
     if (!result.success) {
