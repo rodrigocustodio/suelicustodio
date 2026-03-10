@@ -76,6 +76,7 @@ const Admin = () => {
     if (isAdmin) {
       fetchMessages();
       fetchQuizResponses();
+      fetchMentoriaInscricoes();
     }
   }, [isAdmin]);
 
