@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import QuizPage from "./pages/QuizPage";
 import VSLPage from "./pages/VSLPage";
 import MentoriaPage from "./pages/MentoriaPage";
+import GoSixPage from "./pages/GoSixPage";
 
 const queryClient = new QueryClient();
 
