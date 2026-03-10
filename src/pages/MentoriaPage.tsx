@@ -15,8 +15,10 @@ const inscricaoSchema = z.object({
   nome_completo: z.string().trim().min(1, 'Nome é obrigatório').max(200),
   data_nascimento: z.date({ required_error: 'Data de nascimento é obrigatória' }),
   email: z.string().trim().email('Email inválido').max(320),
-  contato: z.string().trim().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Use o formato (11) 99999-9999'),
+  whatsapp: z.string().trim().regex(/^\(\d{2}\)\s\d{4,5}-\d{4}$/, 'Use o formato (11) 99999-9999'),
   expectativa: z.string().trim().min(10, 'Mínimo de 10 caracteres').max(2000),
+  forma_pagamento: z.enum(['pix', 'cartao'], { required_error: 'Selecione a forma de pagamento' }),
+  consent_privacy: z.literal(true, { errorMap: () => ({ message: 'Você precisa aceitar a Política de Privacidade' }) }),
 });
 
 const MentoriaPage = () => {
