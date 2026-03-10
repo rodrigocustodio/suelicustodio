@@ -52,6 +52,7 @@ const Admin = () => {
   const { toast } = useToast();
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [quizResponses, setQuizResponses] = useState<QuizResponse[]>([]);
+  const [mentoriaInscricoes, setMentoriaInscricoes] = useState<MentoriaInscricao[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
 
   useEffect(() => {
