@@ -106,7 +106,7 @@ const Admin = () => {
     try {
       const { data, error } = await supabase
         .from('mentoria_inscricoes')
-        .select('id, created_at, nome_completo, data_nascimento, email, contato, expectativa, forma_pagamento')
+        .select('id, created_at, nome_completo, data_nascimento, email, contato, expectativa, forma_pagamento, source_page')
         .order('created_at', { ascending: false });
 
       if (error) throw error;
