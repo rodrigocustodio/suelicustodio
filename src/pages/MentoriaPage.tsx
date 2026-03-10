@@ -71,8 +71,10 @@ const MentoriaPage = () => {
         nome_completo: result.data.nome_completo,
         data_nascimento: format(result.data.data_nascimento, 'yyyy-MM-dd'),
         email: result.data.email,
-        contato: result.data.contato,
+        contato: result.data.whatsapp,
         expectativa: result.data.expectativa,
+        forma_pagamento: result.data.forma_pagamento,
+        consent_privacy: result.data.consent_privacy,
       });
 
       if (error) throw error;
