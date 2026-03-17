@@ -115,7 +115,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
             <Button
               variant="outline"
               onClick={handleBack}
-              className="flex-1 h-12 rounded-xl border-brand-200 text-ink-700 hover:bg-brand-50"
+              className="flex-1 h-11 rounded-xl border-brand-200 text-ink-700 hover:bg-brand-50"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Voltar
