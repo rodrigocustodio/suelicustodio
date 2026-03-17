@@ -75,7 +75,7 @@ export const RodaAIReport = ({ scores, userName, age, recordId, onReportGenerate
   const firstName = userName.split(' ')[0];
 
   return (
-    <div className="max-w-2xl mx-auto px-4 space-y-6">
+    <div className="max-w-2xl mx-auto px-4 space-y-5">
       {/* Header */}
       <div className="text-center space-y-2">
         <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900">

@@ -71,7 +71,7 @@ export const RodaPackages = ({ onWhatsAppClick }: Props) => (
             <p className="text-brand-600 font-semibold text-sm">{pkg.sessions}</p>
           </CardHeader>
           <CardContent className="space-y-3 flex-1 flex flex-col">
-            <p className="text-sm text-ink-700 leading-relaxed">{pkg.description}</p>
+            <p className="text-sm/relaxed text-ink-700">{pkg.description}</p>
             <p className="text-xs text-ink-500 font-medium uppercase tracking-wide">
               Nessas sessões você irá:
             </p>
