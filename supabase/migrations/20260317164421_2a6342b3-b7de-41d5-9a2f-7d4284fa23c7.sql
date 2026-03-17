@@ -1,0 +1,1 @@
+ALTER TABLE public.roda_vida_responses ADD COLUMN ai_report jsonb DEFAULT '{}'::jsonb;
