@@ -98,7 +98,7 @@ const RodaDaVidaPage = () => {
       {/* Content */}
       <main>
         {step === 'intro' && (
-          <Section>
+          <Section className="!pt-0">
             <RodaRegistrationForm onSubmit={handleRegistration} loading={loading} />
           </Section>
         )}

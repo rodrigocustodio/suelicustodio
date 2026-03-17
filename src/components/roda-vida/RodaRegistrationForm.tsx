@@ -131,7 +131,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.whatsapp}
                 onChange={(e) => update('whatsapp', formatWhatsApp(e.target.value))}
                 placeholder="(11) 9-8888-8989"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
                 maxLength={16}
               />
               {errors.whatsapp && <p className="text-xs text-destructive">{errors.whatsapp}</p>}
