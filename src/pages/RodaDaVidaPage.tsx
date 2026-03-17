@@ -80,7 +80,7 @@ const RodaDaVidaPage = () => {
   return (
     <div className="min-h-screen bg-paper-50">
       {/* Header */}
-      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-16 pb-12 md:pt-24 md:pb-16 px-4">
+      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-16 pb-6 md:pt-24 md:pb-8 px-4">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-4">
             Sueli Custódio · Mentoria Relacional
@@ -92,12 +92,6 @@ const RodaDaVidaPage = () => {
           <p className="text-ink-700 text-lg leading-relaxed max-w-xl mx-auto">
             Descubra visualmente como estão as áreas mais importantes da sua vida emocional e relacional.
           </p>
-          {step === 'intro' && (
-            <p className="text-ink-500 mt-4 leading-relaxed max-w-xl mx-auto">
-              Responda algumas perguntas rápidas e veja sua Roda da Vida personalizada, revelando onde
-              está o equilíbrio e onde existe oportunidade de crescimento.
-            </p>
-          )}
         </div>
       </header>
 
