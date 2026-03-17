@@ -70,7 +70,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Question */}
-        <div className="text-center mb-8 animate-in fade-in duration-300" key={current}>
+        <div className="text-center mb-5 animate-in fade-in duration-300" key={current}>
           <h3 className="text-2xl sm:text-3xl font-playfair text-ink-900 mb-2">{topic}</h3>
           <div className="w-12 h-px bg-brand-300 mx-auto my-3" />
           <p className="text-sm text-ink-500">Qual nota você daria para essa área hoje?</p>
