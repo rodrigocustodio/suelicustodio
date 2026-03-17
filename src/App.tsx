@@ -25,6 +25,7 @@ const App = () => (
         <Route path="/vsl" element={<VSLPage />} />
         <Route path="/mentoria" element={<MentoriaPage />} />
         <Route path="/gosix" element={<GoSixPage />} />
+        <Route path="/roda-da-vida" element={<RodaDaVidaPage />} />
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
         <Route path="/termos-de-uso" element={<TermsOfService />} />
         <Route path="/auth" element={<Auth />} />

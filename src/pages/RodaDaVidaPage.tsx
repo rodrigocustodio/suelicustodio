@@ -76,14 +76,6 @@ const RodaDaVidaPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Análise do Estado Emocional | Mentora Sueli Custódio</title>
-        <meta
-          name="description"
-          content="Descubra visualmente como estão as áreas mais importantes da sua vida emocional e relacional com a Roda da Vida."
-        />
-      </Helmet>
-
       <div className="min-h-screen bg-paper-50">
         {/* Header */}
         <header className="bg-gradient-to-b from-brand-50 to-paper-50 py-12 md:py-20 px-4">
