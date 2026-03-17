@@ -47,6 +47,18 @@ interface MentoriaInscricao {
   source_page: string;
 }
 
+interface RodaVidaResponse {
+  id: string;
+  created_at: string;
+  user_name: string;
+  user_lastname: string;
+  email: string;
+  age: number;
+  whatsapp: string;
+  scores: Record<string, number>;
+  whatsapp_clicked: boolean;
+}
+
 const Admin = () => {
   const navigate = useNavigate();
   const { user, loading, isAdmin, signOut } = useAuth();
