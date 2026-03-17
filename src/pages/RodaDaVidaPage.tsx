@@ -109,9 +109,9 @@ const RodaDaVidaPage = () => {
         {step === 'result' && regData && (
           <>
             {/* Chart */}
-            <Section id="roda-chart-container">
-              <div className="text-center mb-6">
-                <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900 mb-3">
+            <Section id="roda-chart-container" className="!py-4 sm:!py-6">
+              <div className="text-center mb-4">
+                <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900 mb-2">
                   Sua Roda da Vida
                 </h2>
                 <div className="w-16 h-px bg-brand-300 mx-auto" />
@@ -121,15 +121,13 @@ const RodaDaVidaPage = () => {
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* Result text */}
-            <Section>
+            <Section className="!py-4 sm:!py-6">
               <RodaResult />
             </Section>
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* PDF + actions */}
-            <Section className="flex flex-col items-center gap-4">
+            <Section className="!py-3 sm:!py-4 flex flex-col items-center gap-4">
               <RodaPdfExport
                 userName={`${regData.user_name} ${regData.user_lastname}`}
                 age={regData.age}
@@ -138,15 +136,13 @@ const RodaDaVidaPage = () => {
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* Packages */}
-            <Section>
+            <Section className="!py-4 sm:!py-6">
               <RodaPackages />
             </Section>
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* WhatsApp CTA */}
-            <Section className="pb-16">
+            <Section className="!py-4 sm:!py-6 pb-12">
               <div className="max-w-md mx-auto px-4">
                 <Button
                   onClick={handleWhatsAppClick}

@@ -124,7 +124,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
           <Button
             onClick={handleNext}
             disabled={value === null}
-            className="flex-1 h-12 rounded-xl bg-brand-500 hover:bg-brand-600 text-white disabled:opacity-40 disabled:cursor-not-allowed"
+            className="flex-1 h-11 rounded-xl bg-brand-500 hover:bg-brand-600 text-white disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {current === TOPICS.length - 1 ? 'Ver minha Roda' : 'Próximo'}
             {current < TOPICS.length - 1 && <ChevronRight className="w-4 h-4 ml-1" />}
