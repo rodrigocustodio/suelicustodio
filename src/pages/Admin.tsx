@@ -34,7 +34,7 @@ interface QuizResponse {
   awareness_level: string;
   disc_profile: string;
   consent_marketing: boolean;
-  answers: Record<string, any>;
+  answers: any;
 }
 
 interface MentoriaInscricao {
