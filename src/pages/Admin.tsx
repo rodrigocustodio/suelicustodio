@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 interface ContactMessage {
   id: string;
@@ -62,23 +62,13 @@ interface RodaVidaResponse {
   ai_report: any;
 }
 
-const ExpandButton = ({ expanded, onClick }: { expanded: boolean; onClick: () => void }) => (
-  <Button size="sm" variant="ghost" onClick={onClick} className="gap-1">
-    {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-    {expanded ? 'Fechar' : 'Ver'}
-  </Button>
+const VerLink = ({ type, id }: { type: string; id: string }) => (
+  <Link to={`/admin/lead/${type}/${id}`}>
+    <Button size="sm" variant="ghost" className="gap-1">
+      <Eye className="h-4 w-4" /> Ver
+    </Button>
+  </Link>
 );
-
-const DetailRow = ({ expanded, colSpan, children }: { expanded: boolean; colSpan: number; children: React.ReactNode }) => {
-  if (!expanded) return null;
-  return (
-    <TableRow>
-      <TableCell colSpan={colSpan} className="bg-muted/30 p-6">
-        {children}
-      </TableCell>
-    </TableRow>
-  );
-};
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -89,16 +79,6 @@ const Admin = () => {
   const [mentoriaInscricoes, setMentoriaInscricoes] = useState<MentoriaInscricao[]>([]);
   const [rodaVidaResponses, setRodaVidaResponses] = useState<RodaVidaResponse[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
-
-  const [expandedMsg, setExpandedMsg] = useState<string | null>(null);
-  const [expandedQuiz, setExpandedQuiz] = useState<string | null>(null);
-  const [expandedMentoria, setExpandedMentoria] = useState<string | null>(null);
-  const [expandedGoSix, setExpandedGoSix] = useState<string | null>(null);
-  const [expandedRoda, setExpandedRoda] = useState<string | null>(null);
-
-  const toggle = (current: string | null, id: string, setter: (v: string | null) => void) => {
-    setter(current === id ? null : id);
-  };
 
   useEffect(() => {
     if (!loading && !user) {
@@ -245,36 +225,22 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {messages.map((msg) => (
-                      <>
-                        <TableRow key={msg.id}>
-                          <TableCell>{format(new Date(msg.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{msg.name}</TableCell>
-                          <TableCell>{msg.email}</TableCell>
-                          <TableCell>{msg.whatsapp || '-'}</TableCell>
-                          <TableCell><Badge variant="outline">{msg.source_page || 'N/A'}</Badge></TableCell>
-                          <TableCell>
-                            <Badge variant={msg.read ? 'secondary' : 'default'}>{msg.read ? 'Lida' : 'Nova'}</Badge>
-                          </TableCell>
-                          <TableCell className="flex gap-1">
-                            <ExpandButton expanded={expandedMsg === msg.id} onClick={() => toggle(expandedMsg, msg.id, setExpandedMsg)} />
-                            <Button size="sm" variant="ghost" onClick={() => toggleRead(msg.id, msg.read)}>
-                              {msg.read ? 'Nova' : 'Lida'}
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedMsg === msg.id} colSpan={7}>
-                          <div className="space-y-3">
-                            <div>
-                              <p className="text-sm font-semibold text-muted-foreground mb-1">Mensagem:</p>
-                              <p className="whitespace-pre-wrap">{msg.message}</p>
-                            </div>
-                            <div className="flex gap-4 text-sm">
-                              <span>Consentimento contato: <Badge variant={msg.consent_contact ? 'default' : 'outline'}>{msg.consent_contact ? 'Sim' : 'Não'}</Badge></span>
-                              <span>Consentimento privacidade: <Badge variant={msg.consent_privacy ? 'default' : 'outline'}>{msg.consent_privacy ? 'Sim' : 'Não'}</Badge></span>
-                            </div>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={msg.id}>
+                        <TableCell>{format(new Date(msg.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{msg.name}</TableCell>
+                        <TableCell>{msg.email}</TableCell>
+                        <TableCell>{msg.whatsapp || '-'}</TableCell>
+                        <TableCell><Badge variant="outline">{msg.source_page || 'N/A'}</Badge></TableCell>
+                        <TableCell>
+                          <Badge variant={msg.read ? 'secondary' : 'default'}>{msg.read ? 'Lida' : 'Nova'}</Badge>
+                        </TableCell>
+                        <TableCell className="flex gap-1">
+                          <VerLink type="message" id={msg.id} />
+                          <Button size="sm" variant="ghost" onClick={() => toggleRead(msg.id, msg.read)}>
+                            {msg.read ? 'Nova' : 'Lida'}
+                          </Button>
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
@@ -309,44 +275,22 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {quizResponses.map((resp) => (
-                      <>
-                        <TableRow key={resp.id}>
-                          <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{resp.name}</TableCell>
-                          <TableCell>{resp.email}</TableCell>
-                          <TableCell>{resp.whatsapp}</TableCell>
-                          <TableCell>
-                            <Badge variant={resp.overload_score === 'alto' ? 'destructive' : resp.overload_score === 'moderado' ? 'default' : 'secondary'}>
-                              {resp.overload_score}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>{resp.awareness_level}</TableCell>
-                          <TableCell>{resp.disc_profile}</TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedQuiz === resp.id} onClick={() => toggle(expandedQuiz, resp.id, setExpandedQuiz)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedQuiz === resp.id} colSpan={8}>
-                          <div className="space-y-3">
-                            <p className="text-sm font-semibold text-muted-foreground">Respostas do Quiz:</p>
-                            {resp.answers && typeof resp.answers === 'object' ? (
-                              <div className="grid gap-2">
-                                {Object.entries(resp.answers).map(([key, value]) => (
-                                  <div key={key} className="flex gap-2 text-sm">
-                                    <span className="font-medium min-w-[120px]">{key}:</span>
-                                    <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            ) : (
-                              <p className="text-sm text-muted-foreground">Sem respostas detalhadas.</p>
-                            )}
-                            <div className="text-sm">
-                              Marketing: <Badge variant={resp.consent_marketing ? 'default' : 'outline'}>{resp.consent_marketing ? 'Sim' : 'Não'}</Badge>
-                            </div>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={resp.id}>
+                        <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{resp.name}</TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.overload_score === 'alto' ? 'destructive' : resp.overload_score === 'moderado' ? 'default' : 'secondary'}>
+                            {resp.overload_score}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{resp.awareness_level}</TableCell>
+                        <TableCell>{resp.disc_profile}</TableCell>
+                        <TableCell>
+                          <VerLink type="quiz" id={resp.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
@@ -380,29 +324,21 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {mentoriaInscricoes.filter(i => i.source_page !== 'gosix').map((insc) => (
-                      <>
-                        <TableRow key={insc.id}>
-                          <TableCell>{format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{insc.nome_completo}</TableCell>
-                          <TableCell>{format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}</TableCell>
-                          <TableCell>{insc.email}</TableCell>
-                          <TableCell>{insc.contato}</TableCell>
-                          <TableCell>
-                            <Badge variant={insc.forma_pagamento === 'pix' ? 'default' : 'secondary'}>
-                              {insc.forma_pagamento === 'pix' ? 'PIX' : 'Cartão'}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedMentoria === insc.id} onClick={() => toggle(expandedMentoria, insc.id, setExpandedMentoria)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedMentoria === insc.id} colSpan={7}>
-                          <div>
-                            <p className="text-sm font-semibold text-muted-foreground mb-1">Expectativa:</p>
-                            <p className="whitespace-pre-wrap">{insc.expectativa}</p>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={insc.id}>
+                        <TableCell>{format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{insc.nome_completo}</TableCell>
+                        <TableCell>{format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}</TableCell>
+                        <TableCell>{insc.email}</TableCell>
+                        <TableCell>{insc.contato}</TableCell>
+                        <TableCell>
+                          <Badge variant={insc.forma_pagamento === 'pix' ? 'default' : 'secondary'}>
+                            {insc.forma_pagamento === 'pix' ? 'PIX' : 'Cartão'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <VerLink type="mentoria" id={insc.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
@@ -436,29 +372,21 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {mentoriaInscricoes.filter(i => i.source_page === 'gosix').map((insc) => (
-                      <>
-                        <TableRow key={insc.id}>
-                          <TableCell>{format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{insc.nome_completo}</TableCell>
-                          <TableCell>{format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}</TableCell>
-                          <TableCell>{insc.email}</TableCell>
-                          <TableCell>{insc.contato}</TableCell>
-                          <TableCell>
-                            <Badge variant={insc.forma_pagamento === 'remitly' ? 'default' : 'secondary'}>
-                              {insc.forma_pagamento === 'remitly' ? 'Remitly' : 'Cartão'}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedGoSix === insc.id} onClick={() => toggle(expandedGoSix, insc.id, setExpandedGoSix)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedGoSix === insc.id} colSpan={7}>
-                          <div>
-                            <p className="text-sm font-semibold text-muted-foreground mb-1">Expectativa:</p>
-                            <p className="whitespace-pre-wrap">{insc.expectativa}</p>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={insc.id}>
+                        <TableCell>{format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{insc.nome_completo}</TableCell>
+                        <TableCell>{format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}</TableCell>
+                        <TableCell>{insc.email}</TableCell>
+                        <TableCell>{insc.contato}</TableCell>
+                        <TableCell>
+                          <Badge variant={insc.forma_pagamento === 'remitly' ? 'default' : 'secondary'}>
+                            {insc.forma_pagamento === 'remitly' ? 'Remitly' : 'Cartão'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <VerLink type="mentoria" id={insc.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
@@ -494,50 +422,21 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {rodaVidaResponses.map((resp) => (
-                      <>
-                        <TableRow key={resp.id}>
-                          <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{resp.user_name} {resp.user_lastname}</TableCell>
-                          <TableCell>{resp.email}</TableCell>
-                          <TableCell>{resp.age}</TableCell>
-                          <TableCell>{resp.whatsapp}</TableCell>
-                          <TableCell>
-                            <Badge variant={resp.whatsapp_clicked ? 'default' : 'outline'}>
-                              {resp.whatsapp_clicked ? 'Sim' : 'Não'}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedRoda === resp.id} onClick={() => toggle(expandedRoda, resp.id, setExpandedRoda)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedRoda === resp.id} colSpan={7}>
-                          <div className="space-y-4">
-                            {resp.scores && typeof resp.scores === 'object' && Object.keys(resp.scores).length > 0 && (
-                              <div>
-                                <p className="text-sm font-semibold text-muted-foreground mb-2">Pontuações:</p>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                  {Object.entries(resp.scores).map(([area, score]) => (
-                                    <div key={area} className="flex justify-between bg-background rounded p-2 text-sm">
-                                      <span className="font-medium">{area}</span>
-                                      <span>{String(score)}/10</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                            {resp.ai_report && typeof resp.ai_report === 'object' && Object.keys(resp.ai_report).length > 0 && (
-                              <div>
-                                <p className="text-sm font-semibold text-muted-foreground mb-1">Relatório IA:</p>
-                                <div className="whitespace-pre-wrap text-sm bg-background rounded p-3">
-                                  {typeof resp.ai_report === 'string'
-                                    ? resp.ai_report
-                                    : JSON.stringify(resp.ai_report, null, 2)}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={resp.id}>
+                        <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{resp.user_name} {resp.user_lastname}</TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.age}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.whatsapp_clicked ? 'default' : 'outline'}>
+                            {resp.whatsapp_clicked ? 'Sim' : 'Não'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <VerLink type="roda" id={resp.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>

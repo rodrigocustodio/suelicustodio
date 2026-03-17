@@ -13,6 +13,7 @@ import VSLPage from "./pages/VSLPage";
 import MentoriaPage from "./pages/MentoriaPage";
 import GoSixPage from "./pages/GoSixPage";
 import RodaDaVidaPage from "./pages/RodaDaVidaPage";
+import LeadDetail from "./pages/admin/LeadDetail";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
         <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
         <Route path="/termos-de-uso" element={<TermsOfService />} />
         <Route path="/auth" element={<Auth />} />
+        <Route path="/admin/lead/:type/:id" element={<LeadDetail />} />
         <Route path="/admin" element={<Admin />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
