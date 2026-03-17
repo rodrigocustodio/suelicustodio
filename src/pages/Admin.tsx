@@ -152,6 +152,24 @@ const Admin = () => {
     }
   };
 
+  const fetchRodaVidaResponses = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('roda_vida_responses')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setRodaVidaResponses((data as any[]) || []);
+    } catch {
+      toast({
+        title: 'Erro ao carregar respostas da Roda da Vida',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      });
+    }
+  };
+
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
