@@ -81,9 +81,7 @@ const RodaDaVidaPage = () => {
 
   const fullName = regData ? `${regData.user_name} ${regData.user_lastname}` : '';
 
-  const headerTitle = step === 'result' && regData
-    ? `Análise do Estado Emocional de ${regData.user_name} ${regData.user_lastname}`
-    : 'Análise do Estado Emocional';
+  const headerTitle = 'Análise do Estado Emocional';
 
   return (
     <div className="min-h-screen bg-paper-50">
