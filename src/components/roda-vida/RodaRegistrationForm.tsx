@@ -120,7 +120,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.age}
                 onChange={(e) => update('age', e.target.value)}
                 placeholder="Sua idade"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
               />
               {errors.age && <p className="text-xs text-destructive">{errors.age}</p>}
             </div>
