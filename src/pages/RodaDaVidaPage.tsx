@@ -101,7 +101,7 @@ const RodaDaVidaPage = () => {
         )}
 
         {step === 'questionnaire' && (
-          <Section>
+          <Section className="!py-4 sm:!py-6">
             <RodaSliderQuestion onComplete={handleScoresComplete} />
           </Section>
         )}
