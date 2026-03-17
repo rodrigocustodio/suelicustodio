@@ -11,6 +11,7 @@ import QuizPage from "./pages/QuizPage";
 import VSLPage from "./pages/VSLPage";
 import MentoriaPage from "./pages/MentoriaPage";
 import GoSixPage from "./pages/GoSixPage";
+import RodaDaVidaPage from "./pages/RodaDaVidaPage";
 
 const queryClient = new QueryClient();
 
