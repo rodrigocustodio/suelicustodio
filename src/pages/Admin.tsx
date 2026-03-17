@@ -47,6 +47,18 @@ interface MentoriaInscricao {
   source_page: string;
 }
 
+interface RodaVidaResponse {
+  id: string;
+  created_at: string;
+  user_name: string;
+  user_lastname: string;
+  email: string;
+  age: number;
+  whatsapp: string;
+  scores: Record<string, number>;
+  whatsapp_clicked: boolean;
+}
+
 const Admin = () => {
   const navigate = useNavigate();
   const { user, loading, isAdmin, signOut } = useAuth();
@@ -54,6 +66,7 @@ const Admin = () => {
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [quizResponses, setQuizResponses] = useState<QuizResponse[]>([]);
   const [mentoriaInscricoes, setMentoriaInscricoes] = useState<MentoriaInscricao[]>([]);
+  const [rodaVidaResponses, setRodaVidaResponses] = useState<RodaVidaResponse[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
 
   useEffect(() => {
@@ -78,6 +91,7 @@ const Admin = () => {
       fetchMessages();
       fetchQuizResponses();
       fetchMentoriaInscricoes();
+      fetchRodaVidaResponses();
     }
   }, [isAdmin]);
 
@@ -132,6 +146,24 @@ const Admin = () => {
     } catch {
       toast({
         title: 'Erro ao carregar respostas do quiz',
+        description: 'Tente novamente mais tarde.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const fetchRodaVidaResponses = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('roda_vida_responses')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+      setRodaVidaResponses((data as any[]) || []);
+    } catch {
+      toast({
+        title: 'Erro ao carregar respostas da Roda da Vida',
         description: 'Tente novamente mais tarde.',
         variant: 'destructive',
       });
@@ -411,6 +443,57 @@ const Admin = () => {
                         </TableCell>
                         <TableCell className="max-w-xs truncate" title={insc.expectativa}>
                           {insc.expectativa}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Roda da Vida — Análise Emocional</CardTitle>
+            <CardDescription>
+              Total de {rodaVidaResponses.length} análises | {rodaVidaResponses.filter(r => r.whatsapp_clicked).length} clicaram no WhatsApp
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {rodaVidaResponses.length === 0 ? (
+              <p className="text-center text-ink-500 py-8">
+                Nenhuma análise realizada ainda.
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Nome</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Idade</TableHead>
+                      <TableHead>WhatsApp</TableHead>
+                      <TableHead>WhatsApp CTA</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rodaVidaResponses.map((resp) => (
+                      <TableRow key={resp.id}>
+                        <TableCell>
+                          {format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          {resp.user_name} {resp.user_lastname}
+                        </TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.age}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.whatsapp_clicked ? 'default' : 'outline'}>
+                            {resp.whatsapp_clicked ? 'Sim' : 'Não'}
+                          </Badge>
                         </TableCell>
                       </TableRow>
                     ))}
