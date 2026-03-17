@@ -62,7 +62,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
 
   return (
     <div className="w-full max-w-lg mx-auto px-4">
-      <div className="bg-white rounded-2xl shadow-card p-6 sm:p-8">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-200 p-6 sm:p-8">
         {/* Form header */}
         <div className="text-center mb-6">
           <h2 className="text-2xl font-playfair text-ink-900 mb-2">Seus dados</h2>
@@ -80,7 +80,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.user_name}
                 onChange={(e) => update('user_name', e.target.value)}
                 placeholder="Seu nome"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
               />
               {errors.user_name && <p className="text-xs text-destructive">{errors.user_name}</p>}
             </div>
@@ -91,7 +91,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.user_lastname}
                 onChange={(e) => update('user_lastname', e.target.value)}
                 placeholder="Seu sobrenome"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
               />
               {errors.user_lastname && <p className="text-xs text-destructive">{errors.user_lastname}</p>}
             </div>
@@ -105,7 +105,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
               value={form.email}
               onChange={(e) => update('email', e.target.value)}
               placeholder="seu@email.com"
-              className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+              className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
             />
             {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
           </div>
@@ -120,7 +120,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.age}
                 onChange={(e) => update('age', e.target.value)}
                 placeholder="Sua idade"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
               />
               {errors.age && <p className="text-xs text-destructive">{errors.age}</p>}
             </div>
@@ -131,7 +131,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.whatsapp}
                 onChange={(e) => update('whatsapp', formatWhatsApp(e.target.value))}
                 placeholder="(11) 9-8888-8989"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
                 maxLength={16}
               />
               {errors.whatsapp && <p className="text-xs text-destructive">{errors.whatsapp}</p>}

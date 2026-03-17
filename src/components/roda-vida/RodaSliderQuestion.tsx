@@ -55,9 +55,9 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
   return (
     <div className="w-full max-w-md mx-auto px-4">
       {/* Card wrapper */}
-      <div className="bg-white rounded-2xl shadow-card p-6 sm:p-8">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-200 p-5 sm:p-6">
         {/* Progress bar */}
-        <div className="mb-8">
+        <div className="mb-5">
           <div className="h-1.5 bg-brand-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-brand-500 rounded-full transition-all duration-500 ease-out"
@@ -70,14 +70,14 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Question */}
-        <div className="text-center mb-8 animate-in fade-in duration-300" key={current}>
+        <div className="text-center mb-5 animate-in fade-in duration-300" key={current}>
           <h3 className="text-2xl sm:text-3xl font-playfair text-ink-900 mb-2">{topic}</h3>
           <div className="w-12 h-px bg-brand-300 mx-auto my-3" />
           <p className="text-sm text-ink-500">Qual nota você daria para essa área hoje?</p>
         </div>
 
         {/* Number buttons grid */}
-        <div className="grid grid-cols-6 gap-2 sm:gap-3 mb-8">
+        <div className="grid grid-cols-6 gap-2 sm:gap-3 mb-5">
           {Array.from({ length: 11 }, (_, i) => (
             <button
               key={i}
@@ -91,7 +91,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
                 ${
                   value === i
                     ? 'bg-brand-500 text-white border-brand-500 shadow-md scale-105'
-                    : 'bg-paper-50 text-ink-700 border-brand-200 hover:border-brand-400 hover:bg-brand-50'
+                    : 'bg-paper-50 text-ink-700 border-gray-400 hover:border-brand-400 hover:bg-brand-50'
                 }
               `}
             >
@@ -101,7 +101,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Scale labels */}
-        <div className="flex justify-between text-xs text-ink-500 mb-8 px-1">
+        <div className="flex justify-between text-xs text-ink-500 mb-5 px-1">
           <span>Muito baixo</span>
           <span>Muito alto</span>
         </div>
