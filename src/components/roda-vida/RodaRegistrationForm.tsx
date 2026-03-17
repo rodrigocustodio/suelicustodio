@@ -4,12 +4,20 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
+const formatWhatsApp = (value: string): string => {
+  const digits = value.replace(/\D/g, '').slice(0, 11);
+  if (digits.length <= 2) return digits.length ? `(${digits}` : '';
+  if (digits.length <= 3) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2, 3)}-${digits.slice(3)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
+};
+
 const schema = z.object({
   user_name: z.string().trim().min(1, 'Nome é obrigatório').max(100),
   user_lastname: z.string().trim().min(1, 'Sobrenome é obrigatório').max(100),
   email: z.string().trim().email('Email inválido').max(320),
   age: z.number().min(10, 'Idade inválida').max(120, 'Idade inválida'),
-  whatsapp: z.string().trim().min(1, 'WhatsApp é obrigatório').max(30),
+  whatsapp: z.string().trim().regex(/^\(\d{2}\) \d-\d{4}-\d{4}$/, 'WhatsApp inválido. Ex: (11) 9-8888-8989'),
 });
 
 export type RegistrationData = z.infer<typeof schema>;
@@ -109,9 +117,10 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
         <Input
           id="whatsapp"
           value={form.whatsapp}
-          onChange={(e) => update('whatsapp', e.target.value)}
-          placeholder="(11) 99999-9999"
+          onChange={(e) => update('whatsapp', formatWhatsApp(e.target.value))}
+          placeholder="(11) 9-8888-8989"
           className="h-12 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+          maxLength={16}
         />
         {errors.whatsapp && <p className="text-sm text-destructive">{errors.whatsapp}</p>}
       </div>
