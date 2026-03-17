@@ -149,6 +149,42 @@ export type Database = {
         }
         Relationships: []
       }
+      roda_vida_responses: {
+        Row: {
+          age: number
+          created_at: string
+          email: string
+          id: string
+          scores: Json
+          user_lastname: string
+          user_name: string
+          whatsapp: string
+          whatsapp_clicked: boolean
+        }
+        Insert: {
+          age: number
+          created_at?: string
+          email: string
+          id?: string
+          scores?: Json
+          user_lastname: string
+          user_name: string
+          whatsapp: string
+          whatsapp_clicked?: boolean
+        }
+        Update: {
+          age?: number
+          created_at?: string
+          email?: string
+          id?: string
+          scores?: Json
+          user_lastname?: string
+          user_name?: string
+          whatsapp?: string
+          whatsapp_clicked?: boolean
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
