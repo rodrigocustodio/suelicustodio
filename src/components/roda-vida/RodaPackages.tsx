@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Check, MessageCircle } from 'lucide-react';
 
 const packages = [
   {
@@ -38,32 +39,28 @@ const packages = [
   },
 ];
 
-export const RodaPackages = () => (
+interface Props {
+  onWhatsAppClick?: () => void;
+}
+
+export const RodaPackages = ({ onWhatsAppClick }: Props) => (
   <div className="max-w-5xl mx-auto px-4">
-    <div className="text-center mb-10 space-y-4">
+    <div className="text-center mb-8 space-y-3">
       <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900">
         Transforme consciência em mudança real
       </h2>
-      <p className="text-ink-700 max-w-2xl mx-auto leading-relaxed">
-        Agora que você visualizou sua roda emocional, talvez tenha percebido áreas da sua vida que precisam
-        de mais equilíbrio, apoio ou clareza.
-      </p>
-      <p className="text-ink-700 max-w-2xl mx-auto leading-relaxed">
-        Muitas mulheres vivem sobrecarregadas emocionalmente sem perceber que é possível reorganizar a vida
-        com mais leveza e direção.
-      </p>
-      <p className="text-ink-700 max-w-2xl mx-auto leading-relaxed">
-        Nas sessões com a Mentora Sueli Custódio, você terá um espaço seguro para compreender sua história,
-        reorganizar emoções e construir um caminho de relacionamento mais saudável consigo mesma e com quem
-        está ao seu redor.
+      <div className="w-16 h-px bg-brand-300 mx-auto" />
+      <p className="text-ink-700 max-w-2xl mx-auto leading-relaxed text-sm">
+        Agora que você visualizou sua roda emocional, o próximo passo é transformar essa consciência
+        em ação com o acompanhamento da Mentora Sueli.
       </p>
     </div>
 
-    <div className="grid md:grid-cols-3 gap-6">
+    <div className="grid md:grid-cols-3 gap-5">
       {packages.map((pkg) => (
         <Card
           key={pkg.title}
-          className={`rounded-2xl border transition-shadow hover:shadow-cardHover ${
+          className={`rounded-2xl border transition-shadow hover:shadow-cardHover flex flex-col ${
             pkg.featured
               ? 'border-brand-400 shadow-card ring-2 ring-brand-200'
               : 'border-brand-100 shadow-soft'
@@ -73,12 +70,12 @@ export const RodaPackages = () => (
             <CardTitle className="text-xl font-playfair text-ink-900">{pkg.title}</CardTitle>
             <p className="text-brand-600 font-semibold text-sm">{pkg.sessions}</p>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 flex-1 flex flex-col">
             <p className="text-sm text-ink-700 leading-relaxed">{pkg.description}</p>
             <p className="text-xs text-ink-500 font-medium uppercase tracking-wide">
               Nessas sessões você irá:
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-2 flex-1">
               {pkg.items.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-ink-700">
                   <Check className="w-4 h-4 text-brand-500 mt-0.5 shrink-0" />
@@ -86,6 +83,20 @@ export const RodaPackages = () => (
                 </li>
               ))}
             </ul>
+            {onWhatsAppClick && (
+              <Button
+                onClick={onWhatsAppClick}
+                size="sm"
+                className={`w-full rounded-xl mt-2 ${
+                  pkg.featured
+                    ? 'bg-green-600 hover:bg-green-700 text-white'
+                    : 'bg-brand-500 hover:bg-brand-600 text-white'
+                }`}
+              >
+                <MessageCircle className="w-4 h-4 mr-1" />
+                Quero saber mais
+              </Button>
+            )}
           </CardContent>
         </Card>
       ))}
