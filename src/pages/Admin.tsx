@@ -324,29 +324,21 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {mentoriaInscricoes.filter(i => i.source_page !== 'gosix').map((insc) => (
-                      <>
-                        <TableRow key={insc.id}>
-                          <TableCell>{format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{insc.nome_completo}</TableCell>
-                          <TableCell>{format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}</TableCell>
-                          <TableCell>{insc.email}</TableCell>
-                          <TableCell>{insc.contato}</TableCell>
-                          <TableCell>
-                            <Badge variant={insc.forma_pagamento === 'pix' ? 'default' : 'secondary'}>
-                              {insc.forma_pagamento === 'pix' ? 'PIX' : 'Cartão'}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedMentoria === insc.id} onClick={() => toggle(expandedMentoria, insc.id, setExpandedMentoria)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedMentoria === insc.id} colSpan={7}>
-                          <div>
-                            <p className="text-sm font-semibold text-muted-foreground mb-1">Expectativa:</p>
-                            <p className="whitespace-pre-wrap">{insc.expectativa}</p>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={insc.id}>
+                        <TableCell>{format(new Date(insc.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{insc.nome_completo}</TableCell>
+                        <TableCell>{format(new Date(insc.data_nascimento + 'T00:00:00'), 'dd/MM/yyyy', { locale: ptBR })}</TableCell>
+                        <TableCell>{insc.email}</TableCell>
+                        <TableCell>{insc.contato}</TableCell>
+                        <TableCell>
+                          <Badge variant={insc.forma_pagamento === 'pix' ? 'default' : 'secondary'}>
+                            {insc.forma_pagamento === 'pix' ? 'PIX' : 'Cartão'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <VerLink type="mentoria" id={insc.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
