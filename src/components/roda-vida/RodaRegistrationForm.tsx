@@ -61,77 +61,95 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto space-y-5">
-      <div className="space-y-1.5">
-        <Label htmlFor="user_name" className="text-ink-700">Nome</Label>
-        <Input
-          id="user_name"
-          value={form.user_name}
-          onChange={(e) => update('user_name', e.target.value)}
-          placeholder="Seu nome"
-          className="h-12 rounded-xl border-brand-200 focus-visible:ring-brand-400"
-        />
-        {errors.user_name && <p className="text-sm text-destructive">{errors.user_name}</p>}
-      </div>
+    <div className="w-full max-w-lg mx-auto px-4">
+      <div className="bg-white rounded-2xl shadow-card p-6 sm:p-8">
+        {/* Form header */}
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-playfair text-ink-900 mb-2">Seus dados</h2>
+          <p className="text-sm text-ink-500">Preencha abaixo para iniciar sua análise personalizada.</p>
+          <div className="w-12 h-px bg-brand-300 mx-auto mt-4" />
+        </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="user_lastname" className="text-ink-700">Sobrenome</Label>
-        <Input
-          id="user_lastname"
-          value={form.user_lastname}
-          onChange={(e) => update('user_lastname', e.target.value)}
-          placeholder="Seu sobrenome"
-          className="h-12 rounded-xl border-brand-200 focus-visible:ring-brand-400"
-        />
-        {errors.user_lastname && <p className="text-sm text-destructive">{errors.user_lastname}</p>}
-      </div>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Name row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="user_name" className="text-ink-700 text-sm">Nome</Label>
+              <Input
+                id="user_name"
+                value={form.user_name}
+                onChange={(e) => update('user_name', e.target.value)}
+                placeholder="Seu nome"
+                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+              />
+              {errors.user_name && <p className="text-xs text-destructive">{errors.user_name}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="user_lastname" className="text-ink-700 text-sm">Sobrenome</Label>
+              <Input
+                id="user_lastname"
+                value={form.user_lastname}
+                onChange={(e) => update('user_lastname', e.target.value)}
+                placeholder="Seu sobrenome"
+                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+              />
+              {errors.user_lastname && <p className="text-xs text-destructive">{errors.user_lastname}</p>}
+            </div>
+          </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="email" className="text-ink-700">Email</Label>
-        <Input
-          id="email"
-          type="email"
-          value={form.email}
-          onChange={(e) => update('email', e.target.value)}
-          placeholder="seu@email.com"
-          className="h-12 rounded-xl border-brand-200 focus-visible:ring-brand-400"
-        />
-        {errors.email && <p className="text-sm text-destructive">{errors.email}</p>}
-      </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="email" className="text-ink-700 text-sm">Email</Label>
+            <Input
+              id="email"
+              type="email"
+              value={form.email}
+              onChange={(e) => update('email', e.target.value)}
+              placeholder="seu@email.com"
+              className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+            />
+            {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+          </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="age" className="text-ink-700">Idade</Label>
-        <Input
-          id="age"
-          type="number"
-          value={form.age}
-          onChange={(e) => update('age', e.target.value)}
-          placeholder="Sua idade"
-          className="h-12 rounded-xl border-brand-200 focus-visible:ring-brand-400"
-        />
-        {errors.age && <p className="text-sm text-destructive">{errors.age}</p>}
-      </div>
+          {/* Age + WhatsApp row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <Label htmlFor="age" className="text-ink-700 text-sm">Idade</Label>
+              <Input
+                id="age"
+                type="number"
+                value={form.age}
+                onChange={(e) => update('age', e.target.value)}
+                placeholder="Sua idade"
+                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+              />
+              {errors.age && <p className="text-xs text-destructive">{errors.age}</p>}
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="whatsapp" className="text-ink-700 text-sm">WhatsApp</Label>
+              <Input
+                id="whatsapp"
+                value={form.whatsapp}
+                onChange={(e) => update('whatsapp', formatWhatsApp(e.target.value))}
+                placeholder="(11) 9-8888-8989"
+                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                maxLength={16}
+              />
+              {errors.whatsapp && <p className="text-xs text-destructive">{errors.whatsapp}</p>}
+            </div>
+          </div>
 
-      <div className="space-y-1.5">
-        <Label htmlFor="whatsapp" className="text-ink-700">WhatsApp</Label>
-        <Input
-          id="whatsapp"
-          value={form.whatsapp}
-          onChange={(e) => update('whatsapp', formatWhatsApp(e.target.value))}
-          placeholder="(11) 9-8888-8989"
-          className="h-12 rounded-xl border-brand-200 focus-visible:ring-brand-400"
-          maxLength={16}
-        />
-        {errors.whatsapp && <p className="text-sm text-destructive">{errors.whatsapp}</p>}
-      </div>
+          {/* Divider */}
+          <div className="w-full h-px bg-brand-100 my-2" />
 
-      <Button
-        type="submit"
-        disabled={loading}
-        className="w-full h-12 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-base font-medium"
-      >
-        {loading ? 'Salvando...' : 'Começar minha análise'}
-      </Button>
-    </form>
+          <Button
+            type="submit"
+            disabled={loading}
+            className="w-full h-12 rounded-xl bg-brand-500 hover:bg-brand-600 text-white text-base font-medium"
+          >
+            {loading ? 'Salvando...' : 'Começar minha análise'}
+          </Button>
+        </form>
+      </div>
+    </div>
   );
 };
