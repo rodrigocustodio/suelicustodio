@@ -80,31 +80,28 @@ const RodaDaVidaPage = () => {
   return (
     <div className="min-h-screen bg-paper-50">
       {/* Header */}
-      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-16 pb-6 md:pt-24 md:pb-8 px-4">
+      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-12 pb-4 md:pt-16 md:pb-6 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-4">
+          <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-2">
             Sueli Custódio · Mentoria Relacional
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair text-ink-900 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair text-ink-900 mb-3 leading-tight">
             Análise do Estado Emocional
           </h1>
-          <div className="w-24 h-px bg-brand-300 mx-auto mb-6" />
-          <p className="text-ink-700 text-lg leading-relaxed max-w-xl mx-auto">
-            Descubra visualmente como estão as áreas mais importantes da sua vida emocional e relacional.
-          </p>
+          <div className="w-24 h-px bg-brand-300 mx-auto" />
         </div>
       </header>
 
       {/* Content */}
       <main>
         {step === 'intro' && (
-          <Section className="!pt-0">
+          <Section className="!pt-0 !pb-4">
             <RodaRegistrationForm onSubmit={handleRegistration} loading={loading} />
           </Section>
         )}
 
         {step === 'questionnaire' && (
-          <Section>
+          <Section className="!py-4 sm:!py-6">
             <RodaSliderQuestion onComplete={handleScoresComplete} />
           </Section>
         )}
@@ -112,9 +109,9 @@ const RodaDaVidaPage = () => {
         {step === 'result' && regData && (
           <>
             {/* Chart */}
-            <Section id="roda-chart-container">
-              <div className="text-center mb-6">
-                <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900 mb-3">
+            <Section id="roda-chart-container" className="!py-4 sm:!py-6">
+              <div className="text-center mb-4">
+                <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900 mb-2">
                   Sua Roda da Vida
                 </h2>
                 <div className="w-16 h-px bg-brand-300 mx-auto" />
@@ -124,15 +121,13 @@ const RodaDaVidaPage = () => {
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* Result text */}
-            <Section>
+            <Section className="!py-4 sm:!py-6">
               <RodaResult />
             </Section>
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* PDF + actions */}
-            <Section className="flex flex-col items-center gap-4">
+            <Section className="!py-3 sm:!py-4 flex flex-col items-center gap-4">
               <RodaPdfExport
                 userName={`${regData.user_name} ${regData.user_lastname}`}
                 age={regData.age}
@@ -141,15 +136,13 @@ const RodaDaVidaPage = () => {
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* Packages */}
-            <Section>
+            <Section className="!py-4 sm:!py-6">
               <RodaPackages />
             </Section>
 
             <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-            {/* WhatsApp CTA */}
-            <Section className="pb-16">
+            <Section className="!py-4 sm:!py-6 pb-12">
               <div className="max-w-md mx-auto px-4">
                 <Button
                   onClick={handleWhatsAppClick}

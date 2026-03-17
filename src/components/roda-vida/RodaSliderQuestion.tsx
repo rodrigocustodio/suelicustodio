@@ -57,7 +57,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
       {/* Card wrapper */}
       <div className="bg-white rounded-2xl shadow-card border border-gray-200 p-5 sm:p-6">
         {/* Progress bar */}
-        <div className="mb-5">
+        <div className="mb-4">
           <div className="h-1.5 bg-brand-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-brand-500 rounded-full transition-all duration-500 ease-out"
@@ -70,14 +70,14 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Question */}
-        <div className="text-center mb-5 animate-in fade-in duration-300" key={current}>
+        <div className="text-center mb-4 animate-in fade-in duration-300" key={current}>
           <h3 className="text-2xl sm:text-3xl font-playfair text-ink-900 mb-2">{topic}</h3>
           <div className="w-12 h-px bg-brand-300 mx-auto my-3" />
           <p className="text-sm text-ink-500">Qual nota você daria para essa área hoje?</p>
         </div>
 
         {/* Number buttons grid */}
-        <div className="grid grid-cols-6 gap-2 sm:gap-3 mb-5">
+        <div className="grid grid-cols-6 gap-2 sm:gap-3 mb-3">
           {Array.from({ length: 11 }, (_, i) => (
             <button
               key={i}
@@ -101,13 +101,13 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Scale labels */}
-        <div className="flex justify-between text-xs text-ink-500 mb-5 px-1">
+        <div className="flex justify-between text-xs text-ink-500 mb-3 px-1">
           <span>Muito baixo</span>
           <span>Muito alto</span>
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-brand-100 mb-6" />
+        <div className="w-full h-px bg-brand-100 mb-4" />
 
         {/* Navigation */}
         <div className="flex gap-3">
@@ -115,7 +115,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
             <Button
               variant="outline"
               onClick={handleBack}
-              className="flex-1 h-12 rounded-xl border-brand-200 text-ink-700 hover:bg-brand-50"
+              className="flex-1 h-11 rounded-xl border-brand-200 text-ink-700 hover:bg-brand-50"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Voltar
@@ -124,7 +124,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
           <Button
             onClick={handleNext}
             disabled={value === null}
-            className="flex-1 h-12 rounded-xl bg-brand-500 hover:bg-brand-600 text-white disabled:opacity-40 disabled:cursor-not-allowed"
+            className="flex-1 h-11 rounded-xl bg-brand-500 hover:bg-brand-600 text-white disabled:opacity-40 disabled:cursor-not-allowed"
           >
             {current === TOPICS.length - 1 ? 'Ver minha Roda' : 'Próximo'}
             {current < TOPICS.length - 1 && <ChevronRight className="w-4 h-4 ml-1" />}

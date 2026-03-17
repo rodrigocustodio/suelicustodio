@@ -1,5 +1,5 @@
 export const RodaResult = () => (
-  <div className="max-w-2xl mx-auto text-center space-y-5 px-4">
+  <div className="max-w-2xl mx-auto text-center space-y-3 px-4">
     <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900">Seu resultado visual</h2>
     <div className="w-16 h-px bg-brand-300 mx-auto" />
     <p className="text-ink-700 leading-relaxed text-base">
