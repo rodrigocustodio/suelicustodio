@@ -101,7 +101,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Scale labels */}
-        <div className="flex justify-between text-xs text-ink-500 mb-5 px-1">
+        <div className="flex justify-between text-xs text-ink-500 mb-3 px-1">
           <span>Muito baixo</span>
           <span>Muito alto</span>
         </div>
