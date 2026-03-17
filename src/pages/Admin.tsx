@@ -66,6 +66,7 @@ const Admin = () => {
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [quizResponses, setQuizResponses] = useState<QuizResponse[]>([]);
   const [mentoriaInscricoes, setMentoriaInscricoes] = useState<MentoriaInscricao[]>([]);
+  const [rodaVidaResponses, setRodaVidaResponses] = useState<RodaVidaResponse[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
 
   useEffect(() => {
