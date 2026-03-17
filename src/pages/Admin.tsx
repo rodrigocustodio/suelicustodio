@@ -91,6 +91,7 @@ const Admin = () => {
       fetchMessages();
       fetchQuizResponses();
       fetchMentoriaInscricoes();
+      fetchRodaVidaResponses();
     }
   }, [isAdmin]);
 
