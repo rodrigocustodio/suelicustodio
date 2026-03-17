@@ -152,6 +152,7 @@ export type Database = {
       roda_vida_responses: {
         Row: {
           age: number
+          ai_report: Json | null
           created_at: string
           email: string
           id: string
@@ -163,6 +164,7 @@ export type Database = {
         }
         Insert: {
           age: number
+          ai_report?: Json | null
           created_at?: string
           email: string
           id?: string
@@ -174,6 +176,7 @@ export type Database = {
         }
         Update: {
           age?: number
+          ai_report?: Json | null
           created_at?: string
           email?: string
           id?: string
