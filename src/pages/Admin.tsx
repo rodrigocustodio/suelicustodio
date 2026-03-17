@@ -225,36 +225,22 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {messages.map((msg) => (
-                      <>
-                        <TableRow key={msg.id}>
-                          <TableCell>{format(new Date(msg.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{msg.name}</TableCell>
-                          <TableCell>{msg.email}</TableCell>
-                          <TableCell>{msg.whatsapp || '-'}</TableCell>
-                          <TableCell><Badge variant="outline">{msg.source_page || 'N/A'}</Badge></TableCell>
-                          <TableCell>
-                            <Badge variant={msg.read ? 'secondary' : 'default'}>{msg.read ? 'Lida' : 'Nova'}</Badge>
-                          </TableCell>
-                          <TableCell className="flex gap-1">
-                            <ExpandButton expanded={expandedMsg === msg.id} onClick={() => toggle(expandedMsg, msg.id, setExpandedMsg)} />
-                            <Button size="sm" variant="ghost" onClick={() => toggleRead(msg.id, msg.read)}>
-                              {msg.read ? 'Nova' : 'Lida'}
-                            </Button>
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedMsg === msg.id} colSpan={7}>
-                          <div className="space-y-3">
-                            <div>
-                              <p className="text-sm font-semibold text-muted-foreground mb-1">Mensagem:</p>
-                              <p className="whitespace-pre-wrap">{msg.message}</p>
-                            </div>
-                            <div className="flex gap-4 text-sm">
-                              <span>Consentimento contato: <Badge variant={msg.consent_contact ? 'default' : 'outline'}>{msg.consent_contact ? 'Sim' : 'Não'}</Badge></span>
-                              <span>Consentimento privacidade: <Badge variant={msg.consent_privacy ? 'default' : 'outline'}>{msg.consent_privacy ? 'Sim' : 'Não'}</Badge></span>
-                            </div>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={msg.id}>
+                        <TableCell>{format(new Date(msg.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{msg.name}</TableCell>
+                        <TableCell>{msg.email}</TableCell>
+                        <TableCell>{msg.whatsapp || '-'}</TableCell>
+                        <TableCell><Badge variant="outline">{msg.source_page || 'N/A'}</Badge></TableCell>
+                        <TableCell>
+                          <Badge variant={msg.read ? 'secondary' : 'default'}>{msg.read ? 'Lida' : 'Nova'}</Badge>
+                        </TableCell>
+                        <TableCell className="flex gap-1">
+                          <VerLink type="message" id={msg.id} />
+                          <Button size="sm" variant="ghost" onClick={() => toggleRead(msg.id, msg.read)}>
+                            {msg.read ? 'Nova' : 'Lida'}
+                          </Button>
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
