@@ -57,7 +57,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
       {/* Card wrapper */}
       <div className="bg-white rounded-2xl shadow-card border border-gray-200 p-5 sm:p-6">
         {/* Progress bar */}
-        <div className="mb-8">
+        <div className="mb-5">
           <div className="h-1.5 bg-brand-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-brand-500 rounded-full transition-all duration-500 ease-out"
