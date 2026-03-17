@@ -275,44 +275,22 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {quizResponses.map((resp) => (
-                      <>
-                        <TableRow key={resp.id}>
-                          <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{resp.name}</TableCell>
-                          <TableCell>{resp.email}</TableCell>
-                          <TableCell>{resp.whatsapp}</TableCell>
-                          <TableCell>
-                            <Badge variant={resp.overload_score === 'alto' ? 'destructive' : resp.overload_score === 'moderado' ? 'default' : 'secondary'}>
-                              {resp.overload_score}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>{resp.awareness_level}</TableCell>
-                          <TableCell>{resp.disc_profile}</TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedQuiz === resp.id} onClick={() => toggle(expandedQuiz, resp.id, setExpandedQuiz)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedQuiz === resp.id} colSpan={8}>
-                          <div className="space-y-3">
-                            <p className="text-sm font-semibold text-muted-foreground">Respostas do Quiz:</p>
-                            {resp.answers && typeof resp.answers === 'object' ? (
-                              <div className="grid gap-2">
-                                {Object.entries(resp.answers).map(([key, value]) => (
-                                  <div key={key} className="flex gap-2 text-sm">
-                                    <span className="font-medium min-w-[120px]">{key}:</span>
-                                    <span>{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            ) : (
-                              <p className="text-sm text-muted-foreground">Sem respostas detalhadas.</p>
-                            )}
-                            <div className="text-sm">
-                              Marketing: <Badge variant={resp.consent_marketing ? 'default' : 'outline'}>{resp.consent_marketing ? 'Sim' : 'Não'}</Badge>
-                            </div>
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={resp.id}>
+                        <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{resp.name}</TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.overload_score === 'alto' ? 'destructive' : resp.overload_score === 'moderado' ? 'default' : 'secondary'}>
+                            {resp.overload_score}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>{resp.awareness_level}</TableCell>
+                        <TableCell>{resp.disc_profile}</TableCell>
+                        <TableCell>
+                          <VerLink type="quiz" id={resp.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
