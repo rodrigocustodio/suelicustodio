@@ -5,7 +5,7 @@ import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 import { track } from '@/lib/analytics';
-import { Section } from '@/components/Section';
+
 import { RodaRegistrationForm, type RegistrationData } from '@/components/roda-vida/RodaRegistrationForm';
 import { RodaSliderQuestion } from '@/components/roda-vida/RodaSliderQuestion';
 import { RodaChart } from '@/components/roda-vida/RodaChart';
