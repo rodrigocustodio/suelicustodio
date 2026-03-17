@@ -13,6 +13,7 @@ import VSLPage from "./pages/VSLPage";
 import MentoriaPage from "./pages/MentoriaPage";
 import GoSixPage from "./pages/GoSixPage";
 import RodaDaVidaPage from "./pages/RodaDaVidaPage";
+import LeadDetail from "./pages/admin/LeadDetail";
 
 const queryClient = new QueryClient();
 
