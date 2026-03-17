@@ -62,7 +62,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
 
   return (
     <div className="w-full max-w-lg mx-auto px-4">
-      <div className="bg-white rounded-2xl shadow-card p-6 sm:p-8">
+      <div className="bg-white rounded-2xl shadow-card border border-gray-200 p-6 sm:p-8">
         {/* Form header */}
         <div className="text-center mb-6">
           <h2 className="text-2xl font-playfair text-ink-900 mb-2">Seus dados</h2>
