@@ -62,23 +62,13 @@ interface RodaVidaResponse {
   ai_report: any;
 }
 
-const ExpandButton = ({ expanded, onClick }: { expanded: boolean; onClick: () => void }) => (
-  <Button size="sm" variant="ghost" onClick={onClick} className="gap-1">
-    {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-    {expanded ? 'Fechar' : 'Ver'}
-  </Button>
+const VerLink = ({ type, id }: { type: string; id: string }) => (
+  <Link to={`/admin/lead/${type}/${id}`}>
+    <Button size="sm" variant="ghost" className="gap-1">
+      <Eye className="h-4 w-4" /> Ver
+    </Button>
+  </Link>
 );
-
-const DetailRow = ({ expanded, colSpan, children }: { expanded: boolean; colSpan: number; children: React.ReactNode }) => {
-  if (!expanded) return null;
-  return (
-    <TableRow>
-      <TableCell colSpan={colSpan} className="bg-muted/30 p-6">
-        {children}
-      </TableCell>
-    </TableRow>
-  );
-};
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -89,16 +79,6 @@ const Admin = () => {
   const [mentoriaInscricoes, setMentoriaInscricoes] = useState<MentoriaInscricao[]>([]);
   const [rodaVidaResponses, setRodaVidaResponses] = useState<RodaVidaResponse[]>([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
-
-  const [expandedMsg, setExpandedMsg] = useState<string | null>(null);
-  const [expandedQuiz, setExpandedQuiz] = useState<string | null>(null);
-  const [expandedMentoria, setExpandedMentoria] = useState<string | null>(null);
-  const [expandedGoSix, setExpandedGoSix] = useState<string | null>(null);
-  const [expandedRoda, setExpandedRoda] = useState<string | null>(null);
-
-  const toggle = (current: string | null, id: string, setter: (v: string | null) => void) => {
-    setter(current === id ? null : id);
-  };
 
   useEffect(() => {
     if (!loading && !user) {
