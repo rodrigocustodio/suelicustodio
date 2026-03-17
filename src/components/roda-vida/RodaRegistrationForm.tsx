@@ -91,7 +91,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.user_lastname}
                 onChange={(e) => update('user_lastname', e.target.value)}
                 placeholder="Seu sobrenome"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
               />
               {errors.user_lastname && <p className="text-xs text-destructive">{errors.user_lastname}</p>}
             </div>
