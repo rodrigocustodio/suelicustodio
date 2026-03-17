@@ -422,50 +422,21 @@ const Admin = () => {
                   </TableHeader>
                   <TableBody>
                     {rodaVidaResponses.map((resp) => (
-                      <>
-                        <TableRow key={resp.id}>
-                          <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
-                          <TableCell className="font-medium">{resp.user_name} {resp.user_lastname}</TableCell>
-                          <TableCell>{resp.email}</TableCell>
-                          <TableCell>{resp.age}</TableCell>
-                          <TableCell>{resp.whatsapp}</TableCell>
-                          <TableCell>
-                            <Badge variant={resp.whatsapp_clicked ? 'default' : 'outline'}>
-                              {resp.whatsapp_clicked ? 'Sim' : 'Não'}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>
-                            <ExpandButton expanded={expandedRoda === resp.id} onClick={() => toggle(expandedRoda, resp.id, setExpandedRoda)} />
-                          </TableCell>
-                        </TableRow>
-                        <DetailRow expanded={expandedRoda === resp.id} colSpan={7}>
-                          <div className="space-y-4">
-                            {resp.scores && typeof resp.scores === 'object' && Object.keys(resp.scores).length > 0 && (
-                              <div>
-                                <p className="text-sm font-semibold text-muted-foreground mb-2">Pontuações:</p>
-                                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                                  {Object.entries(resp.scores).map(([area, score]) => (
-                                    <div key={area} className="flex justify-between bg-background rounded p-2 text-sm">
-                                      <span className="font-medium">{area}</span>
-                                      <span>{String(score)}/10</span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-                            )}
-                            {resp.ai_report && typeof resp.ai_report === 'object' && Object.keys(resp.ai_report).length > 0 && (
-                              <div>
-                                <p className="text-sm font-semibold text-muted-foreground mb-1">Relatório IA:</p>
-                                <div className="whitespace-pre-wrap text-sm bg-background rounded p-3">
-                                  {typeof resp.ai_report === 'string'
-                                    ? resp.ai_report
-                                    : JSON.stringify(resp.ai_report, null, 2)}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </DetailRow>
-                      </>
+                      <TableRow key={resp.id}>
+                        <TableCell>{format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}</TableCell>
+                        <TableCell className="font-medium">{resp.user_name} {resp.user_lastname}</TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.age}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.whatsapp_clicked ? 'default' : 'outline'}>
+                            {resp.whatsapp_clicked ? 'Sim' : 'Não'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <VerLink type="roda" id={resp.id} />
+                        </TableCell>
+                      </TableRow>
                     ))}
                   </TableBody>
                 </Table>
