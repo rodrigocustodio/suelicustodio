@@ -5,7 +5,7 @@ import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 import { track } from '@/lib/analytics';
-import { Section } from '@/components/Section';
+
 import { RodaRegistrationForm, type RegistrationData } from '@/components/roda-vida/RodaRegistrationForm';
 import { RodaSliderQuestion } from '@/components/roda-vida/RodaSliderQuestion';
 import { RodaChart } from '@/components/roda-vida/RodaChart';
@@ -81,52 +81,57 @@ const RodaDaVidaPage = () => {
 
   const fullName = regData ? `${regData.user_name} ${regData.user_lastname}` : '';
 
+  const headerTitle = step === 'result' && regData
+    ? `Análise do Estado Emocional de ${regData.user_name} ${regData.user_lastname}`
+    : 'Análise do Estado Emocional';
+
   return (
     <div className="min-h-screen bg-paper-50">
       {/* Header */}
-      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-10 pb-3 md:pt-14 md:pb-4 px-4">
+      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-10 pb-6 md:pt-14 md:pb-8 px-4">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-2">
             Sueli Custódio · Mentoria Relacional
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-playfair text-ink-900 mb-2 leading-tight">
-            Análise do Estado Emocional
+            {headerTitle}
           </h1>
-          <div className="w-24 h-px bg-brand-300 mx-auto" />
+          {step === 'result' && (
+            <p className="text-base text-ink-600 font-medium mt-1">Conheça sua Roda da Vida</p>
+          )}
+          <div className="w-24 h-px bg-brand-300 mx-auto mt-3" />
         </div>
       </header>
 
       {/* Content */}
       <main>
         {step === 'intro' && (
-          <Section className="!pt-0 !pb-4">
+          <div className="py-4 md:py-8">
             <RodaRegistrationForm onSubmit={handleRegistration} loading={loading} />
-          </Section>
+          </div>
         )}
 
         {step === 'questionnaire' && (
-          <Section className="!py-3 sm:!py-4">
+          <div className="py-4 md:py-8">
             <RodaSliderQuestion onComplete={handleScoresComplete} />
-          </Section>
+          </div>
         )}
 
         {step === 'result' && regData && (
           <>
-            {/* 1. Personalized Chart */}
-            <Section id="roda-chart-container" className="!py-3 sm:!py-4">
-              <div className="text-center mb-3">
+            {/* 1. Chart — white bg */}
+            <div id="roda-chart-container" className="bg-white py-8 md:py-12">
+              <div className="text-center mb-4">
                 <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900 mb-1">
                   Sua Roda da Vida, {regData.user_name}
                 </h2>
                 <div className="w-16 h-px bg-brand-300 mx-auto" />
               </div>
               <RodaChart scores={scores} id="roda-chart" />
-            </Section>
+            </div>
 
-            <div className="w-24 h-px bg-brand-200 mx-auto" />
-
-            {/* 2. AI-Powered Personalized Report */}
-            <Section className="!py-4 sm:!py-5">
+            {/* 2. AI Report — warm tint */}
+            <div className="bg-brand-50/40 py-8 md:py-12">
               <RodaAIReport
                 scores={scores}
                 userName={fullName}
@@ -134,37 +139,29 @@ const RodaDaVidaPage = () => {
                 recordId={recordId}
                 onReportGenerated={setReport}
               />
-            </Section>
+            </div>
 
-            <div className="w-24 h-px bg-brand-200 mx-auto" />
-
-            {/* 3. PDF Download */}
-            <Section className="!py-3 sm:!py-4 flex flex-col items-center gap-3">
+            {/* 3. PDF Download — white */}
+            <div className="bg-white py-8 md:py-12 flex flex-col items-center gap-3">
               <RodaPdfExport
                 userName={fullName}
                 age={regData.age}
                 report={report}
               />
-            </Section>
+            </div>
 
-            <div className="w-24 h-px bg-brand-200 mx-auto" />
-
-            {/* 4. Sueli Credibility */}
-            <Section className="!py-4 sm:!py-5">
+            {/* 4. Credibility — warm tint */}
+            <div className="bg-brand-50/40 py-8 md:py-12">
               <RodaSueliCredibility />
-            </Section>
+            </div>
 
-            <div className="w-24 h-px bg-brand-200 mx-auto" />
-
-            {/* 5. Packages */}
-            <Section className="!py-4 sm:!py-5">
+            {/* 5. Packages — white */}
+            <div className="bg-white py-8 md:py-12">
               <RodaPackages onWhatsAppClick={handleWhatsAppClick} />
-            </Section>
+            </div>
 
-            <div className="w-24 h-px bg-brand-200 mx-auto" />
-
-            {/* 6. Final CTA */}
-            <Section className="!py-4 sm:!py-5 pb-10">
+            {/* 6. Final CTA — gradient */}
+            <div className="bg-gradient-to-b from-brand-50 to-paper-50 py-8 md:py-12 pb-14">
               <div className="max-w-md mx-auto px-4 text-center space-y-3">
                 <p className="text-ink-700 text-sm leading-relaxed">
                   Sua roda mostrou áreas que pedem cuidado. O próximo passo é conversar com
@@ -181,7 +178,7 @@ const RodaDaVidaPage = () => {
                   Atendimento personalizado · Resposta em até 24h
                 </p>
               </div>
-            </Section>
+            </div>
           </>
         )}
       </main>

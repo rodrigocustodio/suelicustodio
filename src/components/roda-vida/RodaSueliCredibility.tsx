@@ -33,13 +33,13 @@ export const RodaSueliCredibility = () => (
         <p className="text-brand-600 text-sm font-medium uppercase tracking-wide">
           Mentora em Inteligência Relacional
         </p>
-        <p className="text-ink-700 text-sm leading-relaxed">
+        <p className="text-ink-700 text-base leading-relaxed">
           Há mais de 20 anos acompanhando mulheres em momentos de transição emocional, Sueli desenvolveu
           uma metodologia própria baseada na <strong>Inteligência Relacional</strong> — a capacidade de
           compreender, reorganizar e transformar a forma como nos relacionamos conosco mesmas e com quem
           está ao nosso redor.
         </p>
-        <p className="text-ink-700 text-sm leading-relaxed">
+        <p className="text-ink-700 text-base leading-relaxed">
           Seu trabalho combina escuta ativa profunda, ferramentas práticas de reorganização emocional e
           um olhar acolhedor que respeita o ritmo de cada mulher. Não é terapia — é mentoria com
           direcionamento, clareza e ação.
