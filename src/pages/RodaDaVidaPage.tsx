@@ -80,18 +80,15 @@ const RodaDaVidaPage = () => {
   return (
     <div className="min-h-screen bg-paper-50">
       {/* Header */}
-      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-16 pb-6 md:pt-24 md:pb-8 px-4">
+      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-12 pb-4 md:pt-16 md:pb-6 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-4">
+          <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-2">
             Sueli Custódio · Mentoria Relacional
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair text-ink-900 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair text-ink-900 mb-3 leading-tight">
             Análise do Estado Emocional
           </h1>
-          <div className="w-24 h-px bg-brand-300 mx-auto mb-6" />
-          <p className="text-ink-700 text-lg leading-relaxed max-w-xl mx-auto">
-            Descubra visualmente como estão as áreas mais importantes da sua vida emocional e relacional.
-          </p>
+          <div className="w-24 h-px bg-brand-300 mx-auto" />
         </div>
       </header>
 
