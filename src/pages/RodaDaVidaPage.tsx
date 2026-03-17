@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { supabase } from '@/integrations/supabase/client';
+import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 import { track } from '@/lib/analytics';
@@ -23,25 +24,26 @@ const RodaDaVidaPage = () => {
   const handleRegistration = async (data: RegistrationData) => {
     setLoading(true);
     try {
-      const { data: inserted, error } = await supabase
+      const newId = crypto.randomUUID();
+      const { error } = await supabase
         .from('roda_vida_responses')
         .insert({
+          id: newId,
           user_name: data.user_name,
           user_lastname: data.user_lastname,
           email: data.email,
           age: data.age,
           whatsapp: data.whatsapp,
-        })
-        .select('id')
-        .single();
+        });
 
       if (error) throw error;
-      setRecordId(inserted.id);
+      setRecordId(newId);
       setRegData(data);
       setStep('questionnaire');
       track('roda_vida_start');
-    } catch {
-      // silently handle
+    } catch (err) {
+      console.error('Roda da Vida insert error:', err);
+      toast({ variant: 'destructive', title: 'Erro ao salvar', description: 'Não foi possível iniciar a análise. Tente novamente.' });
     } finally {
       setLoading(false);
     }
