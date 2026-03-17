@@ -91,7 +91,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
                 ${
                   value === i
                     ? 'bg-brand-500 text-white border-brand-500 shadow-md scale-105'
-                    : 'bg-paper-50 text-ink-700 border-brand-200 hover:border-brand-400 hover:bg-brand-50'
+                    : 'bg-paper-50 text-ink-700 border-gray-400 hover:border-brand-400 hover:bg-brand-50'
                 }
               `}
             >
