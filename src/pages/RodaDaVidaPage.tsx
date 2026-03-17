@@ -5,6 +5,7 @@ import { toast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { MessageCircle } from 'lucide-react';
 import { track } from '@/lib/analytics';
+import { Section } from '@/components/Section';
 import { RodaRegistrationForm, type RegistrationData } from '@/components/roda-vida/RodaRegistrationForm';
 import { RodaSliderQuestion } from '@/components/roda-vida/RodaSliderQuestion';
 import { RodaChart } from '@/components/roda-vida/RodaChart';
@@ -77,80 +78,98 @@ const RodaDaVidaPage = () => {
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-paper-50">
-        {/* Header */}
-        <header className="bg-gradient-to-b from-brand-50 to-paper-50 py-12 md:py-20 px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-playfair text-ink-900 mb-4">
-              Análise do Estado Emocional
-            </h1>
-            <p className="text-ink-700 text-lg leading-relaxed">
-              Descubra visualmente como estão as áreas mais importantes da sua vida emocional e relacional.
-            </p>
-            <p className="text-ink-500 mt-3 leading-relaxed">
+    <div className="min-h-screen bg-paper-50">
+      {/* Header */}
+      <header className="bg-gradient-to-b from-brand-50 to-paper-50 pt-16 pb-12 md:pt-24 md:pb-16 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs tracking-[0.25em] uppercase text-brand-500 font-medium mb-4">
+            Sueli Custódio · Mentoria Relacional
+          </p>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-playfair text-ink-900 mb-6 leading-tight">
+            Análise do Estado Emocional
+          </h1>
+          <div className="w-24 h-px bg-brand-300 mx-auto mb-6" />
+          <p className="text-ink-700 text-lg leading-relaxed max-w-xl mx-auto">
+            Descubra visualmente como estão as áreas mais importantes da sua vida emocional e relacional.
+          </p>
+          {step === 'intro' && (
+            <p className="text-ink-500 mt-4 leading-relaxed max-w-xl mx-auto">
               Responda algumas perguntas rápidas e veja sua Roda da Vida personalizada, revelando onde
               está o equilíbrio e onde existe oportunidade de crescimento.
             </p>
-          </div>
-        </header>
-
-        {/* Content */}
-        <main className="pb-20">
-          {step === 'intro' && (
-            <section className="py-10 px-4">
-              <RodaRegistrationForm onSubmit={handleRegistration} loading={loading} />
-            </section>
           )}
+        </div>
+      </header>
 
-          {step === 'questionnaire' && (
-            <section className="py-10 px-4">
-              <RodaSliderQuestion onComplete={handleScoresComplete} />
-            </section>
-          )}
+      {/* Content */}
+      <main>
+        {step === 'intro' && (
+          <Section>
+            <RodaRegistrationForm onSubmit={handleRegistration} loading={loading} />
+          </Section>
+        )}
 
-          {step === 'result' && regData && (
-            <div className="space-y-16">
-              {/* Chart */}
-              <section className="py-6 px-4" id="roda-chart-container">
-                <RodaChart scores={scores} id="roda-chart" />
-              </section>
+        {step === 'questionnaire' && (
+          <Section>
+            <RodaSliderQuestion onComplete={handleScoresComplete} />
+          </Section>
+        )}
 
-              {/* Result text */}
-              <section>
-                <RodaResult />
-              </section>
+        {step === 'result' && regData && (
+          <>
+            {/* Chart */}
+            <Section id="roda-chart-container">
+              <div className="text-center mb-6">
+                <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900 mb-3">
+                  Sua Roda da Vida
+                </h2>
+                <div className="w-16 h-px bg-brand-300 mx-auto" />
+              </div>
+              <RodaChart scores={scores} id="roda-chart" />
+            </Section>
 
-              {/* PDF + WhatsApp actions */}
-              <section className="flex flex-col items-center gap-4 px-4">
-                <RodaPdfExport
-                  userName={`${regData.user_name} ${regData.user_lastname}`}
-                  age={regData.age}
-                />
-              </section>
+            <div className="w-24 h-px bg-brand-200 mx-auto" />
 
-              {/* Packages */}
-              <section className="py-10">
-                <RodaPackages />
-              </section>
+            {/* Result text */}
+            <Section>
+              <RodaResult />
+            </Section>
 
-              {/* WhatsApp CTA */}
-              <section className="px-4 pb-10">
-                <div className="max-w-md mx-auto">
-                  <Button
-                    onClick={handleWhatsAppClick}
-                    className="w-full h-14 rounded-2xl bg-green-600 hover:bg-green-700 text-white text-base font-medium shadow-lg"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Conversar com a Mentora Sueli
-                  </Button>
-                </div>
-              </section>
-            </div>
-          )}
-        </main>
-      </div>
-    </>
+            <div className="w-24 h-px bg-brand-200 mx-auto" />
+
+            {/* PDF + actions */}
+            <Section className="flex flex-col items-center gap-4">
+              <RodaPdfExport
+                userName={`${regData.user_name} ${regData.user_lastname}`}
+                age={regData.age}
+              />
+            </Section>
+
+            <div className="w-24 h-px bg-brand-200 mx-auto" />
+
+            {/* Packages */}
+            <Section>
+              <RodaPackages />
+            </Section>
+
+            <div className="w-24 h-px bg-brand-200 mx-auto" />
+
+            {/* WhatsApp CTA */}
+            <Section className="pb-16">
+              <div className="max-w-md mx-auto px-4">
+                <Button
+                  onClick={handleWhatsAppClick}
+                  className="w-full h-14 rounded-2xl bg-green-600 hover:bg-green-700 text-white text-base font-medium shadow-lg"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Conversar com a Mentora Sueli
+                </Button>
+              </div>
+            </Section>
+          </>
+        )}
+      </main>
+    </div>
   );
 };
 

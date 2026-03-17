@@ -41,7 +41,7 @@ const packages = [
 export const RodaPackages = () => (
   <div className="max-w-5xl mx-auto px-4">
     <div className="text-center mb-10 space-y-4">
-      <h2 className="text-3xl font-playfair text-ink-900">
+      <h2 className="text-3xl sm:text-4xl font-playfair text-ink-900">
         Transforme consciência em mudança real
       </h2>
       <p className="text-ink-700 max-w-2xl mx-auto leading-relaxed">
