@@ -77,7 +77,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Number buttons grid */}
-        <div className="grid grid-cols-6 gap-2 sm:gap-3 mb-5">
+        <div className="grid grid-cols-6 gap-2 sm:gap-3 mb-3">
           {Array.from({ length: 11 }, (_, i) => (
             <button
               key={i}
