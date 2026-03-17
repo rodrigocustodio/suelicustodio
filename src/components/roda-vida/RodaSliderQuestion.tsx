@@ -107,7 +107,7 @@ export const RodaSliderQuestion = ({ onComplete }: Props) => {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-px bg-brand-100 mb-6" />
+        <div className="w-full h-px bg-brand-100 mb-4" />
 
         {/* Navigation */}
         <div className="flex gap-3">
