@@ -80,7 +80,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
                 value={form.user_name}
                 onChange={(e) => update('user_name', e.target.value)}
                 placeholder="Seu nome"
-                className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+                className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
               />
               {errors.user_name && <p className="text-xs text-destructive">{errors.user_name}</p>}
             </div>
