@@ -105,7 +105,7 @@ export const RodaRegistrationForm = ({ onSubmit, loading }: Props) => {
               value={form.email}
               onChange={(e) => update('email', e.target.value)}
               placeholder="seu@email.com"
-              className="h-11 rounded-xl border-brand-200 focus-visible:ring-brand-400"
+              className="h-11 rounded-xl border-gray-400 focus-visible:ring-brand-400"
             />
             {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
           </div>
