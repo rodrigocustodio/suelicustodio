@@ -452,6 +452,57 @@ const Admin = () => {
             )}
           </CardContent>
         </Card>
+
+        <Card className="mt-8">
+          <CardHeader>
+            <CardTitle>Roda da Vida — Análise Emocional</CardTitle>
+            <CardDescription>
+              Total de {rodaVidaResponses.length} análises | {rodaVidaResponses.filter(r => r.whatsapp_clicked).length} clicaram no WhatsApp
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            {rodaVidaResponses.length === 0 ? (
+              <p className="text-center text-ink-500 py-8">
+                Nenhuma análise realizada ainda.
+              </p>
+            ) : (
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Data</TableHead>
+                      <TableHead>Nome</TableHead>
+                      <TableHead>Email</TableHead>
+                      <TableHead>Idade</TableHead>
+                      <TableHead>WhatsApp</TableHead>
+                      <TableHead>WhatsApp CTA</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {rodaVidaResponses.map((resp) => (
+                      <TableRow key={resp.id}>
+                        <TableCell>
+                          {format(new Date(resp.created_at), 'dd/MM/yyyy HH:mm', { locale: ptBR })}
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          {resp.user_name} {resp.user_lastname}
+                        </TableCell>
+                        <TableCell>{resp.email}</TableCell>
+                        <TableCell>{resp.age}</TableCell>
+                        <TableCell>{resp.whatsapp}</TableCell>
+                        <TableCell>
+                          <Badge variant={resp.whatsapp_clicked ? 'default' : 'outline'}>
+                            {resp.whatsapp_clicked ? 'Sim' : 'Não'}
+                          </Badge>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
